@@ -1,22 +1,42 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/States/MainMenu.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Managers/GameStateManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/States/MainMenu.cs" Line="20" Column="19" />
-      <File FileName="Assets/Scripts/States/StartScreen.cs" Line="14" Column="60" />
-      <File FileName="Assets/Scripts/Managers/GameStateManager.cs" Line="28" Column="21" />
-      <File FileName="Assets/Scripts/Managers/GameManager.cs" Line="6" Column="9" />
+      <File FileName="Assets/Scripts/Managers/GameStateManager.cs" Line="19" Column="37" />
+      <File FileName="Assets/Scripts/Managers/SceneManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Managers/GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Managers/GameStateManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Base/Singletons/ExempleSingleton.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Base/Singletons/SingletonEnsure.cs" Line="1" Column="1" />
+      <File FileName="../../Games/GameJams/Reverse-Ninja/Sources/Assets/Scripts/GameStates/ActionState.cs" Line="1" Column="1" />
+      <File FileName="../../Games/GameJams/Reverse-Ninja/Sources/Assets/Scripts/Managers/GameStateManager.cs" Line="1" Column="1" />
+      <File FileName="../../Games/GameJams/Reverse-Ninja/Sources/Assets/Scripts/GameStates/GameState.cs" Line="1" Column="1" />
+      <File FileName="../../Games/GameJams/Reverse-Ninja/Sources/Assets/Scripts/GameStates/EndState.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Base/State.cs" Line="10" Column="35" />
+      <File FileName="Assets/Scripts/GameStates/MainMenu.cs" Line="9" Column="23" />
+      <File FileName="Assets/Scripts/GameStates/StartScreen.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Controllers/StartScreenController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Controllers/MainMenuController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CubeRotation.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GameStates/PauseMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets/Editor/GameStateManagerEditor.cs" Line="21" Column="7" />
+      <File FileName="Assets/Editor/SceneManagerEditor.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
-              <Node name="Managers" expanded="True" />
-              <Node name="States" expanded="True">
-                <Node name="MainMenu.cs" selected="True" />
+              <Node name="Base" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="GameStates" expanded="True" />
+              <Node name="Managers" expanded="True">
+                <Node name="GameStateManager.cs" selected="True" />
               </Node>
             </Node>
+          </Node>
+          <Node name="Assembly-CSharp-Editor" expanded="True">
+            <Node name="Editor" expanded="True" />
           </Node>
         </State>
       </Pad>

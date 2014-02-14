@@ -46,10 +46,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Base\Singletons\ExempleSingleton.cs" />
+     <Compile Include="Assets\Scripts\Base\Singletons\SingletonEnsure.cs" />
+     <Compile Include="Assets\Scripts\Base\State.cs" />
+     <Compile Include="Assets\Scripts\Controllers\MainMenuController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\StartScreenController.cs" />
+     <Compile Include="Assets\Scripts\CubeRotation.cs" />
+     <Compile Include="Assets\Scripts\GameStates\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\GameStates\PauseMenu.cs" />
+     <Compile Include="Assets\Scripts\GameStates\StartScreen.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\GameStateManager.cs" />
-     <Compile Include="Assets\Scripts\States\MainMenu.cs" />
-     <Compile Include="Assets\Scripts\States\StartScreen.cs" />
+     <Compile Include="Assets\Scripts\Managers\SceneManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

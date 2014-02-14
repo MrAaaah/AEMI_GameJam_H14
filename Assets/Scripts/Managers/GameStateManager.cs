@@ -1,36 +1,63 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public enum GameState {
 	StartScreen,
 	MainMenu,
+	PauseMenu
 }
 
-public delegate void OnStateChangeHandler();
+[AddComponentMenu("Singletons/GameStateManager")]
+public class GameStateManager : SingletonMonoBehaviour<GameStateManager> {
+	
+	public GameState state { get; private set; }
 
-public class GameStateManager {
-	protected GameStateManager () {}
-	private static GameStateManager instance = null;
+	public State<GameState> previousState;
+	public State<GameState> currentState;
 
-	public GameState gameState { get; private set; }
-	public event OnStateChangeHandler OnStateChange;
+	private Dictionary<GameState, State<GameState>> states;
 
-	// Singleton pattern implementation
-	public static GameStateManager Instance { 
-		get {
-			if (GameStateManager.instance == null) {
-				GameStateManager.instance = new GameStateManager (); 
-			}  
-			return GameStateManager.instance;
-		} 
+	public int test;
+
+	public void Start () {
+		CreateStates ();
 	}
 
-	public void SetGameState (GameState gameState) {
-		Debug.Log ("Change state to "+gameState);
+	public void Update () {
+		if (currentState != null)
+			currentState.UpdateState ();
+	}
 
-		this.gameState = gameState;
+	public void OnGUI () {
+		if (currentState != null)
+			currentState.UpdateStateGUI ();
+	}
 
-		if (OnStateChange!=null) {
-			OnStateChange();
+	private void CreateStates () {
+		if (states == null) {
+			states = new Dictionary<GameState, State<GameState>> ();
+			
+			states.Add (GameState.StartScreen, new StartScreen ());
+			states.Add (GameState.MainMenu, new MainMenu ());
+			states.Add (GameState.PauseMenu, new PauseMenu ());
+			Debug.Log ("Create states");
 		}
 	}
+
+	public void SetGameState (GameState nextGameState) {
+		if (currentState != null) {
+			previousState = currentState;
+			previousState.ExitState ();
+			Debug.Log("-- "+currentState.ToString() + " --");
+		} else { CreateStates (); }
+
+		currentState = states[nextGameState];
+		
+		Debug.Log (currentState);
+		
+		currentState.EnterState ();
+	}
+	
+
 }
