@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public enum Sound {
+	MainMenuMusicBackGround,
 	GameMusicBackground,
 }
 
@@ -39,7 +40,11 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager> {
 			audioSource.loop = true;
 			audioSource.volume = 0.2f;
 			audioSource.PlayOneShot (sounds[sound]);
-					
+		}
+		else if (sound == Sound.MainMenuMusicBackGround) {
+			audioSource.loop = true;
+//			audioSource.volume = 0.2f;
+			audioSource.PlayOneShot (sounds[sound]);
 		}
 	}
 }
