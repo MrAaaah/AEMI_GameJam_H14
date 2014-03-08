@@ -7,17 +7,55 @@ public class GameController : MonoBehaviour
 	private float timer;
 
 	DoorController doorsController;
+	LevelController levelController;
 
 	// Use this for initialization
 	void Start () {
 		doorsController = GetComponent<DoorController> ();
+		levelController = GetComponent<LevelController> ();
 		GameManager.singleton.namePlayer="";
-		timer = timerDuration;
+
+		StartLevel ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		UpdateTimer ();
+	}
+
+	void OnEnable () {
+		EventManager.leftDoorAccessed += HandleLeftDoorAccessed;
+		EventManager.rightDoorAccessed += HandleRightDoorAccessed;
+	}
+	
+	void OnDisable () {
+		EventManager.leftDoorAccessed -= HandleLeftDoorAccessed;
+		EventManager.rightDoorAccessed -= HandleRightDoorAccessed;
+	}
+
+	void HandleLeftDoorAccessed () {
+		levelController.ChangeToLeftLevel ();
+		StartCoroutine(WaitForAnimationEnd());
+		doorsController.CloseDoors();
+	}
+
+	void HandleRightDoorAccessed () {
+		levelController.ChangeToRightLevel ();
+		StartCoroutine(WaitForAnimationEnd());
+		doorsController.CloseDoors();
+	}
+
+	IEnumerator WaitForAnimationEnd () {
+		while (levelController.inTransition) {
+			yield return new WaitForSeconds(0.1f);
+		}
+
+		StartLevel ();
+	}
+
+	void StartLevel () {
+		timer = timerDuration;
+		doorsController.InitDoors();
 	}
 
 	void UpdateTimer () {
