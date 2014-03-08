@@ -11,11 +11,6 @@ public class Helpers
 				return V;
 		}
 
-		public static float Multiply (float a, float b)
-		{
-				return a * b;
-		}
-
 		public static string fileToString (string mapPath)
 		{
 
