@@ -78,7 +78,7 @@ public class PlayerControl : MonoBehaviour
 		if (h * rigidbody2D.velocity.x < maxSpeed) 
 		{
 				// ... add a force to the player.
-			float airRatio = grounded ? 1.0f : 0.5f;
+			float airRatio = 1.0f;//grounded ? 1.0f : 0.5f;
 			rigidbody2D.AddForce (Vector2.right * h * moveForce * airRatio);
 		}
 
@@ -107,11 +107,11 @@ public class PlayerControl : MonoBehaviour
 			//AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
 
 			// Add a vertical force to the player.
-			if(v >=0 )
-			{
+//			if(v >=0 )
+//			{
 				rigidbody2D.AddForce(new Vector2(0f, jumpForce) );
 				Debug.Log ("Jumping: " + jumpForce);
-			}
+//			}
 		
 			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 			jump = false;
