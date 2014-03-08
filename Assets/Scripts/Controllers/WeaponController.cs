@@ -7,6 +7,7 @@ public class AttackController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 	
 	}
 	
