@@ -34,15 +34,19 @@ public class GameController : MonoBehaviour
 	}
 
 	void HandleLeftDoorAccessed () {
-		levelController.ChangeToLeftLevel ();
-		StartCoroutine(WaitForAnimationEnd());
-		doorsController.CloseDoors();
+		if (timer == 0) {
+			levelController.ChangeToLeftLevel ();
+			StartCoroutine(WaitForAnimationEnd());
+			doorsController.CloseDoors();
+		}
 	}
 
 	void HandleRightDoorAccessed () {
-		levelController.ChangeToRightLevel ();
-		StartCoroutine(WaitForAnimationEnd());
-		doorsController.CloseDoors();
+		if (timer == 0) {
+			levelController.ChangeToRightLevel ();
+			StartCoroutine(WaitForAnimationEnd());
+			doorsController.CloseDoors();
+		}
 	}
 
 	IEnumerator WaitForAnimationEnd () {
