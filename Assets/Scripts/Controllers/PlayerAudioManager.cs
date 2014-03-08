@@ -6,7 +6,6 @@ public class PlayerAudioManager : MonoBehaviour {
 	public AudioClip marche;
 	public AudioClip saut;
 	public AudioClip atterissage;
-	public AudioClip souffre;
 	public AudioClip recoitCoup;
 	public AudioClip armePrincipale;
 	public AudioClip armeCouteaux;
@@ -33,6 +32,6 @@ public class PlayerAudioManager : MonoBehaviour {
 		audioSource.clip = clip;
 		Debug.Log("Play "+clip);
 //		audioSource.audio = clip;
-//		audioSource.Play();
+		audioSource.Play();
 	}
 }

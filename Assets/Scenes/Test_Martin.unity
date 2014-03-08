@@ -422,6 +422,7 @@ GameObject:
   - 61: {fileID: 52007441}
   - 114: {fileID: 52007440}
   - 61: {fileID: 52007439}
+  - 114: {fileID: 52007444}
   m_Layer: 10
   m_Name: Player1
   m_TagString: Untagged
@@ -505,6 +506,30 @@ Transform:
   - {fileID: 639513231}
   - {fileID: 1301614989}
   m_Father: {fileID: 0}
+--- !u!114 &52007444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: ce2feb9a88ac9f7418c3322ad11d3bed,
+    type: 2}
+  m_PrefabInternal: {fileID: 1059877051}
+  m_GameObject: {fileID: 52007438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2804ec18a6a4eb69778cbec51b298c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  marche: {fileID: 8300000, guid: 8783e163044264ee9ba23e67805e58b5, type: 3}
+  saut: {fileID: 8300000, guid: ba765ebbe35844f86becbda3aa67939d, type: 3}
+  atterissage: {fileID: 8300000, guid: e009dbd1e107b472dacd0fe1f6391d18, type: 3}
+  recoitCoup: {fileID: 8300000, guid: f69285daf62d44dc1992a12d3a46cedc, type: 3}
+  armePrincipale: {fileID: 8300000, guid: b5927f2d4389343d084619256ab7859d, type: 3}
+  armeCouteaux: {fileID: 8300000, guid: b5927f2d4389343d084619256ab7859d, type: 3}
+  armeKounais: {fileID: 8300000, guid: b5927f2d4389343d084619256ab7859d, type: 3}
+  armeSphereDeBave: {fileID: 8300000, guid: b5927f2d4389343d084619256ab7859d, type: 3}
+  mothaFuckinLaZor: {fileID: 8300000, guid: b5927f2d4389343d084619256ab7859d, type: 3}
+  doomDevice: {fileID: 8300000, guid: b5927f2d4389343d084619256ab7859d, type: 3}
+  mort: {fileID: 8300000, guid: 020ea7669220846b4a051e08970df940, type: 3}
+  recupereRessource: {fileID: 8300000, guid: 4d49bd7dbdb634501b78e498d2a75632, type: 3}
 --- !u!1 &55934546
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,6 +2816,8 @@ GameObject:
   - 61: {fileID: 803514237}
   - 114: {fileID: 803514236}
   - 61: {fileID: 803514235}
+  - 82: {fileID: 803514240}
+  - 114: {fileID: 803514239}
   m_Layer: 10
   m_Name: Player2
   m_TagString: Untagged
@@ -2874,6 +2901,89 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!114 &803514239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 0fb0e0cc1285a61408270c01a2b9a21d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1134679931}
+  m_GameObject: {fileID: 803514233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2804ec18a6a4eb69778cbec51b298c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  marche: {fileID: 8300000, guid: 8783e163044264ee9ba23e67805e58b5, type: 3}
+  saut: {fileID: 8300000, guid: ba765ebbe35844f86becbda3aa67939d, type: 3}
+  atterissage: {fileID: 8300000, guid: e009dbd1e107b472dacd0fe1f6391d18, type: 3}
+  recoitCoup: {fileID: 8300000, guid: f69285daf62d44dc1992a12d3a46cedc, type: 3}
+  armePrincipale: {fileID: 8300000, guid: b5927f2d4389343d084619256ab7859d, type: 3}
+  armeCouteaux: {fileID: 8300000, guid: b5927f2d4389343d084619256ab7859d, type: 3}
+  armeKounais: {fileID: 8300000, guid: b5927f2d4389343d084619256ab7859d, type: 3}
+  armeSphereDeBave: {fileID: 8300000, guid: b5927f2d4389343d084619256ab7859d, type: 3}
+  mothaFuckinLaZor: {fileID: 8300000, guid: b5927f2d4389343d084619256ab7859d, type: 3}
+  doomDevice: {fileID: 8300000, guid: b5927f2d4389343d084619256ab7859d, type: 3}
+  mort: {fileID: 8300000, guid: 020ea7669220846b4a051e08970df940, type: 3}
+  recupereRessource: {fileID: 8300000, guid: 4d49bd7dbdb634501b78e498d2a75632, type: 3}
+--- !u!82 &803514240
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200000, guid: 0fb0e0cc1285a61408270c01a2b9a21d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1134679931}
+  m_GameObject: {fileID: 803514233}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &850266659
 Prefab:
   m_ObjectHideFlags: 0
@@ -6075,7 +6185,7 @@ Camera:
   near clip plane: .300000012
   far clip plane: 1000
   field of view: 62
-  orthographic: 1
+  orthographic: 0
   orthographic size: 15
   m_Depth: -1
   m_CullingMask:
@@ -6092,7 +6202,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1854328217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
