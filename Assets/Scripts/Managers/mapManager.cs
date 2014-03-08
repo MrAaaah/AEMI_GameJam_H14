@@ -49,7 +49,7 @@ public class mapManager
 												if (tilesvalue == 2 || tilesvalue == 3) {
 														doors [tilesvalue - 2] = new Vector2 (j, i);
 												} else if (tilesvalue == 4 || tilesvalue == 5) {
-														spawn [tilesvalue - 4] = new Vector2 (j, i - 1);
+														spawn [tilesvalue - 4] = new Vector2 (j-1, i-1);
 												} else if (tilesvalue == 0) {
 												} else {
 														GameObject tile = (GameObject)GameObject.Instantiate (
@@ -86,7 +86,7 @@ public class mapManager
 
 		public void spawnPlayer ()
 		{
-		destroyPlayer ();
+				destroyPlayer ();
 				for (int i = 0; i < 2; i++) {
 						players [i] = (GameObject)GameObject.Instantiate (
 				this.tiles [i + 4]);
@@ -102,10 +102,10 @@ public class mapManager
 
 		public void destroyPlayer ()
 		{
-		if (spawned) {
-			GameObject.Destroy (players [0]);
-			GameObject.Destroy (players [1]);
-		}
+				if (spawned) {
+						GameObject.Destroy (players [0]);
+						GameObject.Destroy (players [1]);
+				}
 		}
 
 		public Vector3 getCamPos ()
