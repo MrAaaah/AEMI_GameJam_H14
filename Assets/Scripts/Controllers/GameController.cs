@@ -6,11 +6,12 @@ public class GameController : MonoBehaviour
 	public float timerDuration;
 	private float timer;
 
-	DoorController doors;
+	DoorController doorsController;
 
 	// Use this for initialization
 	void Start () {
-		doors = GetComponent<DoorController> ();
+		doorsController = GetComponent<DoorController> ();
+		GameManager.singleton.namePlayer="";
 		timer = timerDuration;
 	}
 	
@@ -24,7 +25,7 @@ public class GameController : MonoBehaviour
 			timer -= Time.deltaTime;
 			if (timer <= 0) {
 				timer = 0;
-				doors.OpenDoors ();
+				doorsController.OpenDoors ();
 			}
 		}
 	}
@@ -33,7 +34,7 @@ public class GameController : MonoBehaviour
 	{
 //		GUI.Label (new Rect (300,500,100,100), timer.ToString ());
 //		GUI.Box (new Rect (300,500,100,100), "0");
-		GUI.Box(new Rect(10,10,230,30), timer.ToString ("F")+"s vant l'ouverture des portes");
+		GUI.Box(new Rect(400,10,230,30), timer.ToString ("F")+"s vant l'ouverture des portes");
 	}
 }
 

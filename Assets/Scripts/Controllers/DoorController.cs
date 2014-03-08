@@ -16,18 +16,6 @@ public class DoorController : MonoBehaviour {
 	
 	}
 
-	public void OnGUI ()
-	{
-		if (GUI.Button (new Rect (100, 100, 100, 100), "Open doors")) {
-			OpenDoors ();
-		}
-		
-		if (GUI.Button (new Rect (200, 100, 100, 100), "Close doors")) {
-			CloseDoors ();
-		}
-	}
-
-
 	public void OpenDoors () {
 		foreach (Door door in doors) {
 			door.OpenDoor ();	
