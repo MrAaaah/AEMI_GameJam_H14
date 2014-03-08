@@ -31,6 +31,8 @@ public class PlayerAudioManager : MonoBehaviour {
 	public void PlaySound (AudioClip clip) {
 		audioSource.clip = clip;
 		Debug.Log("Play "+clip);
-		AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
+		float playerX = transform.position.x;
+		float playerY = transform.position.y;
+		AudioSource.PlayClipAtPoint(clip, new Vector3(playerX * 0.2f, playerY  * 0.2f, Camera.main.transform.position.z + 5) );
 	}
 }
