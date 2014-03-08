@@ -12,13 +12,14 @@ public class jsonMapParser : MonoBehaviour
 		{
 				string[] levelDirectories = Directory.GetDirectories (Application.dataPath + "/Maps");
 				foreach (string levelDirectory in levelDirectories) {
+						
 						string [] jsonMapFiles = Directory.GetFiles (levelDirectory, "*.json");
 						foreach (string jsonMap in jsonMapFiles) {
 								createAndAddMapFromJson (jsonMap);
 						}
 				}
 				
-		Debug.Log (maps.Count + " Maps loaded!");
+				Debug.Log (maps.Count + " Maps loaded!");
 		          
 		}
 
