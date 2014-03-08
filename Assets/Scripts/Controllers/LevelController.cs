@@ -5,6 +5,7 @@ using System.Collections;
 public class LevelController : MonoBehaviour {
 
 	public GameObject[] levels;
+	private mapManager[] levels_map = new mapManager[3];
 
 	public int currentLevelId;
 	public GameObject currentLevel;
@@ -37,9 +38,11 @@ public class LevelController : MonoBehaviour {
 
 		int middleLevelId = (levels.Length-1)/2;
 		currentLevelId = middleLevelId;
-		currentLevel = levels[middleLevelId];
+
 
 		for (int i = 0; i < levels.Length; i++) {
+			levels_map = new mapManager[
+			Level[i]=
 			if (i != currentLevelId) {
 				levels[i].SetActive(false);		
 			} 
@@ -47,6 +50,8 @@ public class LevelController : MonoBehaviour {
 				levels[i].transform.position = Vector3.zero;
 			}
 		}
+
+		currentLevel = levels[middleLevelId];
 	}
 	
 	// Update is called once per frame
