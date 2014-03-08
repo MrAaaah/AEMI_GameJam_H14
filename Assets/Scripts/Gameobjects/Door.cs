@@ -9,6 +9,13 @@ public class Door : MonoBehaviour
 
 	MeshRenderer meshRenderer;
 
+	public enum DoorPosition {
+		Left,
+		Right,
+	}
+
+	public DoorPosition position;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -22,6 +29,21 @@ public class Door : MonoBehaviour
 	void Update ()
 	{
 
+	}
+
+	void OnMouseDown () {
+		switch (position) {
+		case DoorPosition.Left:
+			Debug.Log("Click on left door");	
+			EventManager.singleton._leftDoorAccessed();
+			break;
+		case DoorPosition.Right:
+			Debug.Log("Click on right door");				
+			EventManager.singleton._rightDoorAccessed();
+			break;
+		default:
+			break;
+		}
 	}
 
 	public void OpenDoor () {

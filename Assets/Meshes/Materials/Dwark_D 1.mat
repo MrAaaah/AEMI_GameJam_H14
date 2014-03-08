@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Dwark_D
+  m_Name: Dwark_D 1
   m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -17,11 +17,7 @@ Material:
         first:
           name: _MainTex
         second:
-<<<<<<< HEAD
           m_Texture: {fileID: 2800000, guid: 45852cca563a88f4caece050ff76ffe8, type: 3}
-=======
-          m_Texture: {fileID: 2800000, guid: ef60c698fd9374e5ca0e622fb58af526, type: 3}
->>>>>>> 6d989461ec527e6e46ecc06f41cfb559cdaa1c39
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats: {}
