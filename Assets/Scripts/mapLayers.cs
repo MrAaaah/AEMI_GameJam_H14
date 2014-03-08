@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 class mapLayers
 {
-		public ArrayList data = new ArrayList ();
+		public List<int> data = new List<int> ();
 		public int height;
 		public int width;
 		public string name;
