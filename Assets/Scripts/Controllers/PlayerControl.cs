@@ -3,58 +3,61 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour
 {
-	[HideInInspector]
-	public bool facingRight = true;			// For determining which way the player is currently facing.
-	[HideInInspector]
-	public bool jump = false;				// Condition for whether the player should jump.
+		[HideInInspector]
+		public bool
+				facingRight = true;			// For determining which way the player is currently facing.
+		[HideInInspector]
+		public bool
+				jump = false;				// Condition for whether the player should jump.
 
 
-	public float moveForce = 365f;			// Amount of force added to move the player left and right.
-	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
-	public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
-	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
-	public AudioClip[] taunts;				// Array of clips for when the player taunts.
-	public float tauntProbability = 50f;	// Chance of a taunt happening.
-	public float tauntDelay = 1f;			// Delay for when the taunt should happen.
+		public float moveForce = 365f;			// Amount of force added to move the player left and right.
+		public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
+		public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
+		public float jumpForce = 1000f;			// Amount of force added when the player jumps.
+		public AudioClip[] taunts;				// Array of clips for when the player taunts.
+		public float tauntProbability = 50f;	// Chance of a taunt happening.
+		public float tauntDelay = 1f;			// Delay for when the taunt should happen.
 
 
-	private int tauntIndex;					// The index of the taunts array indicating the most recent taunt.
-	private Transform groundCheck;			// A position marking where to check if the player is grounded.
-	private bool grounded = false;			// Whether or not the player is grounded.
-	private Animator anim;					// Reference to the player's animator component.
+		private int tauntIndex;					// The index of the taunts array indicating the most recent taunt.
+		private Transform groundCheck;			// A position marking where to check if the player is grounded.
+		private bool grounded = false;			// Whether or not the player is grounded.
+		private Animator anim;					// Reference to the player's animator component.
 
-	public float groundCheckRadius = 0.5f; 
-	private LayerMask walkableLayerMask; 
-	private int playerLayer;
-	public int PlayerNumber;
+		public float groundCheckRadius = 0.5f;
+		private LayerMask walkableLayerMask;
+		private int playerLayer;
+		public int PlayerNumber;
+		private bool falling = false;
+		private PlayerAudioManager audioManager;
+		private int timerSoundWalk;
 
-	private bool falling = false;
-
-	private PlayerAudioManager audioManager;
-
-	void Awake()
-	{
-		// Setting up references.
-		groundCheck = transform.Find("groundCheck");
-		//anim = GetComponent<Animator>();
-		walkableLayerMask = (1 << LayerMask.NameToLayer ("Ground")) | (1 << LayerMask.NameToLayer("OneWayPlatform")); 
-		playerLayer = LayerMask.NameToLayer ("Player"+ PlayerNumber);
-	}
-
-	void Start () {
-		audioManager = GetComponent<PlayerAudioManager>();
-	}
-
-	void Update()
-	{
-		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
-
-		// If the jump button is pressed and the player is grounded then the player should jump.
-		if(Input.GetButtonDown("Jump_Player" + PlayerNumber) && grounded) {
-			jump = true;
-			audioManager.PlaySound(audioManager.saut);
+		void Awake ()
+		{
+				// Setting up references.
+				groundCheck = transform.Find ("groundCheck");
+				//anim = GetComponent<Animator>();
+				walkableLayerMask = (1 << LayerMask.NameToLayer ("Ground")) | (1 << LayerMask.NameToLayer ("OneWayPlatform")); 
+				playerLayer = LayerMask.NameToLayer ("Player" + PlayerNumber);
 		}
-	}
+
+		void Start ()
+		{
+				audioManager = GetComponent<PlayerAudioManager> ();
+				timerSoundWalk = 0;
+		}
+
+		void Update ()
+		{
+				// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
+
+				// If the jump button is pressed and the player is grounded then the player should jump.
+				if (Input.GetButtonDown ("Jump_Player" + PlayerNumber) && grounded) {
+						jump = true;
+						audioManager.PlaySound (audioManager.saut);
+				}
+		}
 
 		void OnDrawGizmos ()
 		{
@@ -65,12 +68,15 @@ public class PlayerControl : MonoBehaviour
 		{
 				float v = Input.GetAxis ("Vertical_Player" + PlayerNumber);
 				float h = Input.GetAxis ("Horizontal_Player" + PlayerNumber);
-
+				bool lastValueGrounded = grounded;
 				grounded = Physics2D.OverlapCircle (groundCheck.position,
                                    groundCheckRadius,
                                    walkableLayerMask
 				);
 
+				if (lastValueGrounded == false && grounded == true) { // le joeuur attérit
+						audioManager.PlaySound (audioManager.atterissage);
+				}
 
 				Physics2D.IgnoreLayerCollision (playerLayer,
                        LayerMask.NameToLayer ("OneWayPlatform"),
@@ -88,6 +94,15 @@ public class PlayerControl : MonoBehaviour
 						rigidbody2D.AddForce (Vector2.right * h * moveForce * airRatio);
 				}
 
+				if (h != 0) {
+			timerSoundWalk++;
+			timerSoundWalk %= 60;
+			if (timerSoundWalk == 0) {
+						Debug.Log ("b");
+				audioManager.PlaySound(audioManager.marche);				
+			}
+
+				}
 
 				// If the player's horizontal velocity is greater than the maxSpeed...
 				if (Mathf.Abs (rigidbody2D.velocity.x) > maxSpeed)
@@ -96,13 +111,13 @@ public class PlayerControl : MonoBehaviour
 
 				// If the input is moving the player right and the player is facing left...
 
-		if(h > 0 && !facingRight)
+				if (h > 0 && !facingRight)
 			// ... flip the player.
-			Flip();
+						Flip ();
 		// Otherwise if the input is moving the player left and the player is facing right...
-		else if(h < 0 && facingRight)
+		else if (h < 0 && facingRight)
 			// ... flip the player.
-			Flip();
+						Flip ();
 		
 
 				// If the player should jump...
@@ -129,12 +144,12 @@ public class PlayerControl : MonoBehaviour
 	
 		void Flip ()
 		{
-		facingRight = !facingRight;
+				facingRight = !facingRight;
 		
-		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
+				// Multiply the player's x local scale by -1.
+				Vector3 theScale = transform.localScale;
+				theScale.x *= -1;
+				transform.localScale = theScale;
 		}
 
 		public IEnumerator Taunt ()
