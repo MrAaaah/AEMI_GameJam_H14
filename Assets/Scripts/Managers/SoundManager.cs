@@ -29,6 +29,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager> {
 
 	private void LoadSounds () {
 		sounds.Add(Sound.GameMusicBackground, Resources.Load("Sounds/SFX017") as AudioClip);
+		sounds.Add(Sound.MainMenuMusicBackGround, Resources.Load("Sounds/SFX018") as AudioClip);
 		initialized = true;	
 	}
 	
@@ -43,7 +44,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager> {
 		}
 		else if (sound == Sound.MainMenuMusicBackGround) {
 			audioSource.loop = true;
-//			audioSource.volume = 0.2f;
+			audioSource.volume = 0.5f;
 			audioSource.PlayOneShot (sounds[sound]);
 		}
 	}
