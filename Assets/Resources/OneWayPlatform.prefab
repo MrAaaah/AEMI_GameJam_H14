@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 68: {fileID: 6800000}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: EdgeCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,8 +27,8 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 61: {fileID: 6100000}
-  m_Layer: 8
-  m_Name: Ground
+  m_Layer: 11
+  m_Name: OneWayPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ EdgeCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: 100c220e783cd634eb25adb5f9e0d7b9, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Points:
   - {x: -.5, y: 0}
