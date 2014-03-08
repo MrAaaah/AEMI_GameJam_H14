@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public enum GameState {
 	StartScreen,
 	MainMenu,
-	PauseMenu
+	PauseMenu,
+	Test_Martin,
 }
 
 [AddComponentMenu("Singletons/GameStateManager")]
