@@ -73,23 +73,14 @@ public class PlayerControl : MonoBehaviour
 
 				// The Speed animator parameter is set to the absolute value of the horizontal input.
 				//anim.SetFloat("Speed", Mathf.Abs(h));
-
-<<<<<<< HEAD
+		
 				// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
 				if (h * rigidbody2D.velocity.x < maxSpeed) {
 						// ... add a force to the player.
-						float airRatio = grounded ? 1.0f : 0.5f;
+						float airRatio = 1.0f;//grounded ? 1.0f : 0.5f;
 						rigidbody2D.AddForce (Vector2.right * h * moveForce * airRatio);
 				}
-=======
-		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if (h * rigidbody2D.velocity.x < maxSpeed) 
-		{
-				// ... add a force to the player.
-			float airRatio = 1.0f;//grounded ? 1.0f : 0.5f;
-			rigidbody2D.AddForce (Vector2.right * h * moveForce * airRatio);
-		}
->>>>>>> 3306f429c0ff36120c465694d1c3f43aff317413
+
 
 				// If the player's horizontal velocity is greater than the maxSpeed...
 				if (Mathf.Abs (rigidbody2D.velocity.x) > maxSpeed)
@@ -98,9 +89,15 @@ public class PlayerControl : MonoBehaviour
 
 				// If the input is moving the player right and the player is facing left...
 
-				Flip ();
-	
-<<<<<<< HEAD
+		if(h > 0 && !facingRight)
+			// ... flip the player.
+			Flip();
+		// Otherwise if the input is moving the player left and the player is facing right...
+		else if(h < 0 && facingRight)
+			// ... flip the player.
+			Flip();
+		
+
 				// If the player should jump...
 				if (jump) {
 						// Set the Jump animator trigger parameter.
@@ -111,28 +108,12 @@ public class PlayerControl : MonoBehaviour
 						//AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
 
 						// Add a vertical force to the player.
-						if (v >= 0) {
-								rigidbody2D.AddForce (new Vector2 (0f, jumpForce));
-								Debug.Log ("Jumping: " + jumpForce);
-						}
-=======
-		// If the player should jump...
-		if(jump)
-		{
-			// Set the Jump animator trigger parameter.
-			//anim.SetTrigger("Jump");
-
-			// Play a random jump audio clip.
-			//int i = Random.Range(0, jumpClips.Length);
-			//AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
-
-			// Add a vertical force to the player.
 //			if(v >=0 )
 //			{
-				rigidbody2D.AddForce(new Vector2(0f, jumpForce) );
-				Debug.Log ("Jumping: " + jumpForce);
+						rigidbody2D.AddForce (new Vector2 (0f, jumpForce));
+						Debug.Log ("Jumping: " + jumpForce);
 //			}
->>>>>>> 3306f429c0ff36120c465694d1c3f43aff317413
+
 		
 						// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 						jump = false;
@@ -141,20 +122,12 @@ public class PlayerControl : MonoBehaviour
 	
 		void Flip ()
 		{
-				float rot;
-				float h = rigidbody2D.velocity.x;
-				if (h > 0.5) {
-						rot = 0;
-				} else if (h < -0.5) {
-						rot = 180;
-				} else {
-						rot = 90;
-				}
-
-
-				// Multiply the player's x local scale by -1.
-				transform.rotation = Quaternion.Euler (0, rot, 0);
-				;
+		facingRight = !facingRight;
+		
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 		}
 
 		public IEnumerator Taunt ()
