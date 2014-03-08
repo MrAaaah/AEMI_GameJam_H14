@@ -25,7 +25,8 @@ public class PlayerControl : MonoBehaviour
 
 	public float groundCheckRadius = 0.5f; 
 	private LayerMask walkableLayerMask; 
-	public int playerLayer;
+	private int playerLayer;
+	public int PlayerNumber;
 
 	private bool falling = false;
 
@@ -35,7 +36,7 @@ public class PlayerControl : MonoBehaviour
 		groundCheck = transform.Find("groundCheck");
 		//anim = GetComponent<Animator>();
 		walkableLayerMask = (1 << LayerMask.NameToLayer ("Ground")) | (1 << LayerMask.NameToLayer("OneWayPlatform")); 
-		playerLayer = LayerMask.NameToLayer ("Player");
+		playerLayer = LayerMask.NameToLayer ("Player"+ PlayerNumber);
 	}
 
 
@@ -44,7 +45,7 @@ public class PlayerControl : MonoBehaviour
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
 
 		// If the jump button is pressed and the player is grounded then the player should jump.
-		if(Input.GetButtonDown("Jump") && grounded)
+		if(Input.GetButtonDown("Jump_Player" + PlayerNumber) && grounded)
 			jump = true;
 	}
 
@@ -56,8 +57,8 @@ public class PlayerControl : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		float v = Input.GetAxis ("Vertical");
-		float h = Input.GetAxis ("Horizontal");
+		float v = Input.GetAxis ("Vertical_Player"+ PlayerNumber);
+		float h = Input.GetAxis ("Horizontal_Player"+ PlayerNumber);
 
 		grounded = Physics2D.OverlapCircle (groundCheck.position,
                                    groundCheckRadius,
@@ -88,14 +89,9 @@ public class PlayerControl : MonoBehaviour
 			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
 
 		// If the input is moving the player right and the player is facing left...
-		if(h > 0 && !facingRight)
-			// ... flip the player.
-			Flip();
-		// Otherwise if the input is moving the player left and the player is facing right...
-		else if(h < 0 && facingRight)
-			// ... flip the player.
-			Flip();
 
+			Flip();
+	
 		// If the player should jump...
 		if(jump)
 		{
@@ -121,14 +117,19 @@ public class PlayerControl : MonoBehaviour
 	
 	void Flip ()
 	{
-		// Switch the way the player is labelled as facing.d
-		facingRight = !facingRight;
+		float rot;
+		float h = rigidbody2D.velocity.x;
+		if (h > 0.5) {
+			rot = 0;
+				} else if (h < -0.5) {
+			rot = 180;
+				} else {
+			rot = 90;
+				}
+
 
 		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.z *= -1;
-		theScale.x *= -1;
-		transform.localScale = theScale;
+		transform.rotation =  Quaternion.Euler(0, rot, 0);;
 	}
 
 
@@ -168,4 +169,6 @@ public class PlayerControl : MonoBehaviour
 			// Otherwise return this index.
 			return i;
 	}
+
+
 }
