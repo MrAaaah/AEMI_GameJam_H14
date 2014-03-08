@@ -30,6 +30,8 @@ public class PlayerControl : MonoBehaviour
 
 	private bool falling = false;
 
+	private PlayerAudioManager audioManager;
+
 	void Awake()
 	{
 		// Setting up references.
@@ -39,14 +41,19 @@ public class PlayerControl : MonoBehaviour
 		playerLayer = LayerMask.NameToLayer ("Player"+ PlayerNumber);
 	}
 
+	void Start () {
+		audioManager = GetComponent<PlayerAudioManager>();
+	}
 
 	void Update()
 	{
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
 
 		// If the jump button is pressed and the player is grounded then the player should jump.
-		if(Input.GetButtonDown("Jump_Player" + PlayerNumber) && grounded)
+		if(Input.GetButtonDown("Jump_Player" + PlayerNumber) && grounded) {
 			jump = true;
+			audioManager.PlaySound(audioManager.saut);
+		}
 	}
 
 	void OnDrawGizmos()
