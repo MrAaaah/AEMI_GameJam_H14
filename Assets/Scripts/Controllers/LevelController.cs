@@ -53,6 +53,15 @@ public class LevelController : MonoBehaviour {
 	void Update () {
 	}
 
+	public bool AtLeftestLevel () {
+		return currentLevelId == 0;
+	}
+
+	public bool AtRightestLevel () {
+		return currentLevelId == levels.Length-1;
+	}
+
+
 //	public void OnGUI ()
 //	{
 //		if (GUI.Button (new Rect (400, 100, 100, 100), "Go to left Level")) {

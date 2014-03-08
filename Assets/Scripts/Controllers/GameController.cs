@@ -35,17 +35,28 @@ public class GameController : MonoBehaviour
 
 	void HandleLeftDoorAccessed () {
 		if (timer == 0) {
-			levelController.ChangeToLeftLevel ();
-			StartCoroutine(WaitForAnimationEnd());
-			doorsController.CloseDoors();
+			if (levelController.AtLeftestLevel()) {
+				Debug.Log("Player 2 win");
+			}
+			else {
+				levelController.ChangeToLeftLevel ();
+				StartCoroutine(WaitForAnimationEnd());
+				doorsController.CloseDoors();
+			}
 		}
 	}
 
 	void HandleRightDoorAccessed () {
 		if (timer == 0) {
-			levelController.ChangeToRightLevel ();
-			StartCoroutine(WaitForAnimationEnd());
-			doorsController.CloseDoors();
+			if (levelController.AtRightestLevel()) {
+				Debug.Log("Player 1 win");
+			}
+			else {
+
+				levelController.ChangeToRightLevel ();
+				StartCoroutine(WaitForAnimationEnd());
+				doorsController.CloseDoors();
+			}
 		}
 	}
 
