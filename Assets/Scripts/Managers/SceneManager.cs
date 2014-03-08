@@ -4,7 +4,8 @@ using System.Collections;
 public enum Level {
 	StartScreen,
 	MainMenu,
-	Game
+	Test_Martin,
+	Game,
 }
 
 [AddComponentMenu("Singletons/SceneManager")]
@@ -26,6 +27,10 @@ public class SceneManager : SingletonMonoBehaviour<SceneManager> {
 
 	public void LoadMainMenu () {
 		LoadLevel (Level.MainMenu);
+	}
+
+	public void LoadTestMartin () {
+		LoadLevel (Level.Test_Martin);
 	}
 
 	public void LoadGame () {

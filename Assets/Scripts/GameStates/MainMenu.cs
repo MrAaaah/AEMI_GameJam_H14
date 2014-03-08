@@ -23,6 +23,10 @@ public class MainMenu : State<GameState>
 		if (GUI.Button(new Rect(30, 130, 150, 30), "Pause")) {
 			GameStateManager.singleton.SetGameState (GameState.PauseMenu);
 		}
+
+		if (GUI.Button(new Rect(30, 200, 150, 30), "Test_martin")) {
+			GameStateManager.singleton.SetGameState (GameState.Test_Martin);
+		}
 	}
 
 	public override void ExitState ()

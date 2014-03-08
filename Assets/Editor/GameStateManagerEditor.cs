@@ -16,7 +16,8 @@ public class GameStateManagerEditor : Editor {
 
 
 		EditorGUILayout.LabelField("Previous state: ", previousState);
-		EditorGUILayout.LabelField("Current state: ", myTarget.currentState.ToString());
+		if (myTarget.currentState != null)
+			EditorGUILayout.LabelField("Current state: ", myTarget.currentState.ToString());
 
 //		if (UnityEngine.GUI.changed)
 //			EditorUtility.SetDirty (target);
