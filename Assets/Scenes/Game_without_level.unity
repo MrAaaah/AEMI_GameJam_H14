@@ -689,7 +689,7 @@ GameObject:
   - 114: {fileID: 1986917481}
   - 65: {fileID: 1986917480}
   m_Layer: 10
-  m_Name: GrowingHat 1
+  m_Name: GrowingHat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -825,6 +825,10 @@ Prefab:
     - target: {fileID: 100006, guid: 7457a7840993bb84eaca04556ecaac86, type: 2}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7457a7840993bb84eaca04556ecaac86, type: 2}
+      propertyPath: m_Name
+      value: GrowingHat
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7457a7840993bb84eaca04556ecaac86, type: 2}

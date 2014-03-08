@@ -23,7 +23,8 @@ public class GrowingHatCommands : MonoBehaviour
 		{
 				if (growing) {
 						transform.localScale = new Vector3 (transform.localScale.x, curve.Evaluate (Time.time - currentTime) + baseY - initialY, transform.localScale.z);
-						if (Time.time - currentTime >= curve.length) {
+						// if custom deltatime is bigger than curve's last key, stop growing
+						if (Time.time - currentTime >= curve.keys [curve.keys.Length - 1].time) {
 								growing = false;
 						}
 			
