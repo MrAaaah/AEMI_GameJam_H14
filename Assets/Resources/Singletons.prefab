@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: Singletons
   m_TagString: Untagged
@@ -40,6 +41,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95dcee4ff0d3144c093a645e05049767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousLevel: 0
+  currentLevel: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f956c51d4fb43b795fe227e8c62bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63,6 +67,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   namePlayer: Nipe
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae93be84110d24579b95ed4b850a2635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

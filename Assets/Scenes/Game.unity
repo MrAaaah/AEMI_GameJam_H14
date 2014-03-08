@@ -409,8 +409,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afdd5b0dc08c3487bb470a677a3c8139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelOne: {fileID: 835547959}
-  LevelTwo: {fileID: 1945278852}
+  levels:
+  - {fileID: 1945278852}
+  - {fileID: 835547959}
+  - {fileID: 1945278852}
+  currentLevelId: 0
   transitionDuration: 1
 --- !u!1 &402813999
 GameObject:
