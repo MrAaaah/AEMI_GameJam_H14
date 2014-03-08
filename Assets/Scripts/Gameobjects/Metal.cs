@@ -1,17 +1,17 @@
 using UnityEngine;
 using System.Collections;
 
-public class MetalOnLevel : MonoBehaviour
+public class Metal : MonoBehaviour
 {
 
-		public Metal type;
+		public Metals type;
 		public int quantity = 0;
 
 		// Use this for initialization
 		void Start ()
 		{
 				quantity = Random.Range (5, 25);
-				type = Helpers.GetRandomEnum<Metal> ();
+				type = Helpers.GetRandomEnum<Metals> ();
 		}
 	
 		// Update is called once per frame
@@ -23,6 +23,11 @@ public class MetalOnLevel : MonoBehaviour
 		void OnGUI ()
 		{
 
+		}
+
+		void OnMouseDown ()
+		{
+				Debug.Log (this.mine ());
 		}
 
 		void die ()

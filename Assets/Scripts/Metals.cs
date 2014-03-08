@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
-public enum Metal
+public enum Metals
 {
 		Copper = 1,
 		Silver = 2,
