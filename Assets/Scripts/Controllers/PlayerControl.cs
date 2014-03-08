@@ -65,12 +65,15 @@ public class PlayerControl : MonoBehaviour
 		{
 				float v = Input.GetAxis ("Vertical_Player" + PlayerNumber);
 				float h = Input.GetAxis ("Horizontal_Player" + PlayerNumber);
-
+				bool lastValueGrounded = grounded;
 				grounded = Physics2D.OverlapCircle (groundCheck.position,
                                    groundCheckRadius,
                                    walkableLayerMask
 				);
 
+				if (lastValueGrounded == false && grounded == true) { // le joeuur attérit
+					audioManager.PlaySound(audioManager.atterissage);
+				}
 
 				Physics2D.IgnoreLayerCollision (playerLayer,
                        LayerMask.NameToLayer ("OneWayPlatform"),

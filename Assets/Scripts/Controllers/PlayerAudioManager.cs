@@ -31,7 +31,6 @@ public class PlayerAudioManager : MonoBehaviour {
 	public void PlaySound (AudioClip clip) {
 		audioSource.clip = clip;
 		Debug.Log("Play "+clip);
-//		audioSource.audio = clip;
 		audioSource.Play();
 	}
 }
