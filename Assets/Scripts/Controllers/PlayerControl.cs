@@ -31,6 +31,7 @@ public class PlayerControl : MonoBehaviour
 		public int PlayerNumber;
 		private bool falling = false;
 		private PlayerAudioManager audioManager;
+		private int timerSoundWalk;
 
 		void Awake ()
 		{
@@ -44,6 +45,7 @@ public class PlayerControl : MonoBehaviour
 		void Start ()
 		{
 				audioManager = GetComponent<PlayerAudioManager> ();
+				timerSoundWalk = 0;
 		}
 
 		void Update ()
@@ -92,9 +94,15 @@ public class PlayerControl : MonoBehaviour
 						rigidbody2D.AddForce (Vector2.right * h * moveForce * airRatio);
 				}
 
-				if (h != 0) 
-					Debug.Log ("b");
-			
+				if (h != 0) {
+			timerSoundWalk++;
+			timerSoundWalk %= 60;
+			if (timerSoundWalk == 0) {
+						Debug.Log ("b");
+				audioManager.PlaySound(audioManager.marche);				
+			}
+
+				}
 
 				// If the player's horizontal velocity is greater than the maxSpeed...
 				if (Mathf.Abs (rigidbody2D.velocity.x) > maxSpeed)
