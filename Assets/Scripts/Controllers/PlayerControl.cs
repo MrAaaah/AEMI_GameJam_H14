@@ -23,31 +23,54 @@ public class PlayerControl : MonoBehaviour
 	private bool grounded = false;			// Whether or not the player is grounded.
 	private Animator anim;					// Reference to the player's animator component.
 
+	public float groundCheckRadius = 0.5f; 
+	private LayerMask walkableLayerMask; 
+	public int playerLayer;
+
+	private bool falling = false;
 
 	void Awake()
 	{
 		// Setting up references.
 		groundCheck = transform.Find("groundCheck");
 		//anim = GetComponent<Animator>();
+		walkableLayerMask = (1 << LayerMask.NameToLayer ("Ground")) | (1 << LayerMask.NameToLayer("OneWayPlatform")); 
+		playerLayer = LayerMask.NameToLayer ("Player");
 	}
 
 
 	void Update()
 	{
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
-		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
 
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if(Input.GetButtonDown("Jump") && grounded)
 			jump = true;
 	}
 
+	void OnDrawGizmos()
+	{
+		Gizmos.DrawSphere (transform.Find("groundCheck").position, groundCheckRadius);
+	}
+
 
 	void FixedUpdate ()
 	{
-		// Cache the horizontal input.
+		float v = Input.GetAxis("Vertical");
 		float h = Input.GetAxis("Horizontal");
 
+		grounded = Physics2D.OverlapCircle( groundCheck.position,
+		                                   groundCheckRadius,
+		                                   walkableLayerMask
+		                                   );
+
+
+		Physics2D.IgnoreLayerCollision(playerLayer,
+	                               LayerMask.NameToLayer("OneWayPlatform"),
+	                               !grounded || rigidbody2D.velocity.y > 0 || v < 0
+	                               );// Cache the horizontal input.
+
+	
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
 		//anim.SetFloat("Speed", Mathf.Abs(h));
 
@@ -77,12 +100,16 @@ public class PlayerControl : MonoBehaviour
 			//anim.SetTrigger("Jump");
 
 			// Play a random jump audio clip.
-			int i = Random.Range(0, jumpClips.Length);
+			//int i = Random.Range(0, jumpClips.Length);
 			//AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
 
 			// Add a vertical force to the player.
-			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
-
+			if(v >=0 )
+			{
+				rigidbody2D.AddForce(new Vector2(0f, jumpForce) );
+				Debug.Log ("Jumping: " + jumpForce);
+			}
+		
 			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 			jump = false;
 		}
@@ -91,11 +118,12 @@ public class PlayerControl : MonoBehaviour
 	
 	void Flip ()
 	{
-		// Switch the way the player is labelled as facing.
+		// Switch the way the player is labelled as facing.d
 		facingRight = !facingRight;
 
 		// Multiply the player's x local scale by -1.
 		Vector3 theScale = transform.localScale;
+		theScale.z *= -1;
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
