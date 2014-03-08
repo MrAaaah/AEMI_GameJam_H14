@@ -56,28 +56,31 @@ public class PlayerControl : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		float v = Input.GetAxis("Vertical");
-		float h = Input.GetAxis("Horizontal");
+		float v = Input.GetAxis ("Vertical");
+		float h = Input.GetAxis ("Horizontal");
 
-		grounded = Physics2D.OverlapCircle( groundCheck.position,
-		                                   groundCheckRadius,
-		                                   walkableLayerMask
-		                                   );
+		grounded = Physics2D.OverlapCircle (groundCheck.position,
+                                   groundCheckRadius,
+                                   walkableLayerMask
+		);
 
 
-		Physics2D.IgnoreLayerCollision(playerLayer,
-	                               LayerMask.NameToLayer("OneWayPlatform"),
-	                               !grounded || rigidbody2D.velocity.y > 0 || v < 0
-	                               );// Cache the horizontal input.
+		Physics2D.IgnoreLayerCollision (playerLayer,
+                       LayerMask.NameToLayer ("OneWayPlatform"),
+                       !grounded || rigidbody2D.velocity.y > 0 || v < 0
+		);// Cache the horizontal input.
 
-	
+
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
 		//anim.SetFloat("Speed", Mathf.Abs(h));
 
 		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * rigidbody2D.velocity.x < maxSpeed)
-			// ... add a force to the player.
-			rigidbody2D.AddForce(Vector2.right * h * moveForce);
+		if (h * rigidbody2D.velocity.x < maxSpeed) 
+		{
+				// ... add a force to the player.
+			float airRatio = grounded ? 1.0f : 0.5f;
+			rigidbody2D.AddForce (Vector2.right * h * moveForce * airRatio);
+		}
 
 		// If the player's horizontal velocity is greater than the maxSpeed...
 		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
