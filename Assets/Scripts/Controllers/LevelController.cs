@@ -5,11 +5,12 @@ using System.Collections;
 public class LevelController : MonoBehaviour {
 
 	public GameObject[] levels;
+	public GameObject[] tileset;
 	private mapManager[] levels_map = new mapManager[3];
 
 	public int currentLevelId;
 	public GameObject currentLevel;
-	GameObject nextLevel; 
+	public GameObject nextLevel; 
 
 	public float transitionDuration = 1.0f;
 	private float startTransitionTime;
@@ -24,8 +25,8 @@ public class LevelController : MonoBehaviour {
 	private bool inTransitionEnter;
 
 	private Vector3 currentLevelPosition = new Vector3(0, 0, 0);
-	private Vector3 leftLevelPosition = new Vector3(-100, 0, 0);
-	private Vector3 rightLevelPosition = new Vector3(100, 0, 0);
+	private Vector3 leftLevelPosition = new Vector3(-48, 0, 0);
+	private Vector3 rightLevelPosition = new Vector3(48, 0, 0);
 
 	// Use this for initialization
 	void Start () {
@@ -41,17 +42,21 @@ public class LevelController : MonoBehaviour {
 
 
 		for (int i = 0; i < levels.Length; i++) {
-			levels_map = new mapManager[
-			Level[i]=
+
+			levels_map[i] = new mapManager(Application.dataPath + "/Maps/Lvl2/Lvl2_0" + i + ".json",tileset);
+			levels[i]=levels_map[i].getLevelObject();
+
 			if (i != currentLevelId) {
 				levels[i].SetActive(false);		
 			} 
 			else {
+				levels[i].SetActive(true);
 				levels[i].transform.position = Vector3.zero;
 			}
 		}
 
 		currentLevel = levels[middleLevelId];
+		levels_map [currentLevelId].spawnPlayer ();
 	}
 	
 	// Update is called once per frame
@@ -113,7 +118,9 @@ public class LevelController : MonoBehaviour {
 		levels[currentLevelId].SetActive(false);
 
 		currentLevel = nextLevel;
+		levels_map [currentLevelId].destroyPlayer ();
 		currentLevelId--;
+		levels_map [currentLevelId].spawnPlayer ();
 	}
 
 	IEnumerator TransitionToRightLevel () {
@@ -132,7 +139,9 @@ public class LevelController : MonoBehaviour {
 		levels[currentLevelId].SetActive(false);
 		
 		currentLevel = nextLevel;
+		levels_map [currentLevelId].destroyPlayer ();
 		currentLevelId++;
+		levels_map [currentLevelId].spawnPlayer ();
 	}
 
 //	void QuitLevel (GameObject level) {
