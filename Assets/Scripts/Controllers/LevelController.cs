@@ -7,11 +7,17 @@ public class LevelController : MonoBehaviour {
 	public GameObject[] levels;
 
 	public int currentLevelId;
-	GameObject currentLevel;
+	public GameObject currentLevel;
 	GameObject nextLevel; 
 
 	public float transitionDuration = 1.0f;
 	private float startTransitionTime;
+
+	public bool inTransition {
+		get {
+			return (inTransitionExit || inTransitionEnter);
+		}
+	}
 
 	private bool inTransitionExit;
 	private bool inTransitionEnter;
@@ -32,33 +38,32 @@ public class LevelController : MonoBehaviour {
 		int middleLevelId = (levels.Length-1)/2;
 		currentLevelId = middleLevelId;
 		currentLevel = levels[middleLevelId];
+
+		for (int i = 0; i < levels.Length; i++) {
+			if (i != currentLevelId) {
+				levels[i].SetActive(false);		
+			} 
+			else {
+				levels[i].transform.position = Vector3.zero;
+			}
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	}
 
-	void OnEnable () {
-		EventManager.leftDoorAccessed += ChangeToLeftLevel;
-		EventManager.rightDoorAccessed += ChangeToRightLevel;
-	}
+//	public void OnGUI ()
+//	{
+//		if (GUI.Button (new Rect (400, 100, 100, 100), "Go to left Level")) {
+//			ChangeToLeftLevel();
+//		}
+//		if (GUI.Button (new Rect (500, 100, 100, 100), "Go to right Level")) {
+//			ChangeToRightLevel();
+//		}
+//	}
 
-	void OnDisable () {
-		EventManager.leftDoorAccessed -= ChangeToLeftLevel;
-		EventManager.rightDoorAccessed -= ChangeToRightLevel;
-	}
-
-	public void OnGUI ()
-	{
-		if (GUI.Button (new Rect (400, 100, 100, 100), "Go to left Level")) {
-			ChangeToLeftLevel();
-		}
-		if (GUI.Button (new Rect (500, 100, 100, 100), "Go to right Level")) {
-			ChangeToRightLevel();
-		}
-	}
-
-	void ChangeToLeftLevel () {
+	public void ChangeToLeftLevel () {
 		if (currentLevelId > 0 && !(inTransitionEnter || inTransitionExit)) {
 			nextLevel = levels[currentLevelId-1];
 			StartCoroutine (TransitionToLeftLevel ());
@@ -68,7 +73,7 @@ public class LevelController : MonoBehaviour {
 
 	}
 
-	void ChangeToRightLevel () {
+	public void ChangeToRightLevel () {
 		if (currentLevelId < levels.Length - 1  && !(inTransitionEnter || inTransitionExit)) {
 			nextLevel = levels[currentLevelId+1];
 			StartCoroutine (TransitionToRightLevel ());
@@ -83,11 +88,15 @@ public class LevelController : MonoBehaviour {
 		inTransitionExit = true;
 		inTransitionEnter = true;
 
+		levels[currentLevelId-1].SetActive(true);
+		
 		while (inTransitionExit || inTransitionEnter) {
 			ExitToRight(currentLevel);
 			EnterFromLeft(nextLevel);
 			yield return new WaitForSeconds(1/60.0f);
 		}
+
+		levels[currentLevelId].SetActive(false);
 
 		currentLevel = nextLevel;
 		currentLevelId--;
@@ -97,12 +106,16 @@ public class LevelController : MonoBehaviour {
 		startTransitionTime = Time.time;
 		inTransitionExit = true;
 		inTransitionEnter = true;
+
+		levels[currentLevelId+1].SetActive(true);
 		
 		while (inTransitionExit || inTransitionEnter) {
 			ExitToLeft(currentLevel);
 			EnterFromRight(nextLevel);
 			yield return new WaitForSeconds(1/60.0f);
 		}
+
+		levels[currentLevelId].SetActive(false);
 		
 		currentLevel = nextLevel;
 		currentLevelId++;
