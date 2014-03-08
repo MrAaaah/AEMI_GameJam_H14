@@ -3,51 +3,58 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour
 {
-		[HideInInspector]
-		public bool
-				facingRight = true;			// For determining which way the player is currently facing.
-		[HideInInspector]
-		public bool
-				jump = false;				// Condition for whether the player should jump.
+	[HideInInspector]
+	public bool facingRight = true;			// For determining which way the player is currently facing.
+	[HideInInspector]
+	public bool jump = false;				// Condition for whether the player should jump.
 
 
-		public float moveForce = 365f;			// Amount of force added to move the player left and right.
-		public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
-		public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
-		public float jumpForce = 1000f;			// Amount of force added when the player jumps.
-		public AudioClip[] taunts;				// Array of clips for when the player taunts.
-		public float tauntProbability = 50f;	// Chance of a taunt happening.
-		public float tauntDelay = 1f;			// Delay for when the taunt should happen.
+	public float moveForce = 365f;			// Amount of force added to move the player left and right.
+	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
+	public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
+	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
+	public AudioClip[] taunts;				// Array of clips for when the player taunts.
+	public float tauntProbability = 50f;	// Chance of a taunt happening.
+	public float tauntDelay = 1f;			// Delay for when the taunt should happen.
 
 
-		private int tauntIndex;					// The index of the taunts array indicating the most recent taunt.
-		private Transform groundCheck;			// A position marking where to check if the player is grounded.
-		private bool grounded = false;			// Whether or not the player is grounded.
-		private Animator anim;					// Reference to the player's animator component.
+	private int tauntIndex;					// The index of the taunts array indicating the most recent taunt.
+	private Transform groundCheck;			// A position marking where to check if the player is grounded.
+	private bool grounded = false;			// Whether or not the player is grounded.
+	private Animator anim;					// Reference to the player's animator component.
 
-		public float groundCheckRadius = 0.5f;
-		private LayerMask walkableLayerMask;
-		private int playerLayer;
-		public int PlayerNumber;
-		private bool falling = false;
+	public float groundCheckRadius = 0.5f; 
+	private LayerMask walkableLayerMask; 
+	private int playerLayer;
+	public int PlayerNumber;
 
-		void Awake ()
-		{
-				// Setting up references.
-				groundCheck = transform.Find ("groundCheck");
-				//anim = GetComponent<Animator>();
-				walkableLayerMask = (1 << LayerMask.NameToLayer ("Ground")) | (1 << LayerMask.NameToLayer ("OneWayPlatform")); 
-				playerLayer = LayerMask.NameToLayer ("Player" + PlayerNumber);
+	private bool falling = false;
+
+	private PlayerAudioManager audioManager;
+
+	void Awake()
+	{
+		// Setting up references.
+		groundCheck = transform.Find("groundCheck");
+		//anim = GetComponent<Animator>();
+		walkableLayerMask = (1 << LayerMask.NameToLayer ("Ground")) | (1 << LayerMask.NameToLayer("OneWayPlatform")); 
+		playerLayer = LayerMask.NameToLayer ("Player"+ PlayerNumber);
+	}
+
+	void Start () {
+		audioManager = GetComponent<PlayerAudioManager>();
+	}
+
+	void Update()
+	{
+		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
+
+		// If the jump button is pressed and the player is grounded then the player should jump.
+		if(Input.GetButtonDown("Jump_Player" + PlayerNumber) && grounded) {
+			jump = true;
+			audioManager.PlaySound(audioManager.saut);
 		}
-
-		void Update ()
-		{
-				// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
-
-				// If the jump button is pressed and the player is grounded then the player should jump.
-				if (Input.GetButtonDown ("Jump_Player" + PlayerNumber) && grounded)
-						jump = true;
-		}
+	}
 
 		void OnDrawGizmos ()
 		{
