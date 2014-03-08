@@ -25,7 +25,8 @@ public class PlayerControl : MonoBehaviour
 
 	public float groundCheckRadius = 0.5f; 
 	private LayerMask walkableLayerMask; 
-	public int playerLayer;
+	private int playerLayer;
+	public int PlayerNumber;
 
 	private bool falling = false;
 
@@ -35,7 +36,7 @@ public class PlayerControl : MonoBehaviour
 		groundCheck = transform.Find("groundCheck");
 		//anim = GetComponent<Animator>();
 		walkableLayerMask = (1 << LayerMask.NameToLayer ("Ground")) | (1 << LayerMask.NameToLayer("OneWayPlatform")); 
-		playerLayer = LayerMask.NameToLayer ("Player");
+		playerLayer = LayerMask.NameToLayer ("Player"+ PlayerNumber);
 	}
 
 
@@ -44,7 +45,7 @@ public class PlayerControl : MonoBehaviour
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
 
 		// If the jump button is pressed and the player is grounded then the player should jump.
-		if(Input.GetButtonDown("Jump") && grounded)
+		if(Input.GetButtonDown("Jump_Player" + PlayerNumber) && grounded)
 			jump = true;
 	}
 
@@ -56,8 +57,8 @@ public class PlayerControl : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		float v = Input.GetAxis ("Vertical");
-		float h = Input.GetAxis ("Horizontal");
+		float v = Input.GetAxis ("Vertical_Player"+ PlayerNumber);
+		float h = Input.GetAxis ("Horizontal_Player"+ PlayerNumber);
 
 		grounded = Physics2D.OverlapCircle (groundCheck.position,
                                    groundCheckRadius,
