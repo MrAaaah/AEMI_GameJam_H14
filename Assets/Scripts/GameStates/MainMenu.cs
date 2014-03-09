@@ -16,16 +16,16 @@ public class MainMenu : State<GameState>
 	
 	public override void UpdateStateGUI ()
 	{
-		if (GUI.Button(new Rect(30, 30, 150, 30), "Back : "+GameManager.singleton.namePlayer)) {
-			GameStateManager.singleton.SetGameState (GameState.StartScreen);
-		}
+//		if (GUI.Button(new Rect(30, 30, 150, 30), "Back : "+GameManager.singleton.namePlayer)) {
+//			GameStateManager.singleton.SetGameState (GameState.StartScreen);
+//		}
+//
+//		if (GUI.Button(new Rect(30, 130, 150, 30), "Pause")) {
+//			GameStateManager.singleton.SetGameState (GameState.PauseMenu);
+//		}
 
-		if (GUI.Button(new Rect(30, 130, 150, 30), "Pause")) {
-			GameStateManager.singleton.SetGameState (GameState.PauseMenu);
-		}
-
-		if (GUI.Button(new Rect(30, 200, 150, 30), "Test_martin")) {
-			GameStateManager.singleton.SetGameState (GameState.Test_Martin);
+		if (GUI.Button(new Rect(30, 200, 150, 30), "Start game")) {
+			GameStateManager.singleton.SetGameState (GameState.Game);
 		}
 	}
 

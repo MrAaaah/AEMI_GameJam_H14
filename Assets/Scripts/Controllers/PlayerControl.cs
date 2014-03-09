@@ -110,7 +110,7 @@ public class PlayerControl : MonoBehaviour
 			timerSoundWalk++;
 			timerSoundWalk %= 60;
 			if (timerSoundWalk == 0) {
-						Debug.Log ("b");
+//						Debug.Log ("b");
 				audioManager.PlaySound(audioManager.marche);				
 			}
 

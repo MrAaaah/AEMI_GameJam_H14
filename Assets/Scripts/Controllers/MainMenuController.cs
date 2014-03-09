@@ -10,7 +10,7 @@ public class MainMenuController : MonoBehaviour {
 
 		MusicManager.singleton.PlaySound(Music.MainMenuMusicBackGround);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	

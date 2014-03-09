@@ -1,15 +1,15 @@
 using UnityEngine;
 using System.Collections;
 
-public class Test_Martin : State<GameState>
+public class Game : State<GameState>
 {
 	
 	public override void EnterState ()
 	{
-		Debug.Log ("Enter Test_Martin");
+		Debug.Log ("Enter Game");
 
 		if (GameStateManager.singleton.previousState is MainMenu)
-			SceneManager.singleton.LoadTestMartin ();
+			SceneManager.singleton.LoadGame ();
 	}
 	
 	public override void UpdateState ()
@@ -22,6 +22,6 @@ public class Test_Martin : State<GameState>
 	
 	public override void ExitState ()
 	{
-		Debug.Log ("Exit Test_Martin");
+		Debug.Log ("Exit Game");
 	}
 }

@@ -16,6 +16,8 @@ public class Door : MonoBehaviour
 
 	public DoorPosition position;
 
+	public BoxCollider2D trigger;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -45,6 +47,7 @@ public class Door : MonoBehaviour
 			break;
 		}
 	}
+
 
 	public void OpenDoor () {
 		try {

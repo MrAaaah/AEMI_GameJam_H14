@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScreen.unity
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
+  - enabled: 1
+    path: Assets/Scenes/Game_without_level.unity
