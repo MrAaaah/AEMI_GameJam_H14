@@ -10,7 +10,7 @@
 using System;
 public enum Metals
 {
-		Copper = 1,
-		Silver = 2,
-		Gold = 3
+		cuivre = 1,
+		argent = 2,
+		or = 3
 }

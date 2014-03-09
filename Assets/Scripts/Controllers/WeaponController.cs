@@ -25,7 +25,8 @@ public class WeaponController : MonoBehaviour
 		void Update ()
 		{
 				if (swinging) {
-						Quaternion angle = Quaternion.Euler (new Vector3 (0, 0, curve.Evaluate (Time.time - startSwing)));
+
+                    Quaternion angle = Quaternion.Euler(new Vector3(0, 0, ((playerControl.facingRight) ? 1 : -1) * curve.Evaluate(Time.time - startSwing)));
 						Weapon.rotation = angle;
 						
 						if (!hit) {
