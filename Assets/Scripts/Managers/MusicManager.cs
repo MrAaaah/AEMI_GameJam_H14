@@ -40,14 +40,16 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager> {
 			LoadSounds ();
 
 		if (music == Music.GameMusicBackground) {
+			audioSource.Stop();
 			audioSource.loop = true;
-//			audioSource.volume = 0.15f;
-			audioSource.volume = 0.00f;
+			audioSource.volume = 0.05f;
+//			audioSource.volume = 0.00f;
 			audioSource.PlayOneShot (sounds[music]);
 		}
 		else if (music == Music.MainMenuMusicBackGround) {
+			audioSource.Stop();
 			audioSource.loop = true;
-			audioSource.volume = 0.5f;
+			audioSource.volume = 0.25f;
 			audioSource.PlayOneShot (sounds[music]);
 		}
 	}

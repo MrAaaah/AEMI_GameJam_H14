@@ -24,6 +24,7 @@ public class PlayerControl : MonoBehaviour
 
 	private PlayerAudioManager audioManager;
 	private int timerSoundWalk;
+	private bool wasJumping;
 
 
 	void Awake()
@@ -35,6 +36,7 @@ public class PlayerControl : MonoBehaviour
 		_controller.onControllerCollidedEvent += onControllerCollider;
 		_controller.onTriggerEnterEvent += onTriggerEnterEvent;
 		_controller.onTriggerExitEvent += onTriggerExitEvent;
+		wasJumping = false;
         //if (!facingRight)
         //{
         //   gameObject.transform.Rotate(0.0f, 180.0f, 0.0f);
@@ -118,13 +120,21 @@ public class PlayerControl : MonoBehaviour
 				//_animator.Play( Animator.StringToHash( "Idle" ) );
 		}
 
+		if(wasJumping && _controller.isGrounded) {
+			wasJumping = false;
+			audioManager.PlaySound(audioManager.atterissage);
+		}
+
 
 		// we can only jump whilst grounded
 		if( _controller.isGrounded && jump )
 		{
 			_velocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
+			audioManager.PlaySound(audioManager.saut);
+			wasJumping = true;
 			//_animator.Play( Animator.StringToHash( "Jump" ) );
 		}
+
 
 
 		// apply horizontal speed smoothing it

@@ -73,6 +73,13 @@ public class SoundFXManager : SingletonMonoBehaviour<SoundFXManager> {
 	public void PlaySound (SoundFX sound) {
 		if (!initialized) 
 			LoadSounds ();
+
+		audioSource.volume = 1.0f;
+
+		if (sound == SoundFX.OpenDoors) {
+			audioSource.volume = 0.35f;
+		}
 		audioSource.PlayOneShot (sounds[sound]);
+
 	}
 }

@@ -10,6 +10,9 @@ public class StartScreen : State<GameState>
 
 				if (GameStateManager.singleton.previousState is MainMenu)
 						SceneManager.singleton.LoadStartScreen ();
+
+		MusicManager.singleton.PlaySound(Music.MainMenuMusicBackGround);
+		
 		}
 	
 		public override void UpdateState ()

@@ -9,6 +9,7 @@ public class StartScreenController : MonoBehaviour
 		{
 				if (GameStateManager.singleton.currentState == null)
 						GameStateManager.singleton.SetGameState (GameState.StartScreen);
+
 		}
 	
 		// Update is called once per frame
