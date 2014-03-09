@@ -4,7 +4,7 @@ using System.Collections;
 public class SpikeManager : MonoBehaviour
 {
 
-		void OnTriggerEnter2D (Collider2D other)
+		void OnTriggerEnter (Collider other)
 		{
 			Debug.Log(other.transform.gameObject.name);	
 			int nb = other.transform.gameObject.GetComponent<PlayerControl>().PlayerNumber;		
