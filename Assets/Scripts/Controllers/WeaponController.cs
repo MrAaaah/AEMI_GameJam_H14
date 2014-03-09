@@ -3,40 +3,59 @@ using System.Collections;
 
 public class WeaponController : MonoBehaviour
 {
-
+		
+		public AnimationCurve curve;
+		public float range;
 		private bool swinging = false;
-		private Time startSwing;
-		private bool hitted;
-		private Animator anim;
-		private CircleCollider2D collider;
+		private float startSwing;
+		private bool hit;
+		private PlayerControl playerControl;
+		private Transform Weapon;
+		
 
 		// Use this for initialization
 		void Start ()
 		{
-				collider = GetComponent<CircleCollider2D> ();
-			
+				playerControl = GetComponent<PlayerControl> ();
+				Weapon = playerControl.gameObject.transform.FindChild ("Weapon");
 	
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
+				if (swinging) {
+						Quaternion angle = Quaternion.Euler (new Vector3 (0, 0, curve.Evaluate (Time.time - startSwing)));
+						Weapon.rotation = angle;
+						
+						if (!hit) {
+								Vector3 fwd = Weapon.TransformDirection (Weapon.right);
+								int enemy = playerControl.PlayerNumber % 2;
+								hit = Physics.Raycast (playerControl.transform.position, fwd, range, 1 << (enemy + LayerMask.NameToLayer ("Player1")));
+								Debug.DrawLine (Weapon.position, Weapon.position + range * fwd, hit ? Color.blue : Color.green, 1);
+
+							if(hit)
+				{
+					Character.get(enemy+1).InflictDmgOnCharacter(Character.get (playerControl.PlayerNumber).getCharacterDamage());
+				}
+						}
+						// if custom deltatime is bigger than curve's last key, stop growing
+						if (Time.time - startSwing >= curve.keys [curve.keys.Length - 1].time) {
+								swinging = false;
+						}
+				
+				}
 
 		}
 
-		public void changeSideWeapon (bool right)
-		{
-				//collider.center = new Vector2 (right ? 0.21f : -0.21f, 0);
-		}
-
-		public bool swing ()
+		public void swing ()
 		{
 				if (!swinging) {
 		
 						swinging = true;
-						return true;
+						hit = false;
+						startSwing = Time.time;
 				}
-				return false;
 		}
 
 		void OnTriggerEnter2D (Collider2D other)
@@ -51,10 +70,9 @@ public class WeaponController : MonoBehaviour
 						
 						int ownnb = ownLayer [ownLayer.Length - 1] - 48;
 						int nb = otherLayer [otherLayer.Length - 1] - 48;
-					    Character.get (nb).InflictDmgOnCharacter (Character.get (ownnb).getCharacterDamage ());
+						Character.get (nb).InflictDmgOnCharacter (Character.get (ownnb).getCharacterDamage ());
 				}
 
 				Debug.Log (ownLayer + " hit " + otherLayer);
-				
 		}
 }
