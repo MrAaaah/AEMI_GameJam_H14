@@ -78,10 +78,13 @@ public class PlayerControl : MonoBehaviour
 	// the Update loop contains a very simple example of moving the character around and controlling the animation
 	void Update()
 	{
+			
+	
 		// grab our current _velocity to use as a base for all calculations
 		float horizontal = Input.GetAxis ("Horizontal_Player" + PlayerNumber);
 		bool jump = Input.GetButtonDown ("Jump_Player" + PlayerNumber);
 		bool action = Input.GetButtonDown ("Fire_Player" + PlayerNumber);
+
 		_velocity = _controller.velocity;
 
         if (action)
@@ -136,7 +139,9 @@ public class PlayerControl : MonoBehaviour
 
 		// apply horizontal speed smoothing it
 		var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping; // how fast do we change direction?
+		Debug.Log (_velocity);
 		_velocity.x = Mathf.Lerp( _velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime * smoothedMovementFactor );
+		Debug.Log (_velocity);
 
 		// apply gravity before moving
 		_velocity.y += gravity * Time.deltaTime;
