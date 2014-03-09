@@ -94,26 +94,26 @@ public class CraftManager : MonoBehaviour {
 
 		mBodyGUIRect =  new Rect(Screen.width/2 - 256,50,512,512);
 
-		mTitleRect = 	new Rect(mBodyGUIRect.x + 10, mBodyGUIRect.y + 10, 502, 32);
-		mSubTitleRect = new Rect(mBodyGUIRect.x + 10, mTitleRect.y + mTitleRect.height + 10, 502, 32);
+		mTitleRect = 	new Rect(mBodyGUIRect.x + 25, mBodyGUIRect.y + 25, 502, 32);
+		mSubTitleRect = new Rect(mBodyGUIRect.x + 25, mTitleRect.y + mTitleRect.height + 25, 502, 32);
 
-		mFirstOptionRect =  new Rect(mBodyGUIRect.x + 21 * 1 + 128 * 0, mSubTitleRect.y + mSubTitleRect.height + 25, 128, 128);
-		mSecondOptionRect = new Rect(mBodyGUIRect.x + 21 * 3 + 128 * 1, mSubTitleRect.y + mSubTitleRect.height + 25, 128, 128);
-		mThirdOptionRect =  new Rect(mBodyGUIRect.x + 21 * 5 + 128 * 2, mSubTitleRect.y + mSubTitleRect.height + 25, 128, 128);
+		mFirstOptionRect =  new Rect(mBodyGUIRect.x + 21 * 1 + 128 * 0 , mSubTitleRect.y + mSubTitleRect.height + 40, 128, 128);
+		mSecondOptionRect = new Rect(mBodyGUIRect.x + 21 * 3 + 128 * 1 , mSubTitleRect.y + mSubTitleRect.height + 40, 128, 128);
+		mThirdOptionRect =  new Rect(mBodyGUIRect.x + 21 * 5 + 128 * 2 , mSubTitleRect.y + mSubTitleRect.height + 40, 128, 128);
 
-		mSelecterRect = new Rect(mFirstOptionRect.x - 11,mFirstOptionRect.y - 11,150,150);
+		mSelecterRect = new Rect(mFirstOptionRect.x - 12,mFirstOptionRect.y - 12, 150, 150);
 
-		mItemNameRect = new Rect(mBodyGUIRect.x + 10, mSubTitleRect.y + mSubTitleRect.height + 178, 502, 32);
-		mItemDescRect = new Rect(mBodyGUIRect.x + 10, mItemNameRect.y + mItemNameRect.height + 10, 502, 200);
+		mItemNameRect = new Rect(mBodyGUIRect.x + 25, mSubTitleRect.y + mSubTitleRect.height + 218, 502, 32);
+		mItemDescRect = new Rect(mBodyGUIRect.x + 25, mItemNameRect.y + mItemNameRect.height + 15, 480, 200);
 
 		mIsActivated = false;
 
-		mCopperRect =   new Rect(mBodyGUIRect.x + 15, mBodyGUIRect.y + mBodyGUIRect.height - 50, 32, 32);
-		mCopperAmount = new Rect(mCopperRect.x + mCopperRect.width + 10, mBodyGUIRect.y + mBodyGUIRect.height - 40, 32, 128);
-		mSilverRect =   new Rect(mCopperAmount.x + mCopperAmount.width + 20, mBodyGUIRect.y + mBodyGUIRect.height - 50, 32, 32);
-		mSilverAmount = new Rect(mSilverRect.x + mSilverRect.width + 10, mBodyGUIRect.y + mBodyGUIRect.height - 40, 32, 128);
-		mGoldRect =     new Rect(mSilverAmount.x + mSilverAmount.width + 20, mBodyGUIRect.y + mBodyGUIRect.height - 50, 32, 32);
-		mGoldAmount =   new Rect(mGoldRect.x + mGoldRect.width + 10, mBodyGUIRect.y + mBodyGUIRect.height - 40, 32, 128);
+		mCopperRect =   new Rect(mBodyGUIRect.x + 30, mBodyGUIRect.y + mBodyGUIRect.height - 50, 32, 32);
+		mCopperAmount = new Rect(mCopperRect.x + mCopperRect.width + 25, mBodyGUIRect.y + mBodyGUIRect.height - 40, 32, 128);
+		mSilverRect =   new Rect(mCopperAmount.x + mCopperAmount.width + 35, mBodyGUIRect.y + mBodyGUIRect.height - 50, 32, 32);
+		mSilverAmount = new Rect(mSilverRect.x + mSilverRect.width + 25, mBodyGUIRect.y + mBodyGUIRect.height - 40, 32, 128);
+		mGoldRect =     new Rect(mSilverAmount.x + mSilverAmount.width + 35, mBodyGUIRect.y + mBodyGUIRect.height - 50, 32, 32);
+		mGoldAmount =   new Rect(mGoldRect.x + mGoldRect.width + 25, mBodyGUIRect.y + mBodyGUIRect.height - 40, 32, 128);
 	}
 	
 	// Update is called once per frame
@@ -124,13 +124,13 @@ public class CraftManager : MonoBehaviour {
 				if ((h > 0) && (mAllowMovement)) {
 					switch (mSelecterIndex) {
 						case 1:
-								mSelecterRect.x = mSelecterRect.x + 128 + 42;
+								mSelecterRect.x = mSelecterRect.x + 128 + 41;
 								mSelecterIndex++;
 								updateRequiredRessources ();
 								break;
 						case 2:
 								if (!mHasOnlyTwoOptions) {
-										mSelecterRect.x = mSelecterRect.x + 128 + 42;
+										mSelecterRect.x = mSelecterRect.x + 128 + 41;
 										mSelecterIndex++;
 										updateRequiredRessources ();
 								}
@@ -147,12 +147,12 @@ public class CraftManager : MonoBehaviour {
 				if ((h < 0) && (mAllowMovement)) {
 						switch (mSelecterIndex) {
 						case 3:
-								mSelecterRect.x = mSelecterRect.x - (128 + 42);
+								mSelecterRect.x = mSelecterRect.x - (128 + 41);
 								mSelecterIndex--;
 								updateRequiredRessources ();
 								break;
 						case 2:
-								mSelecterRect.x = mSelecterRect.x - (128 + 42);
+								mSelecterRect.x = mSelecterRect.x - (128 + 41);
 								mSelecterIndex--;
 								updateRequiredRessources ();
 								break;
@@ -190,13 +190,13 @@ public class CraftManager : MonoBehaviour {
 				if ((h > 0) && (mAllowMovement)) {
 					switch (mSelecterIndex) {
 					case 1:
-						mSelecterRect.x = mSelecterRect.x + 128 + 42;
+						mSelecterRect.x = mSelecterRect.x + 128 + 41;
 						mSelecterIndex++;
 						updateRequiredRessources ();
 						break;
 					case 2:
 						if (!mHasOnlyTwoOptions) {
-							mSelecterRect.x = mSelecterRect.x + 128 + 42;
+							mSelecterRect.x = mSelecterRect.x + 128 + 41;
 							mSelecterIndex++;
 							updateRequiredRessources ();
 						}
@@ -213,12 +213,12 @@ public class CraftManager : MonoBehaviour {
 				if ((h < 0) && (mAllowMovement)) {
 					switch (mSelecterIndex) {
 					case 3:
-						mSelecterRect.x = mSelecterRect.x - (128 + 42);
+						mSelecterRect.x = mSelecterRect.x - (128 + 41);
 						mSelecterIndex--;
 						updateRequiredRessources ();
 						break;
 					case 2:
-						mSelecterRect.x = mSelecterRect.x - (128 + 42);
+						mSelecterRect.x = mSelecterRect.x - (128 + 41);
 						mSelecterIndex--;
 						updateRequiredRessources ();
 						break;

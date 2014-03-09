@@ -99,6 +99,10 @@ public class Character:MonoBehaviour{
 		}
 	}
 
+	public float getHealthPercent(){
+		return mCurrentHealthPoints / mMaxHealthPoints;
+	}
+
 	public bool OwnsBoots1(){
 		if(mBootsEquipped == 1)
 		{

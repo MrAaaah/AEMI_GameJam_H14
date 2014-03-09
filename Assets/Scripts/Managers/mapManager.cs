@@ -14,7 +14,7 @@ public class mapManager
 		private Vector2[] doors = new Vector2[2];
 		private Vector2[] spawn = new Vector2[2];
 		private bool spawned = false;
-		private GameObject[] players = new GameObject[2];
+		public GameObject[] players = new GameObject[2];
 
 		public mapManager (string level_path, GameObject[] tileset)
 		{
@@ -124,7 +124,7 @@ public class mapManager
 				destroyPlayer ();
 				for (int i = 0; i < 2; i++) {
 						players [i] = (GameObject)GameObject.Instantiate (
-				this.tiles [i + 4]);
+						this.tiles [i + 4]);
 						Vector2 pos = spawn [i];
 				
 						players [i].transform.Translate (new Vector3 (pos.x, this.map.getHeight () - 1 - pos.y, 0));
@@ -134,6 +134,8 @@ public class mapManager
 
 				}
 				spawned = true;
+				GameObject.Find ("HUDOverHead1").GetComponent<OverGUI> ().setCharacter (players [1]);
+				GameObject.Find ("HUDOverHead2").GetComponent<OverGUI> ().setCharacter (players [0]);
 		}
 
 		private void destroyPlayer (int  i)
