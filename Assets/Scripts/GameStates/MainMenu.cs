@@ -20,9 +20,9 @@ public class MainMenu : State<GameState>
 //			GameStateManager.singleton.SetGameState (GameState.StartScreen);
 //		}
 //
-//		if (GUI.Button(new Rect(30, 130, 150, 30), "Pause")) {
-//			GameStateManager.singleton.SetGameState (GameState.PauseMenu);
-//		}
+		if (GUI.Button(new Rect(30, 130, 150, 30), "Pause")) {
+			GameStateManager.singleton.SetGameState (GameState.PauseMenu);
+		}
 
 		if (GUI.Button(new Rect(30, 200, 150, 30), "Start game")) {
 			GameStateManager.singleton.SetGameState (GameState.Game);
