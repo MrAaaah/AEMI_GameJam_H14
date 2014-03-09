@@ -7,7 +7,7 @@ public class EndingCredits : State<GameState> {
 	public override void EnterState ()
 	{
 		Debug.Log ("Enter EndingCredit");
-		if (GameStateManager.singleton.previousState is EndGameScreen)
+		if (GameStateManager.singleton.previousState is Game)
 			SceneManager.singleton.LoadEndingCredits ();
 	}
 	
