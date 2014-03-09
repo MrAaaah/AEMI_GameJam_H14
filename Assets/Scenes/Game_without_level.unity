@@ -1352,7 +1352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d511fa59fa484d1a8bd905722f35ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerDuration: 2
+  timerDuration: 5
 --- !u!114 &318054590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1726,6 +1726,10 @@ Prefab:
     - target: {fileID: 400000, guid: b8204d9bdda1d5b438a57b40ffb30d9d, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: b8204d9bdda1d5b438a57b40ffb30d9d, type: 2}
+      propertyPath: timerDuration
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8204d9bdda1d5b438a57b40ffb30d9d, type: 2}

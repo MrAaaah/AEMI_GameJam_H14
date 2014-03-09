@@ -127,7 +127,11 @@ public class mapManager
 						this.tiles [i + 4]);
 						Vector2 pos = spawn [i];
 				
-						players [i].transform.Translate (new Vector3 (pos.x, this.map.getHeight () - 1 - pos.y, 0));
+						if (i == 0)
+							players [i].transform.Translate (new Vector3 (pos.x + 1.5f, this.map.getHeight () - 1 - pos.y, 0));
+						else
+							players [i].transform.Translate (new Vector3 (pos.x + 0f, this.map.getHeight () - 1 - pos.y, 0));
+				
 						players [i].transform.parent = parent.transform;
 						players [i].GetComponent<PlayerControl> ().PlayerNumber = i + 1;
 						players [i].layer = 9 + i;
