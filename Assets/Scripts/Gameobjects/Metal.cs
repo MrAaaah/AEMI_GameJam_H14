@@ -5,7 +5,7 @@ public class Metal : MonoBehaviour
 {
 
 		public Metals type;
-	private Object token;
+		private Object token;
 
 		// Use this for initialization
 		void Start ()
@@ -16,7 +16,7 @@ public class Metal : MonoBehaviour
 		void Update ()
 		{
 			token = Resources.Load ("token"+type.ToString()) as GameObject;
-		
+//		Debug.Log (token);
 		}
 	
 		void OnGUI ()
@@ -26,17 +26,22 @@ public class Metal : MonoBehaviour
 
 		void OnMouseDown ()
 		{
-				this.mine ();
+		Debug.Log("OnMouseDown argnt");
+			this.mine ();
 		}
 
 		public void mine ()
 		{
-		Instantiate (token);
+			GameObject newO = Instantiate (token, transform.position, transform.rotation) as GameObject;
+
+			if (newO.GetComponent<tokenControler>()) {
+				newO.GetComponent<tokenControler>().SetType(type);
+			}
 		}
 
-	void OnTriggerEnter(Collider other)
-	{
-		mine ();
-	}
-		
+		void OnTriggerEnter(Collider other)
+		{
+		Debug.Log("triggerenter argnt");
+			mine ();
+		}
 }
