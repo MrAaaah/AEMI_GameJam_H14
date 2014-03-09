@@ -20,7 +20,7 @@ public class StartScreenController : MonoBehaviour
 		void OnGUI ()
 		{
 				if (GUI.Button (new Rect (30, 30, 150, 30), "Press !")) {	
-						GameStateManager.singleton.SetGameState (GameState.MainMenu);
+						GameStateManager.singleton.SetGameState (GameState.Game);
 				}
 		}
 }

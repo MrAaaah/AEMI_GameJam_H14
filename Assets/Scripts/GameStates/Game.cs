@@ -8,7 +8,7 @@ public class Game : State<GameState>
 	{
 		Debug.Log ("Enter Game");
 
-		if (GameStateManager.singleton.previousState is MainMenu ||
+		if (GameStateManager.singleton.previousState is StartScreen ||
 		    GameStateManager.singleton.previousState is EndGameScreen)
 			SceneManager.singleton.LoadGame ();
 	}
@@ -19,9 +19,6 @@ public class Game : State<GameState>
 	
 	public override void UpdateStateGUI ()
 	{
-		if (GUI.Button(new Rect(30, 130, 150, 30), "Prees to kill the dwarf")) {
-			GameStateManager.singleton.SetGameState (GameState.CraftScreen);
-		}
 	}
 	
 	public override void ExitState ()

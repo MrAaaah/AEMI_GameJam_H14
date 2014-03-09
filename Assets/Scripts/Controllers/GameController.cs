@@ -93,7 +93,7 @@ public class GameController : MonoBehaviour
 	{
 //		GUI.Label (new Rect (300,500,100,100), timer.ToString ());
 //		GUI.Box (new Rect (300,500,100,100), "0");
-		GUI.Box(new Rect(400,10,230,30), timer.ToString ("F")+"s vant l'ouverture des portes");
+//		GUI.Box(new Rect(400,10,230,30), timer.ToString ("F")+"s vant l'ouverture des portes");
 	}
 }
 

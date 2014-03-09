@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
 	public float jumpHeight = 5f;
     public bool facingRight = true;
 
+
 	[HideInInspector]
 	private float normalizedHorizontalSpeed = 0;
 
@@ -21,6 +22,9 @@ public class PlayerControl : MonoBehaviour
 	private RaycastHit2D _lastControllerColliderHit;
 	private Vector3 _velocity;
     private WeaponController wc;
+
+	private PlayerAudioManager audioManager;
+	private int timerSoundWalk;
 
 
 
@@ -39,6 +43,10 @@ public class PlayerControl : MonoBehaviour
         //}
 	}
 
+
+	void Start () {
+		audioManager = GetComponent<PlayerAudioManager> ();
+	}
 
 	#region Event Listeners
 
@@ -94,7 +102,6 @@ public class PlayerControl : MonoBehaviour
             //Debug.Log(facingRight.ToString());
 			normalizedHorizontalSpeed = 1;
 
-
 			//if( _controller.isGrounded )
 				//_animator.Play( Animator.StringToHash( "Run" ) );
 		}
@@ -135,6 +142,17 @@ public class PlayerControl : MonoBehaviour
 		_velocity.y += gravity * Time.deltaTime;
 
 		_controller.move( _velocity * Time.deltaTime );
+
 	}
 
+	void FixedUpdate () {
+		if (_velocity.x != 0) {
+			
+			timerSoundWalk++;
+			timerSoundWalk %= 60;
+			if (timerSoundWalk == 0) {
+				audioManager.PlaySound(audioManager.marche);	
+			}
+		}
+	}
 }
