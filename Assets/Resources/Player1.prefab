@@ -216,7 +216,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 7c75703690c8da6418754a649352078f, type: 2}
+  - {fileID: 2100000, guid: ed3e307a50e0f65419f6f42416a5b76d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -422,17 +422,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
-  jump: 0
-  AfterJumpIgnore: 0
-  moveForce: 3000
-  maxSpeed: 8
-  jumpClips: []
-  jumpForce: 10000
-  taunts: []
-  tauntProbability: 50
-  tauntDelay: 1
   groundCheckRadius: .300000012
   PlayerNumber: 1
+  groundCheck: {fileID: 0}
   moveSpeed: 8
   jumpSpeed: 25
   fallSpeed: 64
