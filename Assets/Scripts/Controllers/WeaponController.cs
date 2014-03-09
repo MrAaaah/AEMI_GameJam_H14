@@ -3,40 +3,50 @@ using System.Collections;
 
 public class WeaponController : MonoBehaviour
 {
-
+		
+		public AnimationCurve curve;
+		public float range;
 		private bool swinging = false;
 		private Time startSwing;
-		private bool hitted;
-		private Animator anim;
-		private CircleCollider2D collider;
+		private bool hit;
+		private PlayerControl playerControl;
+		private GameObject Weapon;
+		
 
 		// Use this for initialization
 		void Start ()
 		{
-				collider = GetComponent<CircleCollider2D> ();
-			
+			playerControl = GetComponent<PlayerControl> ();
 	
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
+				if (swinging) {
+						transform.rotation.eulerAngles = new Vector3 (0, 0, curve.Evaluate (Time.time - startSwing));
+						
+						if(!hit)
+			{
+				Vector3 fwd = Transform.TransformDirection(playerControl.transform.forward);
+				playerControl.transform.rotation * fwd;
+			}
+						// if custom deltatime is bigger than curve's last key, stop growing
+						if (Time.time - startSwing >= curve.keys [curve.keys.Length - 1].time) {
+								swinging = false;
+						}
+				
+				}
 
 		}
 
-		public void changeSideWeapon (bool right)
-		{
-				//collider.center = new Vector2 (right ? 0.21f : -0.21f, 0);
-		}
-
-		public bool swing ()
+		public void swing ()
 		{
 				if (!swinging) {
 		
 						swinging = true;
-						return true;
+			hit = false;
 				}
-				return false;
 		}
 
 		void OnTriggerEnter2D (Collider2D other)
@@ -51,10 +61,9 @@ public class WeaponController : MonoBehaviour
 						
 						int ownnb = ownLayer [ownLayer.Length - 1] - 48;
 						int nb = otherLayer [otherLayer.Length - 1] - 48;
-					    Character.get (nb).InflictDmgOnCharacter (Character.get (ownnb).getCharacterDamage ());
+						Character.get (nb).InflictDmgOnCharacter (Character.get (ownnb).getCharacterDamage ());
 				}
 
 				Debug.Log (ownLayer + " hit " + otherLayer);
-				
 		}
 }
