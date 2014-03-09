@@ -29,16 +29,11 @@ public class Character:MonoBehaviour{
 	private int mGoldenPiecesOwned = 0;
 	private int mPlayerNb = 1;
 
-	private CraftManager crafterRef;
-
 	void Start(){
 		mCurrentHealthPoints = mMaxHealthPoints;
 		mCopperPiecesOwned = mStartingCopper;
 		mSilverPiecesOwned = mStartingSilver;
 		mGoldenPiecesOwned = mStartingGold;
-
-		crafterRef = GameObject.Find("CraftyObject").GetComponent<CraftManager>();
-		crafterRef.setCharacter (this);
 	}
 
 	void Update(){
@@ -262,5 +257,20 @@ public class Character:MonoBehaviour{
 	public int getPlayerLvl()
 	{
 		return mLvl;
+	}
+
+	public void spendGold(int _amount)
+	{
+		mGoldenPiecesOwned = mGoldenPiecesOwned - _amount;
+	}
+
+	public void spendSilver(int _amount)
+	{
+		mSilverPiecesOwned = mSilverPiecesOwned - _amount;
+	}
+
+	public void spendCopper(int _amount)
+	{
+		mCopperPiecesOwned = mCopperPiecesOwned - _amount;
 	}
 }

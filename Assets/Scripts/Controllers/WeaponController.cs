@@ -26,7 +26,7 @@ public class WeaponController : MonoBehaviour
 
 		public void changeSideWeapon (bool right)
 		{
-				collider.center = new Vector2 (right ? 0.21f : -0.21f, 0);
+				//collider.center = new Vector2 (right ? 0.21f : -0.21f, 0);
 		}
 
 		public bool swing ()
@@ -42,15 +42,19 @@ public class WeaponController : MonoBehaviour
 		void OnTriggerEnter2D (Collider2D other)
 		{
 				Debug.Log ("Hit Somehting");
-				if (swinging) {
-						string ownLayer = LayerMask.LayerToName (gameObject.layer);
-						string otherLayer = LayerMask.LayerToName (other.gameObject.layer);
-			if(otherLayer.StartsWith("Player"))
-			{
-
-			}
-
-						Debug.Log (ownLayer + " hit " + otherLayer);
+			
+				string ownLayer = LayerMask.LayerToName (gameObject.layer);
+				string otherLayer = LayerMask.LayerToName (other.gameObject.layer);
+				if (otherLayer.StartsWith ("Player")) {
+						Character[] characters = FindObjectsOfType<Character> ();
+						
+						
+						int ownnb = ownLayer [ownLayer.Length - 1] - 48;
+						int nb = otherLayer [otherLayer.Length - 1] - 48;
+					//	Character.get (nb).InflictDmgOnCharacter (Character.get (ownnb).getCharacterDamage ());
 				}
+
+				Debug.Log (ownLayer + " hit " + otherLayer);
+				
 		}
 }
