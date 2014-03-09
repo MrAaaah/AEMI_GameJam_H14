@@ -222,7 +222,7 @@ public class HUD : MonoBehaviour {
 					mFirstBuffTexture = mBuffWpn3;
 				}
 				else if (mNbBuff == 2){
-					mSecondBuffTexture = mBuffWpn4;
+					mSecondBuffTexture = mBuffWpn3;
 				}
 			}
 			else if(mPlayerLink.OwnsWpn4()){
@@ -245,7 +245,7 @@ public class HUD : MonoBehaviour {
 					mSecondBuffTexture = mBuffArmour1;
 				}
 				else if (mNbBuff == 3){
-					mSecondBuffTexture = mBuffArmour1;
+					mThirdBuffTexture = mBuffArmour1;
 				}
 			}
 			else if(mPlayerLink.OwnsArmour2()){
@@ -257,7 +257,7 @@ public class HUD : MonoBehaviour {
 					mSecondBuffTexture = mBuffArmour2;
 				}
 				else if (mNbBuff == 3){
-					mSecondBuffTexture = mBuffArmour2;
+					mThirdBuffTexture = mBuffArmour2;
 				}
 			}
 			else if(mPlayerLink.OwnsArmour3()){
@@ -269,7 +269,7 @@ public class HUD : MonoBehaviour {
 					mSecondBuffTexture = mBuffArmour3;
 				}
 				else if (mNbBuff == 3){
-					mSecondBuffTexture = mBuffArmour3;
+					mThirdBuffTexture = mBuffArmour3;
 				}
 			}
 		}
