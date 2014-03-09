@@ -115,7 +115,6 @@ public class mapManager
 		
 				players [i].transform.position = new Vector3 (pos.x, this.map.getHeight () - 1 - pos.y, 0);
 				players [i].transform.parent = parent.transform;
-				players [i].rigidbody2D.velocity = new Vector2 (0, 0);
 				players [i].GetComponent<PlayerControl> ().PlayerNumber = i + 1;
 				players [i].layer = 9 + i;
 		}
