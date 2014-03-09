@@ -33,6 +33,8 @@ public class PlayerControl : MonoBehaviour
 		private PlayerAudioManager audioManager;
 		private int timerSoundWalk;
 
+	private WeaponController weaponController;
+
 		void Awake ()
 		{
 				// Setting up references.
@@ -45,6 +47,8 @@ public class PlayerControl : MonoBehaviour
 		void Start ()
 		{
 				audioManager = GetComponent<PlayerAudioManager> ();
+		weaponController = GetComponentInChildren<WeaponController> ();
+		anim = GetComponent<Animator> ();
 				timerSoundWalk = 0;
 		}
 
@@ -57,6 +61,14 @@ public class PlayerControl : MonoBehaviour
 						jump = true;
 						audioManager.PlaySound (audioManager.saut);
 				}
+
+		if (Input.GetButtonDown ("Fire1")) {
+			Debug.Log ("Fire1");
+			if(weaponController.swing())
+			{
+				//anim.SetTrigger("Swing");
+			}
+		}
 		}
 
 		void OnDrawGizmos ()
@@ -147,9 +159,9 @@ public class PlayerControl : MonoBehaviour
 				facingRight = !facingRight;
 		
 				// Multiply the player's x local scale by -1.
-				Vector3 theScale = transform.localScale;
-				theScale.x *= -1;
-				transform.localScale = theScale;
+				
+				transform.rotation = Quaternion.Euler(0,!facingRight?180:0,0);
+				weaponController.changeSideWeapon (facingRight);
 		}
 
 		public IEnumerator Taunt ()
