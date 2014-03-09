@@ -50,34 +50,35 @@ public class PlayerControl : MonoBehaviour
 //				float vertical = Input.GetAxis ("Vertical_Player" + PlayerNumber);
 				float horizontal = Input.GetAxis ("Horizontal_Player" + PlayerNumber);
 				bool jump = Input.GetButtonDown ("Jump_Player" + PlayerNumber);
-                bool action = Input.GetButtonDown ("Fire" + PlayerNumber);
+				bool action = Input.GetButtonDown ("Fire" + PlayerNumber);
 
 				if (action) {
-			weaponController.swing ();
+						weaponController.swing ();
 
 
-				if (grounded && jump) {
-						moveVertical = jumpSpeed;
-						audioManager.PlaySound (audioManager.saut);
-				} else if (grounded && horizontal != 0) {
-						timerSoundWalk++;
-						timerSoundWalk %= 60;
-						if (timerSoundWalk == 0) {
-								audioManager.PlaySound (audioManager.marche);				
+						if (grounded && jump) {
+								moveVertical = jumpSpeed;
+								audioManager.PlaySound (audioManager.saut);
+						} else if (grounded && horizontal != 0) {
+								timerSoundWalk++;
+								timerSoundWalk %= 60;
+								if (timerSoundWalk == 0) {
+										audioManager.PlaySound (audioManager.marche);				
+								}
+						} else {
+								moveVertical -= fallSpeed * Time.deltaTime;
+								moveVertical = Mathf.Clamp (moveVertical, -maxFallSpeed, maxUpSpeed);
 						}
-				} else {
-						moveVertical -= fallSpeed * Time.deltaTime;
-						moveVertical = Mathf.Clamp (moveVertical, -maxFallSpeed, maxUpSpeed);
-				}
 
-				rigidbody.MovePosition (pos + new Vector3 (horizontal * moveSpeed, moveVertical, 0) * Time.deltaTime);
-				rigidbody.velocity = Vector3.zero;
-				grounded = false;
+						rigidbody.MovePosition (pos + new Vector3 (horizontal * moveSpeed, moveVertical, 0) * Time.deltaTime);
+						rigidbody.velocity = Vector3.zero;
+						grounded = false;
 
-				if ((facingRight && horizontal < 0) || (!facingRight && horizontal > 0)) {
-						Flip ();		
+						if ((facingRight && horizontal < 0) || (!facingRight && horizontal > 0)) {
+								Flip ();		
+						}
 				}
-		}
+	}
 	
 		void OnCollisionEnter (Collision c)
 		{
