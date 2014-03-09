@@ -8,6 +8,9 @@ public class HUD : MonoBehaviour {
 	public Texture2D mSilverOre;
 	public Texture2D mGoldenOre;
 
+	public Texture2D mLeftConer;
+	public Texture2D mRightConer;
+
 	public Texture2D mBuffBoots1;
 	public Texture2D mBuffBoots2;
 	public Texture2D mBuffWpn1;
@@ -36,6 +39,8 @@ public class HUD : MonoBehaviour {
 	private Rect mSecondBuffRect;
 	private Rect mThirdBuffRect;
 
+	private Rect mCornerRect; 
+
 	private Texture2D mFirstBuffTexture;
 	private Texture2D mSecondBuffTexture;
 	private Texture2D mThirdBuffTexture;
@@ -48,12 +53,14 @@ public class HUD : MonoBehaviour {
 	private string mPlayerNameText = "J1";
 	public bool mUpdateGUI = false;
 
-	//TODO private Player mPlayerLink;
+	private Character mPlayerLink;
 
 	void Start () {
-		//TODO init mPlayerLink;
 
 		if(mIsAlignedRight == false){
+
+			mPlayerLink = GameObject.Find("Character1").GetComponent<Character>();
+
 			mPlayerIdRect = new Rect(mHorizontalOffset, mVerticalOffset, 64, 64);
 			mSecondaryWpnRect = new Rect (mHorizontalOffset + 64 * 1 + 10, mVerticalOffset, 64, 64);
 			mSecondaryWpnAmountRect = new Rect (mSecondaryWpnRect.x + mSecondaryWpnRect.width, mVerticalOffset + mSecondaryWpnRect.height/2 - 10, 64, 64);
@@ -69,9 +76,13 @@ public class HUD : MonoBehaviour {
 			mFirstBuffRect = new Rect( mHorizontalOffset + 32 * 0 + 10 * 0, Screen.height - (mVerticalOffset + 32),32,32);
 			mSecondBuffRect = new Rect( mHorizontalOffset + 32 * 1 + 10 * 1, Screen.height - (mVerticalOffset + 32),32,32);
 			mThirdBuffRect = new Rect( mHorizontalOffset + 32 * 2 + 10 * 2, Screen.height - (mVerticalOffset + 32),32,32);
+
+			mCornerRect = new Rect (0, 0, 256, 256);
 		}
 		else{
 			mPlayerNameText = "J2";
+
+			mPlayerLink = GameObject.Find("Character2").GetComponent<Character>();
 
 			mPlayerIdRect = new Rect(Screen.width - (mHorizontalOffset + 54), mVerticalOffset, 64, 64);
 			mSecondaryWpnRect = new Rect (mPlayerIdRect.x - (64 + 10 + 20 + 10) , mVerticalOffset, 64, 64);
@@ -88,6 +99,8 @@ public class HUD : MonoBehaviour {
 			mFirstBuffRect = new Rect( Screen.width - (mHorizontalOffset + 32 * 1 + 10 * 0), Screen.height - (mVerticalOffset + 32),32,32);
 			mSecondBuffRect = new Rect( Screen.width - (mHorizontalOffset + 32 * 2 + 10 * 1), Screen.height - (mVerticalOffset + 32),32,32);
 			mThirdBuffRect = new Rect( Screen.width - (mHorizontalOffset + 32 * 3 + 10 * 2), Screen.height - (mVerticalOffset + 32),32,32);
+
+			mCornerRect = new Rect (Screen.width - 256, 0, 256, 256);
 		}
 		mFirstBuffTexture = mBuffBoots1;
 		mSecondBuffTexture = mBuffBoots1;
@@ -107,6 +120,13 @@ public class HUD : MonoBehaviour {
 		//GUI.Button (new Rect (10,10,100,20), new GUIContent ("Click me", mSecondaryWeapon, "This is the tooltip"));
 		//GUI.Label (new Rect (10,40,100,20), GUI.tooltip);
 		if (mUpdateGUI) {
+			if(mIsAlignedRight){
+				GUI.Label (mCornerRect, mRightConer);
+			}else{
+				GUI.Label (mCornerRect, mLeftConer);
+			}
+						
+
 						GUI.skin.label.fontSize = GUI.skin.box.fontSize = GUI.skin.button.fontSize = 48;
 						GUI.Label (mPlayerIdRect, mPlayerNameText);
 
@@ -115,22 +135,34 @@ public class HUD : MonoBehaviour {
 
 						//TODO change tempNb to get desired number
 
-						int tempNb = 2; 
+						int tempNb = 0; 
+						if (mPlayerLink != null){
+							tempNb = mPlayerLink.getAmunitions();
+						}
 						string tempString = tempNb.ToString ("00");
 						GUI.Label (mSecondaryWpnAmountRect, "x " + tempString);
 
 						GUI.Label (mCopperOreRect, mCopperOre);
 						tempNb = 12; 
+						if (mPlayerLink != null){
+							tempNb = mPlayerLink.getNbCopperOwned();
+						}
 						tempString = tempNb.ToString ("00");
 						GUI.Label (mCopperAmountRect, tempString);
 
 						GUI.Label (mSilverOreRect, mSilverOre);
 						tempNb = 3; 
+						if (mPlayerLink != null){
+							tempNb = mPlayerLink.getNbSilverOwned();
+						}
 						tempString = tempNb.ToString ("00");
 						GUI.Label (mSilverAmountRect, tempString);
 
 						GUI.Label (mGoldenOreRect, mGoldenOre);
 						tempNb = 2; 
+						if (mPlayerLink != null){
+							tempNb = mPlayerLink.getNbGoldOwned();
+						}
 						tempString = tempNb.ToString ("00");
 						GUI.Label (mGoldenAmountRect, tempString);
 
@@ -148,102 +180,99 @@ public class HUD : MonoBehaviour {
 	}
 
 	private void UpdateSecondaryWeaponState(){
-		//TODO check player's secondary weapon status
-
-		//TODO check to change imag if needed
-
-		//TODO update amount of munition? Could be done in OnGUI()
+		//TODO check to change img if needed
 	}
 
 	private void updateBuffs()
 	{
-		//TODO check player's buffs
+		if (mPlayerLink != null){
+	
+			mNbBuff = 0;
 
-		//mNbBuff = 0;
+			if(mPlayerLink.OwnsBoots2()){
+				mFirstBuffTexture = mBuffBoots2;
+				mNbBuff++;
+			}
+			else if(mPlayerLink.OwnsBoots1()){
+				mFirstBuffTexture = mBuffBoots1;
+				mNbBuff++;
+			}
 
-		/*if(Player1HUD owns boots 2){
-			mFirstBuffTexture = mBuffBoots2;
-			mNbBuff++;
-		}
-		else if(Player1HUD owns boots 2){
-			mFirstBuffTexture = mBuffBoots1;
-			mNbBuff++;
-		}
-
-		if(Player1HUD owns sword 1){
-			mNbBuff++;
-			if(mNbBuff == 1){
-				mFirstBuffTexture = mBuffWpn1;
+			if(mPlayerLink.OwnsWpn1()){
+				mNbBuff++;
+				if(mNbBuff == 1){
+					mFirstBuffTexture = mBuffWpn1;
+				}
+				else if (mNbBuff == 2){
+					mSecondBuffTexture = mBuffWpn1;
+				}
 			}
-			else if (mNbBuff == 2){
-				mSecondBuffTexture = mBuffWpn1;
+			else if(mPlayerLink.OwnsWpn2()){
+				mNbBuff++;
+				if(mNbBuff == 1){
+					mFirstBuffTexture = mBuffWpn2;
+				}
+				else if (mNbBuff == 2){
+					mSecondBuffTexture = mBuffWpn2;
+				}
 			}
-		}
-		else if(Player1HUD owns sword 2){
-			mNbBuff++;
-			if(mNbBuff == 1){
-				mFirstBuffTexture = mBuffWpn2;
+			else if(mPlayerLink.OwnsWpn3()){
+				mNbBuff++;
+				if(mNbBuff == 1){
+					mFirstBuffTexture = mBuffWpn3;
+				}
+				else if (mNbBuff == 2){
+					mSecondBuffTexture = mBuffWpn4;
+				}
 			}
-			else if (mNbBuff == 2){
-				mSecondBuffTexture = mBuffWpn2;
+			else if(mPlayerLink.OwnsWpn4()){
+				mNbBuff++;
+				if(mNbBuff == 1){
+					mFirstBuffTexture = mBuffWpn4;
+				}
+				else if (mNbBuff == 2){
+					mSecondBuffTexture = mBuffWpn4;
+				}
 			}
-		}
-		else if(Player1HUD owns sword 3){
-			mNbBuff++;
-			if(mNbBuff == 1){
-				mFirstBuffTexture = mBuffWpn3;
-			}
-			else if (mNbBuff == 2){
-				mSecondBuffTexture = mBuffWpn4;
-			}
-		}
-		else if(Player1HUD owns sword 4){
-			mNbBuff++;
-			if(mNbBuff == 1){
-				mFirstBuffTexture = mBuffWpn4;
-			}
-			else if (mNbBuff == 2){
-				mSecondBuffTexture = mBuffWpn4;
-			}
-		}
 
 
-		if(Player1HUD owns armour 1){
-			mNbBuff++;
-			if(mNbBuff == 1){
-				mFirstBuffTexture = mBuffArmour1;
+			if(mPlayerLink.OwnsArmour1()){
+				mNbBuff++;
+				if(mNbBuff == 1){
+					mFirstBuffTexture = mBuffArmour1;
+				}
+				else if (mNbBuff == 2){
+					mSecondBuffTexture = mBuffArmour1;
+				}
+				else if (mNbBuff == 3){
+					mSecondBuffTexture = mBuffArmour1;
+				}
 			}
-			else if (mNbBuff == 2){
-				mSecondBuffTexture = mBuffArmour1;
+			else if(mPlayerLink.OwnsArmour2()){
+				mNbBuff++;
+				if(mNbBuff == 1){
+					mFirstBuffTexture = mBuffArmour2;
+				}
+				else if (mNbBuff == 2){
+					mSecondBuffTexture = mBuffArmour2;
+				}
+				else if (mNbBuff == 3){
+					mSecondBuffTexture = mBuffArmour2;
+				}
 			}
-			else if (mNbBuff == 3){
-				mSecondBuffTexture = mBuffArmour1;
+			else if(mPlayerLink.OwnsArmour3()){
+				mNbBuff++;
+				if(mNbBuff == 1){
+					mFirstBuffTexture = mBuffArmour3;
+				}
+				else if (mNbBuff == 2){
+					mSecondBuffTexture = mBuffArmour3;
+				}
+				else if (mNbBuff == 3){
+					mSecondBuffTexture = mBuffArmour3;
+				}
 			}
 		}
-		else if(Player1HUD owns armour 2){
-			mNbBuff++;
-			if(mNbBuff == 1){
-				mFirstBuffTexture = mBuffArmour2;
-			}
-			else if (mNbBuff == 2){
-				mSecondBuffTexture = mBuffArmour2;
-			}
-			else if (mNbBuff == 3){
-				mSecondBuffTexture = mBuffArmour2;
-			}
-		}
-		else if(Player1HUD owns armour 3){
-			mNbBuff++;
-			if(mNbBuff == 1){
-				mFirstBuffTexture = mBuffArmour3;
-			}
-			else if (mNbBuff == 2){
-				mSecondBuffTexture = mBuffArmour3;
-			}
-			else if (mNbBuff == 3){
-				mSecondBuffTexture = mBuffArmour3;
-			}
-		}
-		*/
+
 	}
 }
