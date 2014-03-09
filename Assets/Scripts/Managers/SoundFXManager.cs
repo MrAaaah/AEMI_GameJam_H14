@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public enum SoundFX {
 	OpenDoors,
+	DoorsActivated,
 }
 
 [AddComponentMenu("Singletons/SoundFXManager")]
@@ -30,6 +31,7 @@ public class SoundFXManager : SingletonMonoBehaviour<SoundFXManager> {
 	
 	private void LoadSounds () {
 		sounds.Add(SoundFX.OpenDoors, Resources.Load("Sounds/SFX015") as AudioClip);
+		sounds.Add(SoundFX.DoorsActivated, Resources.Load("Sounds/SFX014") as AudioClip);
 		initialized = true;	
 	}
 	
