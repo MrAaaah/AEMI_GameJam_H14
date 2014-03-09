@@ -1369,6 +1369,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   tileset:
   - {fileID: 100000, guid: 51d83d6b7e5f0554592de0f9fa8ea391, type: 2}
   - {fileID: 100002, guid: 55ce458f78cf28f4cb5ba1fba20e7bee, type: 2}
@@ -1743,6 +1745,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400004, guid: b8204d9bdda1d5b438a57b40ffb30d9d, type: 2}
+      propertyPath: levels.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b8204d9bdda1d5b438a57b40ffb30d9d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 23.5
