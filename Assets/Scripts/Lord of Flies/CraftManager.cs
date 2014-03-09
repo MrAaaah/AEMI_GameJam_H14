@@ -165,7 +165,7 @@ public class CraftManager : MonoBehaviour {
 						mAllowMovement = true;
 				}
 
-				float action = Input.GetAxisRaw ("Fire" + 1);
+				float action = Input.GetAxisRaw ("Fire_Player" + 1);
 				if (action > 0) {
 					mCharacter.spendGold(mCustomGold);
 					mCustomGold = 0;
@@ -231,7 +231,7 @@ public class CraftManager : MonoBehaviour {
 					mAllowMovement = true;
 				}
 
-				float action = Input.GetAxisRaw ("Fire" + 2);
+				float action = Input.GetAxisRaw ("Fire_Player" + 2);
 				if (action > 0) {
 					mCharacter.spendGold(mCustomGold);
 					mCustomGold = 0;
