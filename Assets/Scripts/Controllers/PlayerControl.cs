@@ -161,7 +161,7 @@ public class PlayerControl : MonoBehaviour
 				// Multiply the player's x local scale by -1.
 				
 				transform.rotation = Quaternion.Euler(0,!facingRight?180:0,0);
-		weaponController.changeSideWeapon (facingRight);
+				weaponController.changeSideWeapon (facingRight);
 		}
 
 		public IEnumerator Taunt ()

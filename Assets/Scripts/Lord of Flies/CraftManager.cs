@@ -97,7 +97,7 @@ public class CraftManager : MonoBehaviour {
 		mItemNameRect = new Rect(mBodyGUIRect.x + 10, mSubTitleRect.y + mSubTitleRect.height + 178, 502, 32);
 		mItemDescRect = new Rect(mBodyGUIRect.x + 10, mItemNameRect.y + mItemNameRect.height + 10, 502, 200);
 
-		mIsActivated = true;
+		mIsActivated = false;
 	}
 	
 	// Update is called once per frame

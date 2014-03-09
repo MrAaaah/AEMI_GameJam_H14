@@ -36,7 +36,7 @@ public class GrowingHatCommands : MonoBehaviour
 				grow ();
 		}
 
-		void grow ()
+		public void grow ()
 		{
 				if (!growing) {
 						baseY = transform.localScale.y;

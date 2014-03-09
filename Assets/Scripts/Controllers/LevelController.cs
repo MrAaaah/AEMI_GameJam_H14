@@ -71,6 +71,8 @@ public class LevelController : MonoBehaviour {
 		return currentLevelId == levels.Length-1;
 	}
 
+	public mapManager currentMap{ get { return levels_map [currentLevelId]; } }
+
 
 //	public void OnGUI ()
 //	{
