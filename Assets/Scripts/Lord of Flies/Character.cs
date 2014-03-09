@@ -27,7 +27,7 @@ public class Character:MonoBehaviour{
 	private int mCopperPiecesOwned = 0;
 	private int mSilverPiecesOwned = 0;
 	private int mGoldenPiecesOwned = 0;
-	private int mPlayerNb = 1;
+	public int mPlayerNb = 1;
 
 	void Start(){
 		mCurrentHealthPoints = mMaxHealthPoints;
@@ -273,4 +273,16 @@ public class Character:MonoBehaviour{
 	{
 		mCopperPiecesOwned = mCopperPiecesOwned - _amount;
 	}
+
+	public static Character get(int i  )
+	{
+		Character[] cs = FindObjectsOfType<Character> ();
+		foreach (Character c in cs) {
+		if(c.mPlayerNb == i)
+				return c;
+		}
+		return null;
+
+	}
+
 }
