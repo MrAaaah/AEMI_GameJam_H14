@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Door : MonoBehaviour
 {
-
 	public Material openDoor;
 	public Material closedDoor;
 
@@ -17,6 +16,8 @@ public class Door : MonoBehaviour
 	public DoorPosition position;
 
 	public BoxCollider2D trigger;
+
+
 
 	// Use this for initialization
 	void Start ()
@@ -51,14 +52,25 @@ public class Door : MonoBehaviour
 
 	public void OpenDoor () {
 		try {
-			meshRenderer.material = openDoor;
+            //meshRenderer.material = openDoor;
+            GameObject g = transform.FindChild("gate_close").gameObject;
+            g.SetActive(false);
+            GameObject d = transform.FindChild("gate_open").gameObject;
+            d.SetActive(true);
 		} catch (System.Exception ex) {
 			Debug.LogError(ex.ToString());
 		}
 	}
 
 	public void CloseDoor () {
+        if (position == DoorPosition.Left)
+            this.transform.Rotate(0, 180f, 0f);
+        this.transform.Translate(0.0f, -0.5f, 0.0f);
 		try {
+            GameObject g = transform.FindChild("gate_close").gameObject;
+            g.SetActive(true);
+            GameObject d = transform.FindChild("gate_open").gameObject;
+            d.SetActive(false);
 			meshRenderer.material = closedDoor;
 		} catch (System.Exception ex) {
 			Debug.LogError(ex.ToString());
