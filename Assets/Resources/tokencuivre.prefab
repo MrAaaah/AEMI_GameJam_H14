@@ -10,10 +10,10 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 95: {fileID: 9500000}
   - 114: {fileID: 11400000}
   - 50: {fileID: 5000000}
   - 58: {fileID: 5800000}
+  - 111: {fileID: 11100000}
   m_Layer: 0
   m_Name: tokencuivre
   m_TagString: Untagged
@@ -84,22 +84,23 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .14873755
+  m_Radius: .119999997
   m_Center: {x: -7.4505806e-09, y: .145460337}
---- !u!95 &9500000
-Animator:
-  serializedVersion: 2
+--- !u!111 &11100000
+Animation:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: be1b460076280394c917ce13d49f5b6e, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_ApplyRootMotion: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 0ffc057687591054e9c3650f3a37e350, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 0ffc057687591054e9c3650f3a37e350, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
-  m_HasTransformHierarchy: 1
+  m_CullingType: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
