@@ -355,10 +355,10 @@ MonoBehaviour:
       inSlope: 3.40635347
       outSlope: 3.40635347
       tangentMode: 0
-    - time: .825507343
-      value: -1.48316967
-      inSlope: -1012.48718
-      outSlope: -1012.48718
+    - time: .769304395
+      value: 1.55308282
+      inSlope: -2369.03955
+      outSlope: -2369.03955
       tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
