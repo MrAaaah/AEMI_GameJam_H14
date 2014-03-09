@@ -5,18 +5,17 @@ public class Metal : MonoBehaviour
 {
 
 		public Metals type;
-		public int quantity = 0;
+	private Object token;
 
 		// Use this for initialization
 		void Start ()
 		{
-				quantity = Random.Range (5, 25);
-				type = Helpers.GetRandomEnum<Metals> ();
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
+			token = Resources.Load ("token"+type.ToString()) as GameObject;
 		
 		}
 	
@@ -27,28 +26,17 @@ public class Metal : MonoBehaviour
 
 		void OnMouseDown ()
 		{
-				Debug.Log (this.mine ());
+				this.mine ();
 		}
 
-		void die ()
+		public void mine ()
 		{
-				// @todo: trigger some kind of animation to let the mining stuff disapear
-				throw new System.NotImplementedException ();
+		Instantiate (token);
 		}
 
-		public int mine ()
-		{
-				int mined = Random.Range (1, 2);
-				if (quantity > 1) {
-						quantity -= mined;
-				} else if (quantity == 1) {
-						quantity -= 1;
-						mined = 1;
-				} else {
-						mined = 0;
-				}
-				if (quantity == 0)
-						this.die ();
-				return mined;
-		}
+	void OnTriggerEnter(Collider other)
+	{
+		mine ();
+	}
+		
 }
