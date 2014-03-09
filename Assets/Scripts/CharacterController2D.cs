@@ -187,20 +187,19 @@ public class CharacterController2D : MonoBehaviour
 	{
 		// add our one-way platforms to our normal platform mask so that we can land on them from above
 		platformMask |= oneWayPlatformMask;
-
+		
 		// cache some components
 		transform = GetComponent<Transform>();
 		boxCollider = GetComponent<BoxCollider2D>();
 		rigidBody2D = GetComponent<Rigidbody2D>();
-
+		
 		if( createTriggerHelperGameObject )
 			createTriggerHelper();
-
+		
 		// here, we trigger our properties that have setters with bodies
 		slopeLimit = _slopeLimit;
 		skinWidth = _skinWidth;
 	}
-
 
 	public void OnTriggerEnter2D( Collider2D col )
 	{
@@ -543,8 +542,13 @@ public class CharacterController2D : MonoBehaviour
 		}
 		else
 		{
-			transform.Translate( deltaMovement );
-			velocity = deltaMovement / Time.deltaTime;
+			if((!System.Single.IsNaN(deltaMovement.x))&&(!System.Single.IsNaN(deltaMovement.y))&&(!System.Single.IsNaN(deltaMovement.z))){
+				//Debug.Log ("Value of X:" + deltaMovement.x + " --- Value of NaN:" + float.NaN + " --- IsNaN?:" + (System.Single.IsNaN(deltaMovement.x)));
+				//Debug.Log ("Value of Y:" + deltaMovement.y + " --- Value of NaN:" + float.NaN + " --- IsNaN?:" + (System.Single.IsNaN(deltaMovement.y)));
+				//Debug.Log ("Value of Z:" + deltaMovement.z + " --- Value of NaN:" + float.NaN + " --- IsNaN?:" + (System.Single.IsNaN(deltaMovement.z)));
+				transform.Translate( deltaMovement );
+				velocity = deltaMovement / Time.deltaTime;
+			}
 		}
 
 		// set our becameGrounded state based on the previous and current collision state
