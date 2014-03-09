@@ -39,6 +39,11 @@ public class mapManager
 						int width = this.map.getWidth ();
 						mapTiles = this.map.getMapTiles ();
 
+						Object[] ground_down = new GameObject[3];
+						for (int i = 0; i < 3; i++) {
+								ground_down [i] = Resources.Load ("Ground_" + (i + 1));
+						}
+
 		        
 						//Draw non door and player tiles
 						for (int i = 0; i < height; i++) {
@@ -49,12 +54,18 @@ public class mapManager
 												if (tilesvalue == 2 || tilesvalue == 3) {
 														doors [tilesvalue - 2] = new Vector2 (j, i);
 												} else if (tilesvalue == 4 || tilesvalue == 5) {
-														spawn [tilesvalue - 4] = new Vector2 (j-1, i-1);
+														spawn [tilesvalue - 4] = new Vector2 (j - 1, i - 1);
 												} else if (tilesvalue == 0) {
 												} else {
-														GameObject tile = (GameObject)GameObject.Instantiate (
+														GameObject tile;
+														if (i == height - 1 || j == 0 || j == width - 1) {
+																tile = GameObject.Instantiate (ground_down [Random.Range (0, 3)]) as GameObject;
+																tile.layer = LayerMask.NameToLayer ("Ground");
+														} else {
+																tile = (GameObject)GameObject.Instantiate (
 						this.tiles [tilesvalue]
-														);
+																);
+														}
 
 														tile.transform.Translate (new Vector3 (j, height - 1 - i, 0));
 														tile.transform.parent = parent.transform;
@@ -84,16 +95,16 @@ public class mapManager
 				return parent;
 		}
 
-	public void respawn(int i)
-	{
-		i --;
-		Vector2 pos = spawn [i];
+		public void respawn (int i)
+		{
+				i --;
+				Vector2 pos = spawn [i];
 		
-		players [i].transform.position =  new Vector3 (pos.x, this.map.getHeight () - 1 - pos.y, 0);
-		players [i].transform.parent = parent.transform;
-		players [i].rigidbody2D.velocity = new Vector2 (0, 0);
-		players [i].GetComponent<PlayerControl> ().PlayerNumber = i + 1;
-		players [i].layer = 9 + i;
+				players [i].transform.position = new Vector3 (pos.x, this.map.getHeight () - 1 - pos.y, 0);
+				players [i].transform.parent = parent.transform;
+				players [i].rigidbody2D.velocity = new Vector2 (0, 0);
+				players [i].GetComponent<PlayerControl> ().PlayerNumber = i + 1;
+				players [i].layer = 9 + i;
 		}
 
 		public void spawnPlayer ()
@@ -107,18 +118,18 @@ public class mapManager
 						players [i].transform.Translate (new Vector3 (pos.x, this.map.getHeight () - 1 - pos.y, 0));
 						players [i].transform.parent = parent.transform;
 						players [i].GetComponent<PlayerControl> ().PlayerNumber = i + 1;
-			players [i].layer = 9 + i;
+						players [i].layer = 9 + i;
 
 				}
 				spawned = true;
 		}
 
-	private void destroyPlayer (int  i)
-	{
-		if (spawned) {
-			GameObject.Destroy (players [i]);
+		private void destroyPlayer (int  i)
+		{
+				if (spawned) {
+						GameObject.Destroy (players [i]);
+				}
 		}
-	}
 
 		public void destroyPlayer ()
 		{
