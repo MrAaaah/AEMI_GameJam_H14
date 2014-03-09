@@ -163,12 +163,13 @@ public class PlayerControl : MonoBehaviour
 		}
 	}
 
-	void setupgrade ( int weapon, int boots)
+	public void setupgrade ( int weapon, int boots)
 	{
 		jumpHeight = jumpHeightInit;
 		for (int i = 0; i< boots; i++) {
 			jumpHeight *= 1.25f;
 				}
+
 
 
 	}
