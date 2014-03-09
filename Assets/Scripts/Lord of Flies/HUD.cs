@@ -61,7 +61,7 @@ public class HUD : MonoBehaviour {
 
 			mPlayerLink = GameObject.Find("Character1").GetComponent<Character>();
 
-			mPlayerIdRect = new Rect(mHorizontalOffset, mVerticalOffset, 64, 64);
+			mPlayerIdRect = new Rect(mHorizontalOffset + 5, mVerticalOffset, 64, 64);
 			mSecondaryWpnRect = new Rect (mHorizontalOffset + 64 * 1 + 10, mVerticalOffset, 64, 64);
 			mSecondaryWpnAmountRect = new Rect (mSecondaryWpnRect.x + mSecondaryWpnRect.width, mVerticalOffset + mSecondaryWpnRect.height/2 - 10, 64, 64);
 
@@ -69,9 +69,9 @@ public class HUD : MonoBehaviour {
 			mSilverOreRect = new Rect (mHorizontalOffset, mVerticalOffset + mSecondaryWeapon.height + 10 * 2 + mOreSize * 1, mOreSize, mOreSize);
 			mGoldenOreRect = new Rect (mHorizontalOffset, mVerticalOffset + mSecondaryWeapon.height + 10 * 3 + mOreSize * 2, mOreSize, mOreSize);
 
-			mCopperAmountRect = new Rect (mHorizontalOffset + mOreSize + 10, mVerticalOffset + mSecondaryWeapon.height + 10 * 1 + mOreSize * 0 + 5, mOreSize, mOreSize);
-			mSilverAmountRect = new Rect (mHorizontalOffset + mOreSize + 10, mVerticalOffset + mSecondaryWeapon.height + 10 * 2 + mOreSize * 1 + 5, mOreSize, mOreSize);
-			mGoldenAmountRect = new Rect (mHorizontalOffset + mOreSize + 10, mVerticalOffset + mSecondaryWeapon.height + 10 * 3 + mOreSize * 2 + 5, mOreSize, mOreSize);
+			mCopperAmountRect = new Rect (mHorizontalOffset + mOreSize + 0, mVerticalOffset + mSecondaryWeapon.height + 10 * 1 + mOreSize * 0 + 5, mOreSize, mOreSize);
+			mSilverAmountRect = new Rect (mHorizontalOffset + mOreSize + 0, mVerticalOffset + mSecondaryWeapon.height + 10 * 2 + mOreSize * 1 + 5, mOreSize, mOreSize);
+			mGoldenAmountRect = new Rect (mHorizontalOffset + mOreSize + 0, mVerticalOffset + mSecondaryWeapon.height + 10 * 3 + mOreSize * 2 + 5, mOreSize, mOreSize);
 
 			mFirstBuffRect = new Rect( mHorizontalOffset + 32 * 0 + 10 * 0, Screen.height - (mVerticalOffset + 32),32,32);
 			mSecondBuffRect = new Rect( mHorizontalOffset + 32 * 1 + 10 * 1, Screen.height - (mVerticalOffset + 32),32,32);
@@ -84,7 +84,7 @@ public class HUD : MonoBehaviour {
 
 			mPlayerLink = GameObject.Find("Character2").GetComponent<Character>();
 
-			mPlayerIdRect = new Rect(Screen.width - (mHorizontalOffset + 54), mVerticalOffset, 64, 64);
+			mPlayerIdRect = new Rect(Screen.width - (mHorizontalOffset + 64), mVerticalOffset, 64, 64);
 			mSecondaryWpnRect = new Rect (mPlayerIdRect.x - (64 + 10 + 20 + 10) , mVerticalOffset, 64, 64);
 			mSecondaryWpnAmountRect = new Rect (mSecondaryWpnRect.x + mSecondaryWpnRect.width, mVerticalOffset + mSecondaryWpnRect.height/2 - 10, 64, 64);
 			
@@ -92,9 +92,9 @@ public class HUD : MonoBehaviour {
 			mSilverOreRect = new Rect (Screen.width - (mHorizontalOffset + mOreSize), mVerticalOffset + mSecondaryWeapon.height + 10 * 2 + mOreSize * 1, mOreSize, mOreSize);
 			mGoldenOreRect = new Rect (Screen.width - (mHorizontalOffset + mOreSize), mVerticalOffset + mSecondaryWeapon.height + 10 * 3 + mOreSize * 2, mOreSize, mOreSize);
 			
-			mCopperAmountRect = new Rect (mCopperOreRect.x - 10 - 23, mVerticalOffset + mSecondaryWeapon.height + 10 * 1 + mOreSize * 0 + 5, mOreSize, mOreSize);
-			mSilverAmountRect = new Rect (mSilverOreRect.x - 10 - 23, mVerticalOffset + mSecondaryWeapon.height + 10 * 2 + mOreSize * 1 + 5, mOreSize, mOreSize);
-			mGoldenAmountRect = new Rect (mGoldenOreRect.x - 10 - 23, mVerticalOffset + mSecondaryWeapon.height + 10 * 3 + mOreSize * 2 + 5, mOreSize, mOreSize);
+			mCopperAmountRect = new Rect (mCopperOreRect.x - 0 - 23, mVerticalOffset + mSecondaryWeapon.height + 10 * 1 + mOreSize * 0 + 5, mOreSize, mOreSize);
+			mSilverAmountRect = new Rect (mSilverOreRect.x - 0 - 23, mVerticalOffset + mSecondaryWeapon.height + 10 * 2 + mOreSize * 1 + 5, mOreSize, mOreSize);
+			mGoldenAmountRect = new Rect (mGoldenOreRect.x - 0 - 23, mVerticalOffset + mSecondaryWeapon.height + 10 * 3 + mOreSize * 2 + 5, mOreSize, mOreSize);
 
 			mFirstBuffRect = new Rect( Screen.width - (mHorizontalOffset + 32 * 1 + 10 * 0), Screen.height - (mVerticalOffset + 32),32,32);
 			mSecondBuffRect = new Rect( Screen.width - (mHorizontalOffset + 32 * 2 + 10 * 1), Screen.height - (mVerticalOffset + 32),32,32);
