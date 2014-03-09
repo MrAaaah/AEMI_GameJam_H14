@@ -50,7 +50,18 @@ public class WeaponController : MonoBehaviour
 				}else
 				{
 
-					hit = Physics2D.Raycast (pos, fwd, range, 1<<LayerMask.NameToLayer ("Default"));
+					RaycastHit2D res = Physics2D.Raycast (pos, fwd, range, 1<<LayerMask.NameToLayer ("Default"));
+
+					if(res.collider != null)
+					{
+						Metal m = res.collider.gameObject.GetComponent<Metal>();
+						if(m != null)
+						{
+								m .mine();
+							hit = true;
+						}
+					}
+					
 				}
 						}
 						// if custom deltatime is bigger than curve's last key, stop growing

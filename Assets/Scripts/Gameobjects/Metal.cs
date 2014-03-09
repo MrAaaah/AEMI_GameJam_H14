@@ -33,6 +33,7 @@ public class Metal : MonoBehaviour
 		public void mine ()
 		{
 			GameObject newO = Instantiate (token, transform.position, transform.rotation) as GameObject;
+			newO.layer = LayerMask.NameToLayer ("Ignore Raycast");
 
 			if (newO.GetComponent<tokenControler>()) {
 				newO.GetComponent<tokenControler>().SetType(type);
