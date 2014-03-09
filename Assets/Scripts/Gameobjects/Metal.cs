@@ -31,7 +31,7 @@ public class Metal : MonoBehaviour
 		}
 
 		public void mine ()
-		{
+		{Vector3 newpos = new Vector3(transform.position.x, transform.position.y, 0f);
 			GameObject newO = Instantiate (token, transform.position, transform.rotation) as GameObject;
 			newO.layer = LayerMask.NameToLayer ("Ignore Raycast");
 
