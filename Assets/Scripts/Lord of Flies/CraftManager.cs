@@ -111,7 +111,7 @@ public class CraftManager : MonoBehaviour {
 		mItemNameRect = new Rect(mBodyGUIRect.x + 10, mSubTitleRect.y + mSubTitleRect.height + 178, 502, 32);
 		mItemDescRect = new Rect(mBodyGUIRect.x + 10, mItemNameRect.y + mItemNameRect.height + 10, 502, 200);
 
-		mIsActivated = true;
+		mIsActivated = false;
 
 		mCopperRect =   new Rect(mBodyGUIRect.x + 15, mBodyGUIRect.y + mBodyGUIRect.height - 50, 32, 32);
 		mCopperAmount = new Rect(mCopperRect.x + mCopperRect.width + 10, mBodyGUIRect.y + mBodyGUIRect.height - 40, 32, 128);
@@ -242,11 +242,12 @@ public class CraftManager : MonoBehaviour {
 				}
 				
 			}
+			if (!mValueAsBeenUpdatedOnce) {
+				updateRequiredRessources ();
+				mValueAsBeenUpdatedOnce = true;
+			}
 		}
-		if (!mValueAsBeenUpdatedOnce) {
-			updateRequiredRessources ();
-			mValueAsBeenUpdatedOnce = true;
-		}
+
 		
 	}
 	
@@ -355,6 +356,7 @@ public class CraftManager : MonoBehaviour {
 	public void setCharacter(Character _aCharacter){
 		mCharacter = _aCharacter;
 		CreateAvailableCraftableTable ();
+		mIsActivated = true;
 	}
 
 	private void CreateAvailableCraftableTable(){
