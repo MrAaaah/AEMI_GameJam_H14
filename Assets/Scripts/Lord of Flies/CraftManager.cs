@@ -179,7 +179,7 @@ public class CraftManager : MonoBehaviour {
 
 					LevelController temp = FindObjectOfType<LevelController>();
 					if(temp)
-						//temp.currentMap.respawn(mCharacter.getPlayerNb());
+						temp.currentMap.respawn(mCharacter.getPlayerNb());
 
 					mIsActivated = false;
 				}
@@ -244,7 +244,7 @@ public class CraftManager : MonoBehaviour {
 					mCharacter.LevelUpAndRevive();
 					LevelController temp = FindObjectOfType<LevelController>();
 					if(temp)
-						//temp.currentMap.respawn(mCharacter.getPlayerNb());
+						temp.currentMap.respawn(mCharacter.getPlayerNb());
 					mIsActivated = false;
 				}
 				
