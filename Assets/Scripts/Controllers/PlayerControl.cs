@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
 	public float groundDamping = 20f; // how fast do we change direction? higher means faster
 	public float inAirDamping = 5f;
 	public float jumpHeight = 5f;
-    public bool facingRight = false;
+    public bool facingRight = true;
 
 	[HideInInspector]
 	private float normalizedHorizontalSpeed = 0;
@@ -86,21 +86,26 @@ public class PlayerControl : MonoBehaviour
 
 		if( horizontal > 0 )
 		{
+			if(!facingRight)
+			{
+				transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+			}
             facingRight = true;
-            Debug.Log(facingRight.ToString());
+            //Debug.Log(facingRight.ToString());
 			normalizedHorizontalSpeed = 1;
-			if( transform.localScale.x < 0f )
-				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
+
 
 			//if( _controller.isGrounded )
 				//_animator.Play( Animator.StringToHash( "Run" ) );
 		}
 		else if( horizontal < 0 )
 		{
+			if(facingRight)
+			{
+				transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
+			}
             facingRight = false;
-			normalizedHorizontalSpeed = -1;
-			if( transform.localScale.x > 0f )
-				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
+			normalizedHorizontalSpeed = 1;
 
 			//if( _controller.isGrounded )
 				//_animator.Play( Animator.StringToHash( "Run" ) );

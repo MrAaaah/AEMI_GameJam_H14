@@ -55,7 +55,7 @@ public class OverGUI : MonoBehaviour {
 		if (mEnabled) {
 			int TempLvl = mCharacterRef.getPlayerLvl();
 
-			Debug.Log(mCharacterRef.getPlayerLvl());
+
 
 			//GUI.DrawTexture(mLifeBoxRect, mLifeBox, ScaleMode.StretchToFill);
 			GUI.DrawTexture(mLvlBoxRect, mLvlBox, ScaleMode.StretchToFill);
