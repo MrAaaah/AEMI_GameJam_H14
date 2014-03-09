@@ -51,7 +51,7 @@ public class WeaponController : MonoBehaviour
 						
 						int ownnb = ownLayer [ownLayer.Length - 1] - 48;
 						int nb = otherLayer [otherLayer.Length - 1] - 48;
-						Character.get (nb).InflictDmgOnCharacter (Character.get (ownnb).getCharacterDamage ());
+					//	Character.get (nb).InflictDmgOnCharacter (Character.get (ownnb).getCharacterDamage ());
 				}
 
 				Debug.Log (ownLayer + " hit " + otherLayer);
