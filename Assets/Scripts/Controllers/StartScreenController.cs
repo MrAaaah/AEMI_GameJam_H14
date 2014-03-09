@@ -3,25 +3,29 @@ using System.Collections;
 
 public class StartScreenController : MonoBehaviour
 {
-
-		// Use this for initialization
-		void Start ()
-		{
-				if (GameStateManager.singleton.currentState == null)
-						GameStateManager.singleton.SetGameState (GameState.StartScreen);
-
-		}
+	public Texture2D background;
+	// Use this for initialization
+	void Start ()
+	{
+		if (GameStateManager.singleton.currentState == null)
+			GameStateManager.singleton.SetGameState (GameState.StartScreen);
+	}
 	
-		// Update is called once per frame
-		void Update ()
-		{
+	// Update is called once per frame
+	void Update ()
+	{
+		
+	}
 	
-		}
-
-		void OnGUI ()
+	void OnGUI ()
+	{
+		// @todo: show after animation
+		int textureWidth = 256;
+		int textureHeight = 128;
+		int top = 30;
+		if (GUI.Button(new Rect(Screen.width / 2 - (textureWidth / 2), top, textureWidth, textureHeight), background, GUIStyle.none))
 		{
-				if (GUI.Button (new Rect (30, 30, 150, 30), "Press !")) {	
-						GameStateManager.singleton.SetGameState (GameState.Game);
-				}
+			GameStateManager.singleton.SetGameState (GameState.Game);
 		}
+	}
 }

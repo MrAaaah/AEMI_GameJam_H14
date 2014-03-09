@@ -138,8 +138,8 @@ public class mapManager
 
 				}
 				spawned = true;
-				GameObject.Find ("OverGUI1").GetComponent<OverGUI> ().setCharacter (players [1]);
-		GameObject.Find ("OverGUI2").GetComponent<OverGUI> ().setCharacter (players [0]);
+				GameObject.Find ("OverGUI1").GetComponent<OverGUI> ().setCharacter (players [0]);
+				GameObject.Find ("OverGUI2").GetComponent<OverGUI> ().setCharacter (players [1]);
 		}
 
 		private void destroyPlayer (int  i)
