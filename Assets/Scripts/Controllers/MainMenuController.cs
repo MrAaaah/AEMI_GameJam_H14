@@ -8,7 +8,7 @@ public class MainMenuController : MonoBehaviour {
 		if (GameStateManager.singleton.currentState == null)
 			GameStateManager.singleton.SetGameState (GameState.MainMenu);
 
-		SoundManager.singleton.PlaySound(Sound.MainMenuMusicBackGround);
+		MusicManager.singleton.PlaySound(Music.MainMenuMusicBackGround);
 	}
 	
 	// Update is called once per frame
