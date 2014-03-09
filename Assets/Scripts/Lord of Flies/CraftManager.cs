@@ -123,6 +123,7 @@ public class CraftManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		return;
 		if ((mCharacter != null)&&(mIsActivated)) {
 			if (mCharacter.getPlayerNb() == 1) {
 				float h = Input.GetAxis ("Horizontal_Player" + 1);

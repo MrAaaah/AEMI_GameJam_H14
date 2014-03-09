@@ -70,6 +70,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400008}
+  - 114: {fileID: 11400010}
+  m_Layer: 0
+  m_Name: CraftyObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400010}
+  - 114: {fileID: 11400012}
+  m_Layer: 0
+  m_Name: CraftyObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -81,6 +113,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
+  - {fileID: 400008}
+  - {fileID: 400010}
   - {fileID: 400002}
   - {fileID: 400006}
   m_Father: {fileID: 0}
@@ -114,6 +148,28 @@ Transform:
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.76951218, y: -.466633797, z: 37.7883301}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400000}
+--- !u!4 &400008
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400000}
+--- !u!4 &400010
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -240,17 +296,17 @@ MonoBehaviour:
   tileset:
   - {fileID: 100000, guid: 51d83d6b7e5f0554592de0f9fa8ea391, type: 2}
   - {fileID: 100002, guid: 55ce458f78cf28f4cb5ba1fba20e7bee, type: 2}
-  - {fileID: 100006, guid: d847488f6153b4ece9c652855e2e2f99, type: 2}
-  - {fileID: 100006, guid: d847488f6153b4ece9c652855e2e2f99, type: 2}
+  - {fileID: 100006, guid: 93f74c82e9c61478189a3bba3301361c, type: 2}
+  - {fileID: 100006, guid: 93f74c82e9c61478189a3bba3301361c, type: 2}
   - {fileID: 100000, guid: 7457a7840993bb84eaca04556ecaac86, type: 2}
   - {fileID: 100000, guid: 7457a7840993bb84eaca04556ecaac86, type: 2}
   - {fileID: 100002, guid: 55ce458f78cf28f4cb5ba1fba20e7bee, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 100002, guid: 37414f43da2d67546a7c71354c4a9da0, type: 2}
-  - {fileID: 100000, guid: 586ff7f5b8a51e94dbb4949e89376e28, type: 2}
-  - {fileID: 100000, guid: 586ff7f5b8a51e94dbb4949e89376e28, type: 2}
-  - {fileID: 100000, guid: 586ff7f5b8a51e94dbb4949e89376e28, type: 2}
+  - {fileID: 100002, guid: 45cc72accb105b74185f525229e60af3, type: 2}
+  - {fileID: 100002, guid: 2289d8534e43b5e4ba310038ba72e16d, type: 2}
+  - {fileID: 100002, guid: 07dba3d683ee41b468ec5badb2a33849, type: 2}
   - {fileID: 100002, guid: 48a3b266c4e56304fa4f9c272962bca0, type: 2}
   currentLevelId: 0
   currentLevel: {fileID: 0}
@@ -286,6 +342,72 @@ MonoBehaviour:
   mStartingSilver: 0
   mStartingGold: 0
   mPlayerNb: 2
+--- !u!114 &11400010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d192b1248b23954aa8b6196d2e96a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mSelecter: {fileID: 2800000, guid: b2ce453385b61fd4fa4fd2a3d777fdd9, type: 3}
+  mBodyUI: {fileID: 2800000, guid: a1ed3acc694c75f4aa4c545abcb0a267, type: 3}
+  mCopper: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
+  mSilver: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
+  mGold: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
+  mIconeSword1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSword2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSword3: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSword4: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeArmour1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeArmour2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeArmour3: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeBoots1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeBoots2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSubWpn1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSubWpn2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSubWpn3: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSubWpn4: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSubWpn5: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSubWpn6: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconePotion1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconePotion2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+--- !u!114 &11400012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d192b1248b23954aa8b6196d2e96a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mSelecter: {fileID: 2800000, guid: b2ce453385b61fd4fa4fd2a3d777fdd9, type: 3}
+  mBodyUI: {fileID: 2800000, guid: a1ed3acc694c75f4aa4c545abcb0a267, type: 3}
+  mCopper: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
+  mSilver: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
+  mGold: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
+  mIconeSword1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSword2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSword3: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSword4: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeArmour1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeArmour2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeArmour3: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeBoots1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeBoots2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSubWpn1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSubWpn2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSubWpn3: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSubWpn4: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSubWpn5: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconeSubWpn6: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconePotion1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mIconePotion2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

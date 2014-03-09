@@ -9,6 +9,8 @@ public class PlayerControl : MonoBehaviour
 		[HideInInspector]
 		public bool
 				jump = false;				// Condition for whether the player should jump.
+	private int justJump = 0;
+	public int AfterJumpIgnore = 100;
 
 
 		public float moveForce = 365f;			// Amount of force added to move the player left and right.
@@ -32,8 +34,7 @@ public class PlayerControl : MonoBehaviour
 		private bool falling = false;
 		private PlayerAudioManager audioManager;
 		private int timerSoundWalk;
-
-	private WeaponController weaponController;
+		private WeaponController weaponController;
 
 		void Awake ()
 		{
@@ -41,14 +42,15 @@ public class PlayerControl : MonoBehaviour
 				groundCheck = transform.Find ("groundCheck");
 				//anim = GetComponent<Animator>();
 				walkableLayerMask = (1 << LayerMask.NameToLayer ("Ground")) | (1 << LayerMask.NameToLayer ("OneWayPlatform")); 
-				playerLayer = LayerMask.NameToLayer ("Player" + PlayerNumber);
+				
 		}
 
 		void Start ()
 		{
 				audioManager = GetComponent<PlayerAudioManager> ();
-		weaponController = GetComponentInChildren<WeaponController> ();
-		anim = GetComponent<Animator> ();
+				weaponController = GetComponentInChildren<WeaponController> ();
+				anim = GetComponent<Animator> ();
+		playerLayer = LayerMask.NameToLayer ("Player" + PlayerNumber);
 				timerSoundWalk = 0;
 		}
 
@@ -62,13 +64,12 @@ public class PlayerControl : MonoBehaviour
 						audioManager.PlaySound (audioManager.saut);
 				}
 
-		if (Input.GetButtonDown ("Fire1")) {
-			Debug.Log ("Fire1");
-			if(weaponController.swing())
-			{
-				//anim.SetTrigger("Swing");
-			}
-		}
+				if (Input.GetButtonDown ("Fire1")) {
+						Debug.Log ("Fire1");
+						if (weaponController.swing ()) {
+								//anim.SetTrigger("Swing");
+						}
+				}
 		}
 
 		void OnDrawGizmos ()
@@ -90,10 +91,19 @@ public class PlayerControl : MonoBehaviour
 						audioManager.PlaySound (audioManager.atterissage);
 				}
 
+		if ((!grounded || rigidbody2D.velocity.y > 0 || v < 0 || justJump > 0) && justJump %5 == 0 && false) {
+						Debug.Log ("Grounded:" + !grounded);
+						Debug.Log ("Velo: " + rigidbody2D.velocity.y);
+						Debug.Log ("v:" + v);
+					Debug.Log ("JustJump:" + justJump);
+					Debug.Log ("Overall:" + (!grounded || rigidbody2D.velocity.y > 0 || v < 0 || (justJump > 0)));
+				}
 				Physics2D.IgnoreLayerCollision (playerLayer,
                        LayerMask.NameToLayer ("OneWayPlatform"),
-                       !grounded || rigidbody2D.velocity.y > 0 || v < 0
-				);// Cache the horizontal input.
+                       !grounded || rigidbody2D.velocity.y > 0 || v < 0 || justJump > 0);// Cache the horizontal input.
+	
+		if (justJump > 0)
+						justJump--;
 
 
 				// The Speed animator parameter is set to the absolute value of the horizontal input.
@@ -107,12 +117,14 @@ public class PlayerControl : MonoBehaviour
 				}
 
 				if (h != 0) {
+
 			timerSoundWalk++;
 			timerSoundWalk %= 60;
 			if (timerSoundWalk == 0) {
 //						Debug.Log ("b");
 				audioManager.PlaySound(audioManager.marche);				
 			}
+
 
 				}
 
@@ -144,6 +156,8 @@ public class PlayerControl : MonoBehaviour
 						// Add a vertical force to the player.
 //			if(v >=0 )
 //			{
+			Physics2D.IgnoreLayerCollision (playerLayer,
+			                                LayerMask.NameToLayer ("OneWayPlatform"),true);
 						rigidbody2D.AddForce (new Vector2 (0f, jumpForce));
 						Debug.Log ("Jumping: " + jumpForce);
 //			}
@@ -151,6 +165,8 @@ public class PlayerControl : MonoBehaviour
 		
 						// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 						jump = false;
+			justJump = AfterJumpIgnore;
+
 				}
 		}
 	
@@ -160,7 +176,7 @@ public class PlayerControl : MonoBehaviour
 		
 				// Multiply the player's x local scale by -1.
 				
-				transform.rotation = Quaternion.Euler(0,!facingRight?180:0,0);
+				transform.rotation = Quaternion.Euler (0, !facingRight ? 180 : 0, 0);
 				weaponController.changeSideWeapon (facingRight);
 		}
 
