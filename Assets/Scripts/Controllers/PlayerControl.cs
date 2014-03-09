@@ -117,12 +117,14 @@ public class PlayerControl : MonoBehaviour
 				}
 
 				if (h != 0) {
-						timerSoundWalk++;
-						timerSoundWalk %= 60;
-						if (timerSoundWalk == 0) {
-								Debug.Log ("b");
-								audioManager.PlaySound (audioManager.marche);				
-						}
+
+			timerSoundWalk++;
+			timerSoundWalk %= 60;
+			if (timerSoundWalk == 0) {
+//						Debug.Log ("b");
+				audioManager.PlaySound(audioManager.marche);				
+			}
+
 
 				}
 

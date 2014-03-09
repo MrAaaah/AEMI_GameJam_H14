@@ -268,8 +268,8 @@ MonoBehaviour:
   tileset:
   - {fileID: 100000, guid: 51d83d6b7e5f0554592de0f9fa8ea391, type: 2}
   - {fileID: 100002, guid: 55ce458f78cf28f4cb5ba1fba20e7bee, type: 2}
-  - {fileID: 100000, guid: 174ed408465274e40b1c9b4e63199366, type: 2}
-  - {fileID: 100000, guid: 174ed408465274e40b1c9b4e63199366, type: 2}
+  - {fileID: 100006, guid: d847488f6153b4ece9c652855e2e2f99, type: 2}
+  - {fileID: 100006, guid: d847488f6153b4ece9c652855e2e2f99, type: 2}
   - {fileID: 100000, guid: 7457a7840993bb84eaca04556ecaac86, type: 2}
   - {fileID: 100000, guid: 7457a7840993bb84eaca04556ecaac86, type: 2}
   - {fileID: 100002, guid: 55ce458f78cf28f4cb5ba1fba20e7bee, type: 2}

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: HUDPlayer2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.142746, y: 17.4297676, z: -9.79309654}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b555e955121df74cb6d9a5c8d0a8927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mSecondaryWeapon: {fileID: 2800000, guid: 9c92957ce7a5eaa46b8512eb436c5cb5, type: 3}
+  mCopperOre: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
+  mSilverOre: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
+  mGoldenOre: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
+  mBuffBoots1: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
+  mBuffBoots2: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
+  mBuffWpn1: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
+  mBuffWpn2: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
+  mBuffWpn3: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
+  mBuffWpn4: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
+  mBuffArmour1: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
+  mBuffArmour2: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
+  mBuffArmour3: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
+  mOreSize: 32
+  mIsAlignedRight: 1
+  mUpdateGUI: 1
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

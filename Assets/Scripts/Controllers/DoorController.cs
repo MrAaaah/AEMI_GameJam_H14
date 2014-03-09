@@ -41,9 +41,12 @@ public class DoorController : MonoBehaviour
 				if (doors [0].transform.position.x < doors [1].transform.position.x) {
 						correction = 0;
 				}
-				doors [correction].position = Door.DoorPosition.Left;
-				doors [(correction + 1) % 2].position = Door.DoorPosition.Right;
 
+			doors [correction].position = Door.DoorPosition.Left;
+			doors [correction].trigger = doors[correction].GetComponentsInChildren<BoxCollider2D> () [2];
+			doors [(correction + 1) % 2].position = Door.DoorPosition.Right;
+			doors [(correction + 1) % 2].trigger = doors[correction].GetComponentsInChildren<BoxCollider2D> () [0];
+		
 		
 				CloseDoors ();
 		}
