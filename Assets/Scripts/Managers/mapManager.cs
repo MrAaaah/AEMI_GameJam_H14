@@ -134,8 +134,8 @@ public class mapManager
 
 				}
 				spawned = true;
-				GameObject.Find ("HUDOverHead1").GetComponent<OverGUI> ().setCharacter (players [1]);
-				GameObject.Find ("HUDOverHead2").GetComponent<OverGUI> ().setCharacter (players [0]);
+				GameObject.Find ("OverGUI1").GetComponent<OverGUI> ().setCharacter (players [1]);
+		GameObject.Find ("OverGUI2").GetComponent<OverGUI> ().setCharacter (players [0]);
 		}
 
 		private void destroyPlayer (int  i)
