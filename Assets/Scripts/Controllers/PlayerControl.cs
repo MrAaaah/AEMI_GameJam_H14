@@ -11,7 +11,8 @@ public class PlayerControl : MonoBehaviour
 	public float groundDamping = 20f; // how fast do we change direction? higher means faster
 	public float inAirDamping = 5f;
 	public float jumpHeight = 5f;
-    public bool facingRight = false;
+    public bool facingRight = true;
+
 
 	[HideInInspector]
 	private float normalizedHorizontalSpeed = 0;
@@ -24,6 +25,7 @@ public class PlayerControl : MonoBehaviour
 
 	private PlayerAudioManager audioManager;
 	private int timerSoundWalk;
+
 
 
 	void Awake()
@@ -40,6 +42,7 @@ public class PlayerControl : MonoBehaviour
         //   gameObject.transform.Rotate(0.0f, 180.0f, 0.0f);
         //}
 	}
+
 
 	void Start () {
 		audioManager = GetComponent<PlayerAudioManager> ();
@@ -75,10 +78,13 @@ public class PlayerControl : MonoBehaviour
 	// the Update loop contains a very simple example of moving the character around and controlling the animation
 	void Update()
 	{
+			
+	
 		// grab our current _velocity to use as a base for all calculations
 		float horizontal = Input.GetAxis ("Horizontal_Player" + PlayerNumber);
 		bool jump = Input.GetButtonDown ("Jump_Player" + PlayerNumber);
 		bool action = Input.GetButtonDown ("Fire_Player" + PlayerNumber);
+
 		_velocity = _controller.velocity;
 
         if (action)
@@ -91,21 +97,25 @@ public class PlayerControl : MonoBehaviour
 
 		if( horizontal > 0 )
 		{
+			if(!facingRight)
+			{
+				transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+			}
             facingRight = true;
-
+            //Debug.Log(facingRight.ToString());
 			normalizedHorizontalSpeed = 1;
-			if( transform.localScale.x < 0f )
-				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
 
 			//if( _controller.isGrounded )
 				//_animator.Play( Animator.StringToHash( "Run" ) );
 		}
 		else if( horizontal < 0 )
 		{
+			if(facingRight)
+			{
+				transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
+			}
             facingRight = false;
-			normalizedHorizontalSpeed = -1;
-			if( transform.localScale.x > 0f )
-				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
+			normalizedHorizontalSpeed = 1;
 
 			//if( _controller.isGrounded )
 				//_animator.Play( Animator.StringToHash( "Run" ) );
@@ -129,14 +139,14 @@ public class PlayerControl : MonoBehaviour
 
 		// apply horizontal speed smoothing it
 		var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping; // how fast do we change direction?
+		Debug.Log (_velocity);
 		_velocity.x = Mathf.Lerp( _velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime * smoothedMovementFactor );
+		Debug.Log (_velocity);
 
 		// apply gravity before moving
 		_velocity.y += gravity * Time.deltaTime;
 
 		_controller.move( _velocity * Time.deltaTime );
-
-
 
 	}
 

@@ -100,7 +100,12 @@ public class Character:MonoBehaviour{
 	}
 
 	public float getHealthPercent(){
-		return mCurrentHealthPoints / mMaxHealthPoints;
+		float temp1 = (float)mCurrentHealthPoints;
+		float temp2 = (float)mMaxHealthPoints;
+
+		Debug.Log (temp1 / temp2);
+
+		return (temp1 / temp2);
 	}
 
 	public bool OwnsBoots1(){

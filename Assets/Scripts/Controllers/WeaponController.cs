@@ -20,24 +20,37 @@ public class WeaponController : MonoBehaviour
 				Weapon = playerControl.gameObject.transform.FindChild ("Weapon");
 	
 		}
+
+		private Vector2 v3to2(Vector3 n){
+		Vector2 r  = new Vector2();
+		r.x = n.x;
+		r.y = n.y;
+		return r;
+	}
 	
 		// Update is called once per frame
 		void Update ()
 		{
 				if (swinging) {
 
-                    Quaternion angle = Quaternion.Euler(new Vector3(0, 0, ((playerControl.facingRight) ? 1 : -1) * curve.Evaluate(Time.time - startSwing)));
-						Weapon.rotation = angle;
+			Quaternion angle = playerControl.transform.rotation;
+			angle = Quaternion.Euler (new Vector3 (0, 0,  curve.Evaluate (Time.time - startSwing)));
+						Weapon.localRotation = angle;
 						
 						if (!hit) {
-								Vector3 fwd = Weapon.TransformDirection (Weapon.right);
+				Vector2 fwd = v3to2(Weapon.TransformDirection (Vector3.right));
+				Vector2 pos = v3to2(playerControl.transform.position);
 								int enemy = playerControl.PlayerNumber % 2;
-								hit = Physics.Raycast (playerControl.transform.position, fwd, range, 1 << (enemy + LayerMask.NameToLayer ("Player1")));
-								Debug.DrawLine (Weapon.position, Weapon.position + range * fwd, hit ? Color.blue : Color.green, 1);
+								hit = Physics2D.Raycast (pos, fwd, range, 1 << (enemy + LayerMask.NameToLayer ("Player1")));
+				Debug.DrawLine (pos, pos + range * fwd, hit ? Color.blue : Color.green, 1);
 
-							if(hit)
+								if (hit) {
+										Character.get (enemy + 1).InflictDmgOnCharacter (Character.get (playerControl.PlayerNumber).getCharacterDamage ());
+								Debug.DrawLine (pos, pos + range * fwd, hit ? Color.blue : Color.green, 1);
+				}else
 				{
-					Character.get(enemy+1).InflictDmgOnCharacter(Character.get (playerControl.PlayerNumber).getCharacterDamage());
+
+					hit = Physics2D.Raycast (pos, fwd, range, 1<<LayerMask.NameToLayer ("Default"));
 				}
 						}
 						// if custom deltatime is bigger than curve's last key, stop growing
