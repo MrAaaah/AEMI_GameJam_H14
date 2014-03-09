@@ -43,8 +43,6 @@ public class GameStateManager : SingletonMonoBehaviour<GameStateManager> {
 			states = new Dictionary<GameState, State<GameState>> ();
 			
 			states.Add (GameState.StartScreen, new StartScreen ());
-			states.Add (GameState.MainMenu, new MainMenu ());
-			states.Add (GameState.PauseMenu, new PauseMenu ());
 			states.Add (GameState.Game, new Game ());
 			states.Add (GameState.CraftScreen, new CraftScreen ());
 			states.Add (GameState.EndGameScreen, new EndGameScreen ());
