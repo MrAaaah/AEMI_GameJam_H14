@@ -549,6 +549,14 @@ public class CharacterController2D : MonoBehaviour
 				transform.Translate( deltaMovement );
 				velocity = deltaMovement / Time.deltaTime;
 			}
+			else
+			{
+
+				//Debug.Log ("Value of X:" + deltaMovement.x + " --- Value of NaN:" + float.NaN + " --- IsNaN?:" + (System.Single.IsNaN(deltaMovement.x)));
+				//Debug.Log ("Value of Y:" + deltaMovement.y + " --- Value of NaN:" + float.NaN + " --- IsNaN?:" + (System.Single.IsNaN(deltaMovement.y)));
+				//Debug.Log ("Value of Z:" + deltaMovement.z + " --- Value of NaN:" + float.NaN + " --- IsNaN?:" + (System.Single.IsNaN(deltaMovement.z)));
+				velocity = Vector3.zero;
+			}
 		}
 
 		// set our becameGrounded state based on the previous and current collision state
