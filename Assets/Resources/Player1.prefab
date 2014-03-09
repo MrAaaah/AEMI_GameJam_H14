@@ -130,7 +130,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2, y: 1.79999995, z: 2}
   m_Children:
   - {fileID: 400012}
   - {fileID: 400008}
@@ -434,6 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   jump: 0
+  AfterJumpIgnore: 0
   moveForce: 3000
   maxSpeed: 8
   jumpClips: []
@@ -480,25 +481,25 @@ MonoBehaviour:
   curve:
     serializedVersion: 2
     m_Curve:
-    - time: 1.1265045e-05
-      value: -.00275990367
+    - time: -.0165977478
+      value: 1.01398134
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: .172361627
-      value: 2.26230645
-      inSlope: -23.8490105
-      outSlope: -23.8490105
+    - time: .294917762
+      value: 1.56441844
+      inSlope: .976063311
+      outSlope: .976063311
       tangentMode: 0
-    - time: .338889539
-      value: 5.10953665
-      inSlope: -55.1557541
-      outSlope: -55.1557541
+    - time: .649369121
+      value: 1.33254468
+      inSlope: 2.41935253
+      outSlope: 2.41935253
       tangentMode: 0
-    - time: .490240932
-      value: 5.45569277
-      inSlope: -21.5664539
-      outSlope: -21.5664539
+    - time: 1.03449249
+      value: 1.75692225
+      inSlope: -8.7749939
+      outSlope: -8.7749939
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
