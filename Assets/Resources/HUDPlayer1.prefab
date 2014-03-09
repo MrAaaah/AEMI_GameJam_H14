@@ -38,19 +38,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b555e955121df74cb6d9a5c8d0a8927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSecondaryWeapon: {fileID: 2800000, guid: 9c92957ce7a5eaa46b8512eb436c5cb5, type: 3}
-  mCopperOre: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
-  mSilverOre: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
-  mGoldenOre: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
-  mBuffBoots1: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
-  mBuffBoots2: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
-  mBuffWpn1: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
-  mBuffWpn2: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
-  mBuffWpn3: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
-  mBuffWpn4: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
-  mBuffArmour1: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
-  mBuffArmour2: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
-  mBuffArmour3: {fileID: 2800000, guid: b26588f5e868d2241bb5f5f5a4a091ed, type: 3}
+  mSecondaryWeapon: {fileID: 2800000, guid: 18594c9c73177a348bc1f3ac8d304a86, type: 3}
+  mCopperOre: {fileID: 2800000, guid: f2bdfa0d232c8bb4aae1d647d38b49ba, type: 3}
+  mSilverOre: {fileID: 2800000, guid: 1a2ee132a101b3d43bb5623ee5ecf695, type: 3}
+  mGoldenOre: {fileID: 2800000, guid: 0950d547533106240b05e51e3ddd239b, type: 3}
+  mLeftConer: {fileID: 2800000, guid: 85a43177b1110114ba7b8da1f210e7ec, type: 3}
+  mRightConer: {fileID: 2800000, guid: 351b9acd47ef99146b000cc745cec0cb, type: 3}
+  mBuffBoots1: {fileID: 2800000, guid: 7d8efce44c440dd448cd1aad761a75cb, type: 3}
+  mBuffBoots2: {fileID: 2800000, guid: 0379777678dba6c42ac8cb490c4ab694, type: 3}
+  mBuffWpn1: {fileID: 2800000, guid: 911438fbd3e402b459d4a7d46f97fb1d, type: 3}
+  mBuffWpn2: {fileID: 2800000, guid: fefaad6c12be70e41bffa7d7d81c8209, type: 3}
+  mBuffWpn3: {fileID: 2800000, guid: 55953acab736c114f8354b46603169d3, type: 3}
+  mBuffWpn4: {fileID: 2800000, guid: 1cfc5816293cca944a1555a1a0cf9e1b, type: 3}
+  mBuffArmour1: {fileID: 2800000, guid: 567b450b416805b4a88aef51c80fbbe4, type: 3}
+  mBuffArmour2: {fileID: 2800000, guid: 1e9fe4ec8431c8b41af7ff9480d5267d, type: 3}
+  mBuffArmour3: {fileID: 2800000, guid: 8a8ace3a7f3bbdb40b1ac2fff4e4cbc2, type: 3}
   mOreSize: 32
   mIsAlignedRight: 0
   mUpdateGUI: 1

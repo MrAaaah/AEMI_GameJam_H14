@@ -39,27 +39,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mSelecter: {fileID: 2800000, guid: b2ce453385b61fd4fa4fd2a3d777fdd9, type: 3}
-  mBodyUI: {fileID: 2800000, guid: a1ed3acc694c75f4aa4c545abcb0a267, type: 3}
-  mCopper: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
-  mSilver: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
-  mGold: {fileID: 2800000, guid: 667fe91c515f73f47911ce845d4e00f1, type: 3}
-  mIconeSword1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeSword2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeSword3: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeSword4: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeArmour1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeArmour2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeArmour3: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeBoots1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeBoots2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeSubWpn1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeSubWpn2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeSubWpn3: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeSubWpn4: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeSubWpn5: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconeSubWpn6: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconePotion1: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
-  mIconePotion2: {fileID: 2800000, guid: 2e596c0a355d40c439ec94adb7efea5b, type: 3}
+  mBodyUI: {fileID: 2800000, guid: dd2db2dffcb073249b7961de03575353, type: 3}
+  mCopper: {fileID: 2800000, guid: f2bdfa0d232c8bb4aae1d647d38b49ba, type: 3}
+  mSilver: {fileID: 2800000, guid: 1a2ee132a101b3d43bb5623ee5ecf695, type: 3}
+  mGold: {fileID: 2800000, guid: 0950d547533106240b05e51e3ddd239b, type: 3}
+  mIconeSword1: {fileID: 2800000, guid: 865b1cc5c7a42874b9b1e775843dc49d, type: 3}
+  mIconeSword2: {fileID: 2800000, guid: 80e082bdd46ee75479bbb2a2e5a19676, type: 3}
+  mIconeSword3: {fileID: 2800000, guid: 7b3f70d0bf362d648be2c7fa09960449, type: 3}
+  mIconeSword4: {fileID: 2800000, guid: d7bcf6a3288f986449f59bd90cb0dc23, type: 3}
+  mIconeArmour1: {fileID: 2800000, guid: 7133e87cb0fa80d468e0bbca7f096823, type: 3}
+  mIconeArmour2: {fileID: 2800000, guid: 3d598244edeb39842bd85cbd20fb1536, type: 3}
+  mIconeArmour3: {fileID: 2800000, guid: b5b70150f36b38643a5b1f8f4415133f, type: 3}
+  mIconeBoots1: {fileID: 2800000, guid: 23bb83641190f5d42aa21c07b9a18fca, type: 3}
+  mIconeBoots2: {fileID: 2800000, guid: 7d0b8623cb4e4454c935f29106e8b406, type: 3}
+  mIconeSubWpn1: {fileID: 0}
+  mIconeSubWpn2: {fileID: 0}
+  mIconeSubWpn3: {fileID: 0}
+  mIconeSubWpn4: {fileID: 0}
+  mIconeSubWpn5: {fileID: 0}
+  mIconeSubWpn6: {fileID: 0}
+  mIconePotion1: {fileID: 2800000, guid: 60b40bedb963864408731601e1843509, type: 3}
+  mIconePotion2: {fileID: 2800000, guid: 3eced85c28f8f064f83dcd09993d9c12, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
