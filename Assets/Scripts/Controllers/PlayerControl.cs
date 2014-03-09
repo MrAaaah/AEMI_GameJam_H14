@@ -50,6 +50,11 @@ public class PlayerControl : MonoBehaviour
 //				float vertical = Input.GetAxis ("Vertical_Player" + PlayerNumber);
 				float horizontal = Input.GetAxis ("Horizontal_Player" + PlayerNumber);
 				bool jump = Input.GetButtonDown ("Jump_Player" + PlayerNumber);
+                bool action = Input.GetButtonDown ("Fire" + PlayerNumber);
+
+				if (action) {
+			weaponController.swing ();
+
 
 				if (grounded && jump) {
 						moveVertical = jumpSpeed;
@@ -104,7 +109,6 @@ public class PlayerControl : MonoBehaviour
 		
 				// Multiply the player's x local scale by -1.
 				transform.rotation = Quaternion.Euler (0, !facingRight ? 180 : 0, 0);
-				weaponController.changeSideWeapon (facingRight);
 		}
 
 
