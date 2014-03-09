@@ -6,6 +6,7 @@ public enum Level {
 	MainMenu,
 	Test_Martin,
 	Game,
+	Game_without_level
 }
 
 [AddComponentMenu("Singletons/SceneManager")]
@@ -29,11 +30,8 @@ public class SceneManager : SingletonMonoBehaviour<SceneManager> {
 		LoadLevel (Level.MainMenu);
 	}
 
-	public void LoadTestMartin () {
-		LoadLevel (Level.Test_Martin);
+	public void LoadGame () {
+		LoadLevel (Level.Game_without_level);
 	}
 
-	public void LoadGame () {
-		LoadLevel (Level.Game);
-	}
 }

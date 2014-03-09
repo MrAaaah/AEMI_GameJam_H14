@@ -6,7 +6,7 @@ public enum GameState {
 	StartScreen,
 	MainMenu,
 	PauseMenu,
-	Test_Martin,
+	Game,
 }
 
 [AddComponentMenu("Singletons/GameStateManager")]
@@ -42,6 +42,7 @@ public class GameStateManager : SingletonMonoBehaviour<GameStateManager> {
 			states.Add (GameState.StartScreen, new StartScreen ());
 			states.Add (GameState.MainMenu, new MainMenu ());
 			states.Add (GameState.PauseMenu, new PauseMenu ());
+			states.Add (GameState.Game, new Game ());
 			Debug.Log ("Create states");
 		}
 	}
