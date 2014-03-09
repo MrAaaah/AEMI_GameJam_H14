@@ -13,7 +13,7 @@ public class tokenControler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Rotate(new Vector3(Random.Range(0,20),Random.Range(0,20),0));
+		//transform.Rotate(new Vector3(Random.Range(0,20),Random.Range(0,20),0));
 	}
 
 	public void SetType (Metals t) {
