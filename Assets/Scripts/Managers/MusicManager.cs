@@ -41,7 +41,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager> {
 
 		if (music == Music.GameMusicBackground) {
 			audioSource.loop = true;
-			audioSource.volume = 0.2f;
+			audioSource.volume = 0.15f;
 			audioSource.PlayOneShot (sounds[music]);
 		}
 		else if (music == Music.MainMenuMusicBackGround) {
