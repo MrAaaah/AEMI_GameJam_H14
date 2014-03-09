@@ -9,5 +9,6 @@
 /Temp/
 
 # SourceTree Patch against .gitignore_global on Windows
-!*.exe
-!*.dll%
+*.exe
+*.dll%
+/GentleDwarf_Data/
