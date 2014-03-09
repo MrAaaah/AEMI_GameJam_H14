@@ -57,6 +57,13 @@ public class mapManager
 														spawn [tilesvalue - 4] = new Vector2 (j - 1, i - 1);
 												} else if (tilesvalue == 0) {
 												} else {
+							if(tilesvalue >= 10 && tilesvalue <= 12)
+							{
+								if(mapTiles[(i+1) * width +j] == tilesvalue)
+									continue;
+								if(mapTiles[i * width +j-1] == tilesvalue)
+									continue;
+							}
 														GameObject tile;
 														if (i == height - 1 || j == 0 || j == width - 1) {
 																tile = GameObject.Instantiate (ground_down [Random.Range (0, 3)]) as GameObject;
@@ -69,6 +76,12 @@ public class mapManager
 
 														tile.transform.Translate (new Vector3 (j, height - 1 - i, 0));
 														tile.transform.parent = parent.transform;
+							if(tilesvalue >= 10 && tilesvalue <= 12)
+							{
+								tile.transform.Translate(new Vector3(0,0,2.0f));
+								tile.transform.Rotate(new Vector3(0,Random.Range(0,360),0));
+
+							}
 												}
 										} catch (System.Exception ex) {
 												Debug.LogError (ex.ToString ());
