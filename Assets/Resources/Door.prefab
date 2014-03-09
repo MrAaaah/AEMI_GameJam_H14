@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.6181374, y: 3.11278296, z: 22.6254883}
-  m_LocalScale: {x: 2.4065125, y: 4.52877665, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!23 &2300000
@@ -83,6 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openDoor: {fileID: 2100000, guid: f2089b2794586437ea8f1e90daf19401, type: 2}
   closedDoor: {fileID: 2100000, guid: 4775a4c7e64df4008aa413f2248f7a1b, type: 2}
+  position: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

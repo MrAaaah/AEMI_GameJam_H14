@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
 		doorsController = GetComponent<DoorController> ();
 		levelController = GetComponent<LevelController> ();
 		GameManager.singleton.namePlayer="";
-
+		SoundManager.singleton.PlaySound(Sound.GameMusicBackground);
 		StartLevel ();
 	}
 	
