@@ -51,6 +51,14 @@ public class Character:MonoBehaviour{
 		mCurrentHealthPoints = mMaxHealthPoints;
 		mDamage = mDamage + 5;
 		mIsAlive = true;
+
+		PlayerControl[] pcs = GameObject.FindObjectsOfType<PlayerControl> ();
+		foreach (var pc in pcs) {
+			if(pc.PlayerNumber == mPlayerNb)
+			{
+				pc.setupgrade(mSwordEquipped,mBootsEquipped);
+			}
+				}
 	}
 
 	public void drinkGentleDrunkPotion(){

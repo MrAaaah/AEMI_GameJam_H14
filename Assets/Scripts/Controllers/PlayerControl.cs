@@ -10,7 +10,8 @@ public class PlayerControl : MonoBehaviour
 	public float runSpeed = 10f;
 	public float groundDamping = 20f; // how fast do we change direction? higher means faster
 	public float inAirDamping = 5f;
-	public float jumpHeight = 5f;
+	public float jumpHeightInit = 5f;
+	private float jumpHeight;
     public bool facingRight = true;
 
 
@@ -41,6 +42,7 @@ public class PlayerControl : MonoBehaviour
         //{
         //   gameObject.transform.Rotate(0.0f, 180.0f, 0.0f);
         //}
+		jumpHeight = jumpHeightInit;
 	}
 
 
@@ -159,5 +161,15 @@ public class PlayerControl : MonoBehaviour
 				audioManager.PlaySound(audioManager.marche);	
 			}
 		}
+	}
+
+	void setupgrade ( int weapon, int boots)
+	{
+		jumpHeight = jumpHeightInit;
+		for (int i = 0; i< boots; i++) {
+			jumpHeight *= 1.25f;
+				}
+
+
 	}
 }
