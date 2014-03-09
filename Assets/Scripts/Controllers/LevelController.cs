@@ -97,7 +97,7 @@ public class LevelController : MonoBehaviour {
 			nextLevel = levels[currentLevelId+1];
 			StartCoroutine (TransitionToRightLevel ());
 		} else {
-			Debug.Log ("We have a winner !");
+//			Debug.Log ("We have a winner !");
 		}
 		
 	}
