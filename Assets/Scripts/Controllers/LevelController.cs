@@ -43,7 +43,7 @@ public class LevelController : MonoBehaviour {
 
 		for (int i = 0; i < levels.Length; i++) {
 
-			levels_map[i] = new mapManager(Application.dataPath + "/Maps/Lvl2/Lvl2_0" + i + ".json",tileset);
+			levels_map[i] = new mapManager(Application.streamingAssetsPath + "/Maps/Lvl2/Lvl2_0" + i + ".json",tileset);
 			levels[i]=levels_map[i].getLevelObject();
 
 			if (i != currentLevelId) {
