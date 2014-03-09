@@ -6,11 +6,12 @@ public class PlayerControl : MonoBehaviour
 {
 	// movement config
 	public int PlayerNumber;
-	public float gravity = -25f;
-	public float runSpeed = 8f;
+	public float gravity = -100f;
+	public float runSpeed = 10f;
 	public float groundDamping = 20f; // how fast do we change direction? higher means faster
 	public float inAirDamping = 5f;
-	public float jumpHeight = 3f;
+	public float jumpHeight = 5f;
+    public bool facingRight = false;
 
 	[HideInInspector]
 	private float normalizedHorizontalSpeed = 0;
@@ -19,6 +20,7 @@ public class PlayerControl : MonoBehaviour
 	private Animator _animator;
 	private RaycastHit2D _lastControllerColliderHit;
 	private Vector3 _velocity;
+    private WeaponController wc;
 
 
 
@@ -26,11 +28,15 @@ public class PlayerControl : MonoBehaviour
 	{
 		//_animator = GetComponent<Animator>();
 		_controller = GetComponent<CharacterController2D>();
-
+        wc = GetComponent<WeaponController>();
 		// listen to some events for illustration purposes
 		_controller.onControllerCollidedEvent += onControllerCollider;
 		_controller.onTriggerEnterEvent += onTriggerEnterEvent;
 		_controller.onTriggerExitEvent += onTriggerExitEvent;
+        //if (!facingRight)
+        //{
+        //   gameObject.transform.Rotate(0.0f, 180.0f, 0.0f);
+        //}
 	}
 
 
@@ -67,14 +73,21 @@ public class PlayerControl : MonoBehaviour
 		// grab our current _velocity to use as a base for all calculations
 		float horizontal = Input.GetAxis ("Horizontal_Player" + PlayerNumber);
 		bool jump = Input.GetButtonDown ("Jump_Player" + PlayerNumber);
-		bool action = Input.GetButtonDown ("Fire" + PlayerNumber);
+		bool action = Input.GetButtonDown ("Fire_Player" + PlayerNumber);
 		_velocity = _controller.velocity;
+
+        if (action)
+        {
+            wc.swing();
+        }
 
 		if( _controller.isGrounded )
 			_velocity.y = 0;
 
 		if( horizontal > 0 )
 		{
+            facingRight = true;
+            Debug.Log(facingRight.ToString());
 			normalizedHorizontalSpeed = 1;
 			if( transform.localScale.x < 0f )
 				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
@@ -84,6 +97,7 @@ public class PlayerControl : MonoBehaviour
 		}
 		else if( horizontal < 0 )
 		{
+            facingRight = false;
 			normalizedHorizontalSpeed = -1;
 			if( transform.localScale.x > 0f )
 				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
