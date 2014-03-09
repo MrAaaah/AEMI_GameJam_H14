@@ -7,7 +7,9 @@ public enum GameState {
 	MainMenu,
 	PauseMenu,
 	Game,
-	CraftScreen
+	CraftScreen,
+	EndGameScreen,
+	EndingCredits,
 }
 
 [AddComponentMenu("Singletons/GameStateManager")]
@@ -45,6 +47,8 @@ public class GameStateManager : SingletonMonoBehaviour<GameStateManager> {
 			states.Add (GameState.PauseMenu, new PauseMenu ());
 			states.Add (GameState.Game, new Game ());
 			states.Add (GameState.CraftScreen, new CraftScreen ());
+			states.Add (GameState.EndGameScreen, new EndGameScreen ());
+			states.Add (GameState.EndingCredits, new EndingCredits ());
 			Debug.Log ("Create states");
 		}
 	}

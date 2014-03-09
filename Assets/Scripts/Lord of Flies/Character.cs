@@ -94,6 +94,8 @@ public class Character:MonoBehaviour{
 		mCurrentHealthPoints = mCurrentHealthPoints - _AnAmountOfDamage;
 		if (mCurrentHealthPoints <= 0) {
 			mIsAlive = false;
+			GameStateManager.singleton.SetGameState(GameState.CraftScreen);
+			GameObject.Find ("CraftyObject").GetComponent<CraftManager>().setCharacter(this);
 		}
 	}
 

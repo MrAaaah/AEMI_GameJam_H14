@@ -8,7 +8,8 @@ public class Game : State<GameState>
 	{
 		Debug.Log ("Enter Game");
 
-		if (GameStateManager.singleton.previousState is MainMenu)
+		if (GameStateManager.singleton.previousState is MainMenu ||
+		    GameStateManager.singleton.previousState is EndGameScreen)
 			SceneManager.singleton.LoadGame ();
 	}
 	
