@@ -96,6 +96,7 @@ public class Character:MonoBehaviour{
 			mIsAlive = false;
 			GameStateManager.singleton.SetGameState(GameState.CraftScreen);
 			GameObject.Find ("CraftyObject").GetComponent<CraftManager>().setCharacter(this);
+			SoundFXManager.singleton.PlaySound(SoundFX.Die);
 		}
 	}
 

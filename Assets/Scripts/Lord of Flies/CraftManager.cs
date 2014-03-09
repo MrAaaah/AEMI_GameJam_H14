@@ -175,6 +175,8 @@ public class CraftManager : MonoBehaviour {
 					mCustomCopper = 0;
 					activateCrafting(mCraftableChoiceList[mSelecterIndex - 1].getId());
 					GameStateManager.singleton.SetGameState(GameState.Game);
+					SoundFXManager.singleton.PlaySound(SoundFX.SelectElementGUI);
+					
 					mCharacter.LevelUpAndRevive();
 
 					LevelController temp = FindObjectOfType<LevelController>();
@@ -240,6 +242,8 @@ public class CraftManager : MonoBehaviour {
 					mCharacter.spendCopper(mCustomCopper);
 					mCustomCopper = 0;
 					activateCrafting(mCraftableChoiceList[mSelecterIndex - 1].getId());
+					SoundFXManager.singleton.PlaySound(SoundFX.SelectElementGUI);
+					
 					GameStateManager.singleton.SetGameState(GameState.Game);
 					mCharacter.LevelUpAndRevive();
 					LevelController temp = FindObjectOfType<LevelController>();

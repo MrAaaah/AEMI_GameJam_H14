@@ -19,7 +19,6 @@ public class TriggerDoor : MonoBehaviour
 
 	void OnTriggerEnter2D (Collider2D other) {
 //		if (door.position == Door.DoorPosition.Left && other.) {
-		Debug.Log ("Pute");
 		PlayerControl pC = other.gameObject.GetComponent<PlayerControl>();
 		if (pC != null) {
 			if (door.position == Door.DoorPosition.Left && pC.PlayerNumber == 2) {
