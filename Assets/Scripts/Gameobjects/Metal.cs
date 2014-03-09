@@ -32,7 +32,9 @@ public class Metal : MonoBehaviour
 
 		public void mine ()
 		{
-			GameObject newO = Instantiate (token, transform.position, transform.rotation) as GameObject;
+		Vector3 newpos = new Vector3(transform.position.x, transform.position.y, 0f);
+		GameObject newO = Instantiate (token, newpos, transform.rotation) as GameObject;
+			
 
 			if (newO.GetComponent<tokenControler>()) {
 				newO.GetComponent<tokenControler>().SetType(type);
