@@ -409,11 +409,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerNumber: 0
-  gravity: -25
-  runSpeed: 4
+  gravity: -100
+  runSpeed: 10
   groundDamping: 20
   inAirDamping: 5
-  jumpHeight: 3
+  jumpHeight: 5
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
