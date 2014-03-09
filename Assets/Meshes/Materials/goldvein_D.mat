@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Dwark_D 3
+  m_Name: goldvein_D
   m_Shader: {fileID: 4800000, guid: 9209a21dbbff85248bd5405916812ce3, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -17,7 +17,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 45852cca563a88f4caece050ff76ffe8, type: 3}
+          m_Texture: {fileID: 2800000, guid: ed0ef3477c7cde540b0375f7f234836e, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -31,7 +31,7 @@ Material:
         first:
           name: _SpecularTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: ed0ef3477c7cde540b0375f7f234836e, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -54,7 +54,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .53725493, g: .53725493, b: .53725493, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _RimColor

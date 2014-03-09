@@ -11,6 +11,9 @@ public class GameController : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
+		if (GameStateManager.singleton.currentState == null)
+			GameStateManager.singleton.SetGameState (GameState.Game);
+
 		doorsController = GetComponent<DoorController> ();
 		levelController = GetComponent<LevelController> ();
 		GameManager.singleton.namePlayer="";

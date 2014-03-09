@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: floor1_D
-  m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 9209a21dbbff85248bd5405916812ce3, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,12 +17,45 @@ Material:
         first:
           name: _MainTex
         second:
+          m_Texture: {fileID: 2800000, guid: a526a2e305e4a1a42916445f2736d146, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-    m_Floats: {}
+      data:
+        first:
+          name: _SpecularTex
+        second:
+          m_Texture: {fileID: 2800000, guid: a526a2e305e4a1a42916445f2736d146, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _RampTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Cutoff
+        second: .5
+      data:
+        first:
+          name: _RimPower
+        second: 2.5
     m_Colors:
       data:
         first:
           name: _Color
         second: {r: .537299991, g: .537299991, b: .537299991, a: 1}
+      data:
+        first:
+          name: _RimColor
+        second: {r: .860294104, g: .860294104, b: .860294104, a: .749019623}
