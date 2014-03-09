@@ -7,16 +7,17 @@ public class WeaponController : MonoBehaviour
 		public AnimationCurve curve;
 		public float range;
 		private bool swinging = false;
-		private Time startSwing;
+		private float startSwing;
 		private bool hit;
 		private PlayerControl playerControl;
-		private GameObject Weapon;
+		private Transform Weapon;
 		
 
 		// Use this for initialization
 		void Start ()
 		{
-			playerControl = GetComponent<PlayerControl> ();
+				playerControl = GetComponent<PlayerControl> ();
+				Weapon = playerControl.gameObject.transform.FindChild ("Weapon");
 	
 		}
 	
@@ -24,13 +25,20 @@ public class WeaponController : MonoBehaviour
 		void Update ()
 		{
 				if (swinging) {
-						transform.rotation.eulerAngles = new Vector3 (0, 0, curve.Evaluate (Time.time - startSwing));
+						Quaternion angle = Quaternion.Euler (new Vector3 (0, 0, curve.Evaluate (Time.time - startSwing)));
+						Weapon.rotation = angle;
 						
-						if(!hit)
-			{
-				Vector3 fwd = Transform.TransformDirection(playerControl.transform.forward);
-				playerControl.transform.rotation * fwd;
-			}
+						if (!hit) {
+								Vector3 fwd = Weapon.TransformDirection (Weapon.right);
+								int enemy = playerControl.PlayerNumber % 2;
+								hit = Physics.Raycast (playerControl.transform.position, fwd, range, 1 << (enemy + LayerMask.NameToLayer ("Player1")));
+								Debug.DrawLine (Weapon.position, Weapon.position + range * fwd, hit ? Color.blue : Color.green, 1);
+
+							if(hit)
+				{
+					Character.get(enemy+1).InflictDmgOnCharacter(Character.get (playerControl.PlayerNumber).getCharacterDamage());
+				}
+						}
 						// if custom deltatime is bigger than curve's last key, stop growing
 						if (Time.time - startSwing >= curve.keys [curve.keys.Length - 1].time) {
 								swinging = false;
@@ -45,7 +53,8 @@ public class WeaponController : MonoBehaviour
 				if (!swinging) {
 		
 						swinging = true;
-			hit = false;
+						hit = false;
+						startSwing = Time.time;
 				}
 		}
 
