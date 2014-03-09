@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour
 		if (timer == 0) {
 			if (levelController.AtLeftestLevel()) {
 				Debug.Log("Player 2 win");
-				GameStateManager.singleton.SetGameState(GameState.EndGameScreen);
+				GameStateManager.singleton.SetGameState(GameState.EndingCredits);
 			}
 			else {
 				levelController.ChangeToLeftLevel ();
@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
 		if (timer == 0) {
 			if (levelController.AtRightestLevel()) {
 				Debug.Log("Player 1 win");
-				GameStateManager.singleton.SetGameState(GameState.EndGameScreen);
+				GameStateManager.singleton.SetGameState(GameState.EndingCredits);
 			}
 			else {
 
