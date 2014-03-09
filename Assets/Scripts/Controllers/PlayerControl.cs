@@ -22,6 +22,8 @@ public class PlayerControl : MonoBehaviour
 	private Vector3 _velocity;
     private WeaponController wc;
 
+	private PlayerAudioManager audioManager;
+	private int timerSoundWalk;
 
 
 	void Awake()
@@ -39,6 +41,9 @@ public class PlayerControl : MonoBehaviour
         //}
 	}
 
+	void Start () {
+		audioManager = GetComponent<PlayerAudioManager> ();
+	}
 
 	#region Event Listeners
 
@@ -87,7 +92,7 @@ public class PlayerControl : MonoBehaviour
 		if( horizontal > 0 )
 		{
             facingRight = true;
-            Debug.Log(facingRight.ToString());
+
 			normalizedHorizontalSpeed = 1;
 			if( transform.localScale.x < 0f )
 				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
@@ -130,6 +135,19 @@ public class PlayerControl : MonoBehaviour
 		_velocity.y += gravity * Time.deltaTime;
 
 		_controller.move( _velocity * Time.deltaTime );
+
+
+
 	}
 
+	void FixedUpdate () {
+		if (_velocity.x != 0) {
+			
+			timerSoundWalk++;
+			timerSoundWalk %= 60;
+			if (timerSoundWalk == 0) {
+				audioManager.PlaySound(audioManager.marche);	
+			}
+		}
+	}
 }

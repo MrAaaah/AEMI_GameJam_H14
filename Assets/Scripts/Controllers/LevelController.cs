@@ -6,7 +6,7 @@ public class LevelController : MonoBehaviour {
 
 	public GameObject[] levels;
 	public GameObject[] tileset;
-	private mapManager[] levels_map = new mapManager[3];
+	private mapManager[] levels_map = new mapManager[5];
 
 	public int currentLevelId;
 	public GameObject currentLevel;

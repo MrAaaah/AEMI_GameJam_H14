@@ -10,7 +10,7 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: a
     positiveButton: d
-    altNegativeButton: 
+    altNegativeButton: q
     altPositiveButton: 
     gravity: 1000
     dead: .00100000005
@@ -42,7 +42,7 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: w
     positiveButton: s
-    altNegativeButton: 
+    altNegativeButton: z
     altPositiveButton: 
     gravity: 1000
     dead: .00100000005
@@ -123,7 +123,7 @@ InputManager:
     negativeButton: 
     positiveButton: right ctrl
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: =
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000
