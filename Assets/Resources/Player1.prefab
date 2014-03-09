@@ -422,8 +422,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
-  groundCheckRadius: .300000012
-  PlayerNumber: 1
+  groundCheckRadius: .5
+  PlayerNumber: 0
   groundCheck: {fileID: 0}
   moveSpeed: 8
   jumpSpeed: 25
