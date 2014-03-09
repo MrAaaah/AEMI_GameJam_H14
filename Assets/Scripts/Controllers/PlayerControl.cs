@@ -19,6 +19,7 @@ public class PlayerControl : MonoBehaviour
 	private Animator _animator;
 	private RaycastHit2D _lastControllerColliderHit;
 	private Vector3 _velocity;
+    private WeaponController wc;
 
 
 
@@ -26,7 +27,7 @@ public class PlayerControl : MonoBehaviour
 	{
 		//_animator = GetComponent<Animator>();
 		_controller = GetComponent<CharacterController2D>();
-
+        wc = GetComponent<WeaponController>();
 		// listen to some events for illustration purposes
 		_controller.onControllerCollidedEvent += onControllerCollider;
 		_controller.onTriggerEnterEvent += onTriggerEnterEvent;
@@ -72,7 +73,7 @@ public class PlayerControl : MonoBehaviour
 
         if (action)
         {
-
+            wc.swing();
         }
 
 		if( _controller.isGrounded )
