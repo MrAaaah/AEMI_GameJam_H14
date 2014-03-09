@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: background_occlusion
-  m_Shader: {fileID: 14, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: GATE_d
+  m_Shader: {fileID: 10, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,7 +17,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 64e03c937193d9f48ad2152f1559ea9f, type: 3}
+          m_Texture: {fileID: 2800000, guid: e044a46405fdd4c4fa9f78e475f7ee80, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -31,7 +31,7 @@ Material:
         first:
           name: _SpecularTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 9e5320a3c2dcd9a4b9d9e1ea40e7a8e6, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -45,7 +45,7 @@ Material:
         first:
           name: _Illum
         second:
-          m_Texture: {fileID: 2800000, guid: 3b38343ab4f7579418121349ba7294a8, type: 3}
+          m_Texture: {fileID: 2800000, guid: 9e5320a3c2dcd9a4b9d9e1ea40e7a8e6, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -56,25 +56,17 @@ Material:
       data:
         first:
           name: _RimPower
-        second: 2.5
-      data:
-        first:
-          name: _Shininess
-        second: .216552556
+        second: -.970000029
       data:
         first:
           name: _EmissionLM
-        second: 5
+        second: 0
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .727941155, g: .727941155, b: .727941155, a: 1}
       data:
         first:
           name: _RimColor
-        second: {r: .970000029, g: .879999995, b: 1, a: .75}
-      data:
-        first:
-          name: _SpecColor
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0, g: .91911763, b: .00633869087, a: .749019623}
