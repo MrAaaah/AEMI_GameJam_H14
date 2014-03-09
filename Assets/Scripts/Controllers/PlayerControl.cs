@@ -20,7 +20,7 @@ public class PlayerControl : MonoBehaviour
 		private WeaponController weaponController;
 		private Vector3 pos;
 		private float moveVertical;
-		private bool onGround;
+		public bool grounded;
 
 		void Awake ()
 		{
@@ -40,51 +40,40 @@ public class PlayerControl : MonoBehaviour
 		void FixedUpdate ()
 		{
 
-				bool lastValueGrounded = onGround;
+				bool lastValueGrounded = grounded;
 
-				if (!lastValueGrounded && onGround) { // le joeuur attérit
+				if (!lastValueGrounded && grounded) { // le joeuur attérit
 						audioManager.PlaySound (audioManager.atterissage);
 				}
 
 				pos = transform.position;
-				float vertical = Input.GetAxis ("Vertical_Player" + PlayerNumber);
+//				float vertical = Input.GetAxis ("Vertical_Player" + PlayerNumber);
 				float horizontal = Input.GetAxis ("Horizontal_Player" + PlayerNumber);
 				bool jump = Input.GetButtonDown ("Jump_Player" + PlayerNumber);
-			
-				if (jump && onGround) {
-						Debug.Log ("Jumping!");
+
+				if (grounded && jump) {
 						moveVertical = jumpSpeed;
 						audioManager.PlaySound (audioManager.saut);
-				}
-
-				if (horizontal != 0 && onGround) {
-		
+				} else if (grounded && horizontal != 0) {
 						timerSoundWalk++;
 						timerSoundWalk %= 60;
 						if (timerSoundWalk == 0) {
 								audioManager.PlaySound (audioManager.marche);				
 						}
+				} else {
+						moveVertical -= fallSpeed * Time.deltaTime;
+						moveVertical = Mathf.Clamp (moveVertical, -maxFallSpeed, maxUpSpeed);
 				}
-		
+
+				rigidbody.MovePosition (pos + new Vector3 (horizontal * moveSpeed, moveVertical, 0) * Time.deltaTime);
+				rigidbody.velocity = Vector3.zero;
+				grounded = false;
 
 				if ((facingRight && horizontal < 0) || (!facingRight && horizontal > 0)) {
 						Flip ();		
 				}
-			
-				Vector3 move = new Vector3 (horizontal * moveSpeed, moveVertical, 0) * Time.deltaTime;
-				rigidbody.MovePosition (pos + move);
-			
-				if (vertical <= 0) {
-						// gravity
-						moveVertical -= fallSpeed * Time.deltaTime;
-				}
-			
-				moveVertical = Mathf.Clamp (moveVertical, -maxFallSpeed, maxUpSpeed);
-			
-				rigidbody.velocity = Vector3.zero;
-				onGround = false;
 		}
-		
+	
 		void OnCollisionEnter (Collision c)
 		{
 				CheckCollision (c);
@@ -92,6 +81,7 @@ public class PlayerControl : MonoBehaviour
 		
 		void OnCollisionStay (Collision c)
 		{
+				grounded = true;
 				CheckCollision (c);    
 		}
 		
@@ -101,14 +91,9 @@ public class PlayerControl : MonoBehaviour
 						Debug.DrawLine (contact.point, contact.point + contact.normal, Color.red);
 				
 						// check for floor hit
-						if (moveVertical <= 0 && contact.point.y <= collider.bounds.min.y && Vector3.Angle (Vector3.up, contact.normal) <= 45) {
-								onGround = true;
+						if (moveVertical <= 0 && contact.point.y <= collider.bounds.min.y && Vector3.Angle (Vector3.up, contact.normal) <= 50) {
+								grounded = true;
 								moveVertical = Mathf.Max (0, moveVertical);
-						}
-				
-						// check for head hit:
-						if (contact.point.y >= collider.bounds.max.y && Vector3.Angle (-Vector3.up, contact.normal) <= 45) {
-								moveVertical = Mathf.Min (0, moveVertical);
 						}
 				}
 		}
