@@ -6,7 +6,8 @@ public class SpikeManager : MonoBehaviour
 
 		void OnTriggerEnter2D (Collider2D other)
 		{
-				int nb = other.transform.gameObject.GetComponent<PlayerControl>().PlayerNumber;		
+			Debug.Log(other.transform.gameObject.name);	
+			int nb = other.transform.gameObject.GetComponent<PlayerControl>().PlayerNumber;		
 
 				/*string layer = LayerMask.LayerToName (other.gameObject.layer);
 				if (layer.StartsWith ("Player")) {
