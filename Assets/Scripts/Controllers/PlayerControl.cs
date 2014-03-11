@@ -149,9 +149,9 @@ public class PlayerControl : MonoBehaviour
 
 		// apply horizontal speed smoothing it
 		var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping; // how fast do we change direction?
-		Debug.Log (_velocity);
+//		Debug.Log (_velocity);
 		_velocity.x = Mathf.Lerp( _velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime * smoothedMovementFactor );
-		Debug.Log (_velocity);
+//		Debug.Log (_velocity);
 
 		// apply gravity before moving
 		_velocity.y += gravity * Time.deltaTime;
