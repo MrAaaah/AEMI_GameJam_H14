@@ -7,6 +7,7 @@ public class DoorController : MonoBehaviour
 		LevelController levelController;
 		public Door[] doors;
 		public bool areOpens;
+		bool correctedDoorPositions = false;
 
 		// Use this for initialization
 		void Start ()
@@ -34,7 +35,6 @@ public class DoorController : MonoBehaviour
 				} while (levelController == null);
 
 				GameObject currentLevel = levelController.currentLevel;
-//		Debug.Log (currentLevel);();
 
 				doors = currentLevel.transform.Find ("Doors").GetComponentsInChildren<Door> ();
 				int correction = 1;
@@ -42,10 +42,21 @@ public class DoorController : MonoBehaviour
 						correction = 0;
 				}
 
-			doors [correction].position = Door.DoorPosition.Left;
-			doors [correction].trigger = doors[correction].GetComponentsInChildren<BoxCollider2D> () [2];
-			doors [(correction + 1) % 2].position = Door.DoorPosition.Right;
-			doors [(correction + 1) % 2].trigger = doors[correction].GetComponentsInChildren<BoxCollider2D> () [0];
+				if (!doors [0].positionnedCorrectly) {
+						doors [0].transform.Translate (0.0f, -0.5f, 0.0f);
+						doors [0].positionnedCorrectly = true;
+				}
+
+				if (!doors [1].positionnedCorrectly) {
+
+						doors [1].transform.Rotate (0, 180.0f, 0f); // fix door rotation :)
+						doors [1].transform.Translate (0.0f, -0.5f, 0.0f);
+						doors [1].positionnedCorrectly = true;
+				}
+				doors [correction].position = Door.DoorPosition.Left;
+				doors [correction].trigger = doors [correction].GetComponentsInChildren<BoxCollider2D> () [2];
+				doors [(correction + 1) % 2].position = Door.DoorPosition.Right;
+				doors [(correction + 1) % 2].trigger = doors [correction].GetComponentsInChildren<BoxCollider2D> () [0];
 		
 		
 				CloseDoors ();

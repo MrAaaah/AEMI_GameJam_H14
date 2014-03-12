@@ -9,7 +9,8 @@ public class Game : State<GameState>
 		Debug.Log ("Enter Game");
 
 		if (GameStateManager.singleton.previousState is StartScreen ||
-		    GameStateManager.singleton.previousState is EndGameScreen)
+		    GameStateManager.singleton.previousState is EndGameScreen ||
+		    GameStateManager.singleton.previousState is EndingCredits)
 			SceneManager.singleton.LoadGame ();
 	}
 	

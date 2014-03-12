@@ -17,6 +17,9 @@ public class EndingCredits : State<GameState> {
 	
 	public override void UpdateStateGUI ()
 	{
+		if (GUI.Button(new Rect(200, 400, 150, 130), "Restart !")) {
+			GameStateManager.singleton.SetGameState (GameState.Game);
+		}
 	}
 	
 	public override void ExitState ()

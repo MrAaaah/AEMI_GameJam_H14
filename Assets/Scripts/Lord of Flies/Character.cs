@@ -104,7 +104,7 @@ public class Character:MonoBehaviour{
 		float temp1 = (float)mCurrentHealthPoints;
 		float temp2 = (float)mMaxHealthPoints;
 
-		Debug.Log (temp1 / temp2);
+//		Debug.Log (temp1 / temp2);
 
 		return (temp1 / temp2);
 	}

@@ -41,7 +41,7 @@ public class OverGUI : MonoBehaviour {
 				
 				//Debug.Log ("x:" + viewPos.x + "   y:" + viewPos.y);
 				float tempHealthLenght = 80 * mCharacterRef.getHealthPercent();
-				Debug.Log (tempHealthLenght);
+//				Debug.Log (tempHealthLenght);
 				if (tempHealthLenght <0)
 					tempHealthLenght = 0;
 				//mLifeBoxRect = 	new Rect (viewPos.x - 35, (Screen.height - viewPos.y) - 32, 70, 16);
